@@ -59,7 +59,7 @@ public class Test_Dice : MonoBehaviour
 		cube_BoxCollider.enabled  = true;
 
 		cube_Rigidbody.AddForce( throwVector, ForceMode.Impulse );
-		// cube_Rigidbody.AddTorque( Random.insideUnitSphere, ForceMode.Impulse );
+		cube_Rigidbody.AddTorque( Random.insideUnitSphere, ForceMode.Impulse );
 
 		onCollisionEnterMethod = ExtensionMethods.EmptyMethod;
 
