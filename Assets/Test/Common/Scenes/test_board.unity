@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183cb49f4181c4447b222b35f40ecd09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube_ThrowVector: {x: 0, y: 10, z: 10}
+  throwVector: {x: 0, y: 10, z: 10}
 --- !u!65 &1555490436
 BoxCollider:
   m_ObjectHideFlags: 0
