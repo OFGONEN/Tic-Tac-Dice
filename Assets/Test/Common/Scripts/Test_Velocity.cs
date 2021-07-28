@@ -16,6 +16,9 @@ public class Test_Velocity : MonoBehaviour
 
 	public float travelTime;
 
+	[ HorizontalLine ]
+	public LineRenderer lineRenderer;
+
 	// Private Fields
 	private Rigidbody dice_Rigidbody;
 	private float elapsedFixedTime;
@@ -43,6 +46,8 @@ public class Test_Velocity : MonoBehaviour
 
 		start_Position = transform.position;
 		start_Rotation = transform.rotation;
+
+		lineRenderer.useWorldSpace = true;
 	}
 
 	private void FixedUpdate() 
@@ -60,16 +65,36 @@ public class Test_Velocity : MonoBehaviour
 
 		dice_Rigidbody.useGravity = true;
 
-		Vector3 forceVector = Vector3.zero;
-		forceVector.x = ( target.position.x - dice_Rigidbody.position.x ) / travelTime;
-		forceVector.z = ( target.position.z - dice_Rigidbody.position.z ) / travelTime;
+		launchVector   = Vector3.zero;
+		launchVector.x = ( target.position.x - dice_Rigidbody.position.x ) / travelTime;
+		launchVector.z = ( target.position.z - dice_Rigidbody.position.z ) / travelTime;
 
-		forceVector.y = -Physics.gravity.y * travelTime / 2 ;
+		launchVector.y = -Physics.gravity.y * travelTime / 2 ;
 
-		dice_Rigidbody.AddForce( forceVector, ForceMode.Impulse );
+		dice_Rigidbody.AddForce( launchVector, ForceMode.Impulse );
+		dice_Rigidbody.AddTorque( Random.insideUnitSphere * 2, ForceMode.Impulse );
 
 		elapsedFixedTime  = 0;
 		fixedUpdateMethod = OnFixedUpdate_LaunchToTarget;
+
+		var lineCount = 20;
+		var linePositions = new List< Vector3 >( lineCount );
+
+		for( var i = 0; i < lineCount; i++ )
+		{
+			var step = travelTime * i / ( lineCount - 1 );
+
+			Vector3 timePosition = new Vector3(
+				launchVector.x * step,
+				launchVector.y * step + Physics.gravity.y * step * step / 2f,
+				launchVector.z * step
+			);
+
+			linePositions.Add( timePosition + start_Position );
+		}
+
+		lineRenderer.positionCount = lineCount;
+		lineRenderer.SetPositions( linePositions.ToArray() );
 	}
 
 	[ Button() ]
