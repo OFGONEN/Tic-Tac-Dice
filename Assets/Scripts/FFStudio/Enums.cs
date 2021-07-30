@@ -14,4 +14,10 @@ namespace FFStudio
         Vector3Y,
         Vector3Z
     }
+
+    public enum Parties
+    {
+        Ally,
+        Enemy
+    }
 }
