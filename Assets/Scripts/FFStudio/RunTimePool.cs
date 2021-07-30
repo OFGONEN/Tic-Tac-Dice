@@ -9,6 +9,7 @@ namespace FFStudio
 	{
 #region Fields
         public T poolEntity; // GameObject.
+		public Transform mainParent; // Main parent
 #endregion
 
 #region Unity API
