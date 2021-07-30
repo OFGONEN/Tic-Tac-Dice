@@ -52,6 +52,12 @@ public class Dice : MonoBehaviour
 #endregion
 
 #region API
+	public void Halt()
+	{
+		dice_Rigidbody.velocity        = Vector3.zero;
+		dice_Rigidbody.angularVelocity = Vector3.zero;
+	}
+
 	public void Spawn( Vector3 position, Quaternion rotation )
 	{
 		transform.position = position;
