@@ -15,6 +15,9 @@ namespace FFStudio
 		[ Foldout( "UI Settings" ), Tooltip( "Duration of the movement for floating ui element" ) ] public float ui_Entity_FloatingMove_TweenDuration;
         [ Foldout( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
 
+        [ BoxGroup( "Dice" ), Tooltip( "Dice wait time to disappear it after rigidbody sleep" ) ] public float dice_waitTimeAfterSleep = 0.35f; 
+        [ BoxGroup( "Dice" ), Tooltip( "Correction vector's magnitute" ) ] public float dice_correctionForceMagnitute = 3f; 
+
         private static GameSettings instance;
 
         private delegate GameSettings ReturnGameSettings();

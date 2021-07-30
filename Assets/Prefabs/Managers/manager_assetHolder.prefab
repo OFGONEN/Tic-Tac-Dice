@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: 109113abc7450a64db67bb41e0cc2dc0, type: 2}
   currentLevelData: {fileID: 11400000, guid: d35c98ef4c868d94f85bf38a98066033, type: 2}
+  pool_dice_ally: {fileID: 11400000, guid: 4f24a05d4a4373f43b366957b8da2c02, type: 2}
+  pool_dice_enemy: {fileID: 11400000, guid: d7765cca52f5f78478a8798bf1065244, type: 2}
