@@ -19,4 +19,3 @@ MonoBehaviour:
   ui_Entity_FloatingMove_TweenDuration: 0.5
   swipeThreshold: 2
   dice_waitTimeAfterSleep: 0.35
-  dice_correctionForceMagnitute: 3
