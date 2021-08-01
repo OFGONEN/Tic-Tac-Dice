@@ -143,6 +143,7 @@ public class Dice : MonoBehaviour
 		return diceNumbers[ selected ];
 	}
 
+	// Defaults the dice attributes.
 	private void ReturnDefault()
 	{
 		transform.SetParent( dicePool.mainParent ); // Return to main parent as a child.
