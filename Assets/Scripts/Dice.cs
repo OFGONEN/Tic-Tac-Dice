@@ -23,6 +23,9 @@ public class Dice : MonoBehaviour
 	// Private Fields
 	private Rigidbody dice_Rigidbody;
 
+	private int[] diceNumbers = new int[] { 1, 6, 3, 4, 5, 2};
+	private float[] dotProducts = new float[ 6 ];
+
 	// Delegates
 	private UnityMessage fixedUpdateDelegate;
 #endregion
@@ -92,67 +95,52 @@ public class Dice : MonoBehaviour
 
 	private void OnRigidbodySleep()
 	{
-		int diceNumber;
+		int diceNumber = CheckWhichSideIsUp();
 
-		var isFacingUp = CheckIfFaceUpSide( out diceNumber );
+		fixedUpdateDelegate = ExtensionMethods.EmptyMethod;
 
-		if( isFacingUp )
-		{
-			fixedUpdateDelegate = ExtensionMethods.EmptyMethod;
+		// Dice Event: Position, Ally or Enemy, Dice number
+		diceEvent.position   = transform.position;
+		diceEvent.diceNumber = diceNumber;
+		diceEvent.party      = party;
 
-			// Dice Event: Position, Ally or Enemy, Dice number
-			diceEvent.position   = transform.position;
-			diceEvent.diceNumber = diceNumber;
-			diceEvent.party      = party;
+		diceEvent.Raise();
 
-			diceEvent.Raise();
+		// Dice Disappear Particle Effect 
+		diceDisappearParticleEvent.changePosition = true;
+		diceDisappearParticleEvent.spawnPoint     = transform.position;
+		diceDisappearParticleEvent.particleAlias  = "dice_disappear";
 
-			// Dice Disappear Particle Effect 
-			diceDisappearParticleEvent.changePosition = true;
-			diceDisappearParticleEvent.spawnPoint     = transform.position;
-			diceDisappearParticleEvent.particleAlias  = "dice_disappear";
+		diceDisappearParticleEvent.Raise();
 
-			diceDisappearParticleEvent.Raise();
-
-		}
-		else
-		{
-			dice_Rigidbody.AddForce( Vector3.up * GameSettings.Instance.dice_correctionForceMagnitute, ForceMode.Impulse );
-		}
+		FFLogger.Log( $"{name}: {diceNumber}" );
 	}
 
 	// Up: 1, Right: 3, Forward: 5
-	private bool CheckIfFaceUpSide( out int diceNumber )
+	private int CheckWhichSideIsUp()
 	{
-		     diceNumber = 0;      // Default value 
-		bool isFaceUp   = false;  // At least one face of the dice is facing upwards
+		// Check Dot Product of every axis with Vector3.Up
+		dotProducts[ 0 ] = Vector3.Dot( transform.up, Vector3.up );
+		dotProducts[ 1 ] = Vector3.Dot( -transform.up, Vector3.up );
+		dotProducts[ 2 ] = Vector3.Dot( transform.right, Vector3.up );
+		dotProducts[ 3 ] = Vector3.Dot( -transform.right, Vector3.up );
+		dotProducts[ 4 ] = Vector3.Dot( transform.forward, Vector3.up );
+		dotProducts[ 5 ] = Vector3.Dot( -transform.forward, Vector3.up );
 
-		var dotProduct_up     = Vector3.Dot( transform.up, Vector3.up );
-		var dotProduct_foward = Vector3.Dot( transform.forward, Vector3.up );
-		var dotProduct_right  = Vector3.Dot( transform.right, Vector3.up );
+		int selected = 0;
+		float max = dotProducts[ 0 ];
 
-		// If dot product is 1 or -1 means that axis facing up or down
-		var facing_up     = Mathf.Approximately( 1, Mathf.Abs( dotProduct_up ) );
-		var facing_foward = Mathf.Approximately( 1, Mathf.Abs( dotProduct_foward ) );
-		var facing_right  = Mathf.Approximately( 1, Mathf.Abs( dotProduct_right ) );
-
-		if( facing_up )
+		// Find the biggest result
+		for( var i = 0; i < diceNumbers.Length - 1; i++ )
 		{
-			diceNumber = Mathf.Sign( dotProduct_up ) == 1 ? 1 : 6;
-			isFaceUp   = true;
-		}
-		else if( facing_foward )
-		{
-			diceNumber = Mathf.Sign( dotProduct_foward ) == 1 ? 5 : 2;
-			isFaceUp   = true;
-		}
-		else if( facing_right )
-		{
-			diceNumber = Mathf.Sign( dotProduct_right ) == 1 ? 3 : 3;
-			isFaceUp   = true;
+			if( dotProducts[ i + 1 ] >= max )
+			{
+				max = dotProducts[ i + 1 ]; // Cache the max 
+				selected = i + 1;
+			}
 		}
 
-		return isFaceUp;
+		return diceNumbers[ selected ];
 	}
 #endregion
 }
