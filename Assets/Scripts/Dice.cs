@@ -61,10 +61,12 @@ public class Dice : MonoBehaviour
 		dice_Rigidbody.angularVelocity = Vector3.zero;
 	}
 
-	public void Spawn( Vector3 position, Quaternion rotation )
+	public void Spawn( Vector3 localPosition, Quaternion localRotation )
 	{
-		transform.position = position;
-		transform.rotation = rotation;
+		gameObject.SetActive( true );
+
+		transform.localPosition = localPosition;
+		transform.localRotation = localRotation;
 
 		// Don't use gravity after spawn
 		dice_Rigidbody.useGravity = false; 
