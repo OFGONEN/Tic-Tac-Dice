@@ -34,7 +34,6 @@ public class Dice : MonoBehaviour
 	private void OnDisable()
 	{
 		dicePool.Stack.Push( this ); // Return to stack when disabled.
-		transform.SetParent( dicePool.mainParent ); // Return to main parent as a child.
 	}
 
 	private void Awake()
@@ -91,6 +90,7 @@ public class Dice : MonoBehaviour
 	{
 		if( dice_Rigidbody.IsSleeping() ) // If rigidbody is stopped and changed its status to SLEEP
 		{
+			transform.SetParent( dicePool.mainParent ); // Return to main parent as a child.
 			DOVirtual.DelayedCall( GameSettings.Instance.dice_waitTimeAfterSleep, OnRigidbodySleep ); // Delayed call 
 		}
 	}
