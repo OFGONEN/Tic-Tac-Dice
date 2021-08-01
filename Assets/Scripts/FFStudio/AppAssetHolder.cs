@@ -17,11 +17,11 @@ public class AppAssetHolder : MonoBehaviour
 
 	private void Awake()
 	{
-		pool_dice_ally.InitPool( transform, false );
-		pool_dice_enemy.InitPool( transform, false );
-
 		pool_dice_ally.mainParent  = transform;
 		pool_dice_enemy.mainParent = transform;
+
+		pool_dice_ally.InitPool( transform, false );
+		pool_dice_enemy.InitPool( transform, false );
 	}
 #endregion
 }
