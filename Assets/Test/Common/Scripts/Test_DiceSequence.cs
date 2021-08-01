@@ -8,7 +8,7 @@ using FFStudio;
 using NaughtyAttributes;
 using DG.Tweening;
 
-public class Test_Dice : MonoBehaviour
+public class Test_DiceSequence : MonoBehaviour
 {
 #region Fields
 	public Vector3 throwVector;
