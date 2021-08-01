@@ -31,11 +31,6 @@ public class Dice : MonoBehaviour
 #endregion
 
 #region Unity API
-	private void OnDisable()
-	{
-		dicePool.Stack.Push( this ); // Return to stack when disabled.
-	}
-
 	private void Awake()
 	{
 		/* Initialization */
@@ -90,7 +85,7 @@ public class Dice : MonoBehaviour
 	{
 		if( dice_Rigidbody.IsSleeping() ) // If rigidbody is stopped and changed its status to SLEEP
 		{
-			transform.SetParent( dicePool.mainParent ); // Return to main parent as a child.
+			ReturnDefault();
 			DOVirtual.DelayedCall( GameSettings.Instance.dice_waitTimeAfterSleep, OnRigidbodySleep ); // Delayed call 
 		}
 	}
@@ -114,6 +109,9 @@ public class Dice : MonoBehaviour
 		diceDisappearParticleEvent.particleAlias  = "dice_disappear";
 
 		diceDisappearParticleEvent.Raise();
+
+		gameObject.SetActive( false ); // Disable the dice
+		dicePool.Stack.Push( this ); // Return to stack after disable
 
 		FFLogger.Log( $"{name}: {diceNumber}" );
 	}
@@ -143,6 +141,16 @@ public class Dice : MonoBehaviour
 		}
 
 		return diceNumbers[ selected ];
+	}
+
+	private void ReturnDefault()
+	{
+		transform.SetParent( dicePool.mainParent ); // Return to main parent as a child.
+
+		dice_Rigidbody.useGravity = false;
+
+		dice_Rigidbody.velocity        = Vector3.zero;
+		dice_Rigidbody.angularVelocity = Vector3.zero;
 	}
 #endregion
 }
