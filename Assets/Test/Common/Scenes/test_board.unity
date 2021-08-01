@@ -720,7 +720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1281894180
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1000,7 +1000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1555490430
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1071,13 +1071,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555490429}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.07522841, y: 0.064329214, z: 0.5325711, w: -0.8405775}
   m_LocalPosition: {x: 0, y: 0.5, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 176.678, y: 169.129, z: -245.031}
 --- !u!54 &1555490434
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1109,6 +1109,13 @@ MonoBehaviour:
   throwVector: {x: 0, y: 10, z: 10}
   collisionPoints: []
   cubePositions: []
+  dotProducts:
+  - 0.42141747
+  - -0.42141747
+  - -0.90501326
+  - 0.90501326
+  - -0.057950854
+  - 0.057950854
 --- !u!65 &1555490436
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1172,7 +1179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1703293303
 MonoBehaviour:
   m_ObjectHideFlags: 0

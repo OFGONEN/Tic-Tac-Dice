@@ -109,15 +109,68 @@ public class Test_Dice : MonoBehaviour
 			FFLogger.Log( $"Test Result \nAverage Collision Point:{point_Collision}\nAverage Cube Point:{point_CubePosition}" );
 		}
 	}
+
+
 #endregion
 
 #region EditorOnly
 #if UNITY_EDITOR
-	private void OnDrawGizmos()
+
+	GUIStyle style = new GUIStyle();
+
+	string[] diceNumbers = new string[ 6 ];
+	[ SerializeField, ReadOnly ] float[] dotProducts = new float[ 6 ];
+
+	private void OnDrawGizmosSelected()
 	{
-		Handles.color = Color.red;
-		var targetPosition = ( transform.position + throwVector.normalized * 3) ;
-		Handles.DrawLine( transform.position, targetPosition );
+		// Handles.color = Color.red;
+		// var targetPosition = ( transform.position + throwVector.normalized * 3) ;
+		// Handles.DrawLine( transform.position, targetPosition );
+
+		// Up: 1, Right: 3, Forward: 5
+		style.fontSize = 25;
+
+		UpdateDotProducts();
+
+		Handles.Label( transform.position + transform.up, diceNumbers[ 0 ], style );
+		Handles.Label( transform.position + -transform.up, diceNumbers[ 1 ], style );
+		Handles.Label( transform.position + transform.right, diceNumbers[ 2 ], style );
+		Handles.Label( transform.position + -transform.right, diceNumbers[ 3 ], style );
+		Handles.Label( transform.position + transform.forward, diceNumbers[ 4 ], style );
+		Handles.Label( transform.position + -transform.forward, diceNumbers[ 5 ], style );
+	}
+
+	private void UpdateDotProducts()
+	{
+		dotProducts[ 0 ] = Vector3.Dot( transform.up, Vector3.up ); 
+		dotProducts[ 1 ] = Vector3.Dot( -transform.up, Vector3.up ); 
+		dotProducts[ 2 ] = Vector3.Dot( transform.right, Vector3.up );  
+		dotProducts[ 3 ] = Vector3.Dot( -transform.right, Vector3.up ); 
+		dotProducts[ 4 ] = Vector3.Dot( transform.forward, Vector3.up ); 
+		dotProducts[ 5 ] = Vector3.Dot( -transform.forward, Vector3.up ); 
+
+		int selected = 0;
+		float max = dotProducts[ 0 ];
+
+		for( var i = 0; i < diceNumbers.Length - 1; i++ )
+		{
+			if( dotProducts[ i + 1 ] >= max )
+			{
+				max = dotProducts[ i + 1 ];
+				selected = i + 1;
+			}
+		}
+
+		// Up: 1, Right: 3, Forward: 5
+
+		diceNumbers[ 0 ] = "1";
+		diceNumbers[ 1 ] = "6";
+		diceNumbers[ 2 ] = "3";
+		diceNumbers[ 3 ] = "4";
+		diceNumbers[ 4 ] = "5";
+		diceNumbers[ 5 ] = "2";
+
+		diceNumbers[ selected ] = diceNumbers[ selected ] + "!";
 	}
 #endif
 #endregion
