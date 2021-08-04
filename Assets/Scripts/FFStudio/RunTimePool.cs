@@ -38,9 +38,9 @@ namespace FFStudio
 			else 
 			{
 				entity = GameObject.Instantiate( poolEntity );
-				entity.transform.SetParent( parent );
 			}
 
+			entity.transform.SetParent( parent );
 			entity.gameObject.SetActive( active );
 			return entity;
 		}

@@ -120,7 +120,7 @@ public class DiceThrower : MonoBehaviour
 		// Travel time is max when target position at the farest point of the board.
 		// Travel time is min when target position at the closest point of the board.
 
-		var distance      = Vector3.Distance( position, farest_TargetPosition.position ); // Find the distance between target point and the farest point.
+		var distance      = Vector3.Distance( position, closest_TargetPosition.position ); // Find the distance between target point and the farest point.
 		var distanceRatio = distance / distanceBetweenTargetPoints; // Calculate a ratio between the max distance and the current distance.
 
 		var minMax_TravelTime = GameSettings.Instance.dice_MinMaxTravelTime;
@@ -180,8 +180,9 @@ public class DiceThrower : MonoBehaviour
 	private void SpawnDice()
 	{
 		currentDice = dicePool.GiveEntity( transform, true ); // Get a dice from dice pool.
+
 		// Spawn the dice, set it's parent to this so dice can rotate with, set its rotation to same rotation as this.
-		currentDice.Spawn( Vector3.zero, transform.rotation ); 
+		currentDice.Spawn( Vector3.zero, Quaternion.identity ); 
 
 		canThrowDice  = true;// Set flag value for throwing dice true.
 		cooldownIndicator.fillAmount = 1f; // Set indicator fill amount.

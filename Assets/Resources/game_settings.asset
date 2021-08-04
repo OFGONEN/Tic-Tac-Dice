@@ -20,5 +20,5 @@ MonoBehaviour:
   swipeThreshold: 2
   dice_coolDown: 2
   dice_TrajectoryPointCount: 50
-  dice_MinMaxTravelTime: {x: 0.5, y: 2}
+  dice_MinMaxTravelTime: {x: 1, y: 2}
   dice_waitTimeAfterSleep: 0.35
