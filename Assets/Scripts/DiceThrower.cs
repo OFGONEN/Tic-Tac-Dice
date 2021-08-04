@@ -180,8 +180,9 @@ public class DiceThrower : MonoBehaviour
 	private void SpawnDice()
 	{
 		currentDice = dicePool.GiveEntity( transform, true ); // Get a dice from dice pool.
+
 		// Spawn the dice, set it's parent to this so dice can rotate with, set its rotation to same rotation as this.
-		currentDice.Spawn( Vector3.zero, transform.rotation ); 
+		currentDice.Spawn( Vector3.zero, Quaternion.identity ); 
 
 		canThrowDice  = true;// Set flag value for throwing dice true.
 		cooldownIndicator.fillAmount = 1f; // Set indicator fill amount.
