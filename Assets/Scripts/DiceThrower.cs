@@ -120,7 +120,7 @@ public class DiceThrower : MonoBehaviour
 		// Travel time is max when target position at the farest point of the board.
 		// Travel time is min when target position at the closest point of the board.
 
-		var distance      = Vector3.Distance( position, farest_TargetPosition.position ); // Find the distance between target point and the farest point.
+		var distance      = Vector3.Distance( position, closest_TargetPosition.position ); // Find the distance between target point and the farest point.
 		var distanceRatio = distance / distanceBetweenTargetPoints; // Calculate a ratio between the max distance and the current distance.
 
 		var minMax_TravelTime = GameSettings.Instance.dice_MinMaxTravelTime;
