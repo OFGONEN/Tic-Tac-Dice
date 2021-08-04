@@ -20,6 +20,8 @@ public class Dice : MonoBehaviour
 	[ HorizontalLine ]
 	public Parties party;
 
+	public UnityMessage collisionEnter;
+
 	// Private Fields
 	private Rigidbody dice_Rigidbody;
 
@@ -39,12 +41,17 @@ public class Dice : MonoBehaviour
 
 		// Delegates
 		fixedUpdateDelegate = ExtensionMethods.EmptyMethod;
-
+		collisionEnter      = ExtensionMethods.EmptyMethod;
 	}
 
 	private void FixedUpdate() 
 	{
 		fixedUpdateDelegate();
+	}
+
+	private void OnCollisionEnter(Collision other) 
+	{
+		collisionEnter();
 	}
 #endregion
 
@@ -93,8 +100,6 @@ public class Dice : MonoBehaviour
 	private void OnRigidbodySleep()
 	{
 		int diceNumber = CheckWhichSideIsUp();
-
-		fixedUpdateDelegate = ExtensionMethods.EmptyMethod;
 
 		// Dice Event: Position, Ally or Enemy, Dice number
 		diceEvent.position   = transform.position;
@@ -152,6 +157,9 @@ public class Dice : MonoBehaviour
 
 		dice_Rigidbody.velocity        = Vector3.zero;
 		dice_Rigidbody.angularVelocity = Vector3.zero;
+
+		fixedUpdateDelegate = ExtensionMethods.EmptyMethod;
+		collisionEnter      = ExtensionMethods.EmptyMethod;
 	}
 #endregion
 }

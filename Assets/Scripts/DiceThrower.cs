@@ -108,12 +108,17 @@ public class DiceThrower : MonoBehaviour
 		// Play the dice throw animation.
 		animator.SetTrigger( "launch" );
 
-		//TODO: Disable trajectory when dice hits the board first time.
-		dice_TrajectoryLine.enabled = false; // Disable Trajectory.
+		currentDice.collisionEnter = DisableTrajectoryLine;
 	}
 #endregion
 
 #region Implementation
+	private void DisableTrajectoryLine()
+	{
+		currentDice.collisionEnter = ExtensionMethods.EmptyMethod;
+		dice_TrajectoryLine.enabled = false;
+	}
+
 	// Calculate the launch vector for throwing the dice to the target position.
 	private void UpdateLaunchVector( Vector3 position )
 	{
