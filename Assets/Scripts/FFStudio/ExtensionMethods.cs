@@ -78,6 +78,23 @@ namespace FFStudio
 			return first + Random.Range( 0, 1f ) * ( second - first );
 		}
 
+		public static void LookAtAxis( this Transform baseTransform, Vector3 targetPosition, Vector3 axis )
+		{
+			var directionVector = targetPosition - baseTransform.position;
+
+			var eulerAngles = baseTransform.eulerAngles;
+
+			var newRotationEuler = Quaternion.LookRotation( directionVector ).eulerAngles;
+
+			newRotationEuler.x = eulerAngles.x + ( newRotationEuler.x - eulerAngles.x ) * axis.x;
+			newRotationEuler.y = eulerAngles.y + ( newRotationEuler.y - eulerAngles.y ) * axis.y;
+			newRotationEuler.z = eulerAngles.z + ( newRotationEuler.z - eulerAngles.z ) * axis.z;
+
+			// baseTransform.rotation = Quaternion.LookRotation( newDirection );
+			baseTransform.rotation = Quaternion.Euler( newRotationEuler );
+
+		}
+
 		public static void LookAtOverTime( this Transform baseTransform, Vector3 targetPosition, float speed )
 		{
 			var directionVector = targetPosition - baseTransform.position;
@@ -116,6 +133,11 @@ namespace FFStudio
 		}
 
 		public static void EmptyMethod()
+		{
+			/* Intentionally empty, by definition. */
+		}
+
+		public static void EmptyMethod( Vector3 v3 )
 		{
 			/* Intentionally empty, by definition. */
 		}

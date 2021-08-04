@@ -18,4 +18,7 @@ MonoBehaviour:
   ui_Entity_Scale_TweenDuration: 0.5
   ui_Entity_FloatingMove_TweenDuration: 0.5
   swipeThreshold: 2
+  dice_coolDown: 2
+  dice_TrajectoryPointCount: 50
+  dice_MinMaxTravelTime: {x: 0.5, y: 2}
   dice_waitTimeAfterSleep: 0.35
