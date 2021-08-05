@@ -18,6 +18,7 @@ namespace FFStudio
     public enum Parties
     {
         Ally,
-        Enemy
+        Enemy,
+		Neutral
     }
 }
