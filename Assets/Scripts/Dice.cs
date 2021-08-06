@@ -84,7 +84,21 @@ public class Dice : MonoBehaviour
 
 		fixedUpdateDelegate = RigidbodyCheck; // Check Rigidbodies status after launch
 	}
-	
+
+	// Defaults the dice attributes.
+	public void ReturnDefault()
+	{
+		dice_Rigidbody.useGravity = false;
+
+		dice_Rigidbody.velocity        = Vector3.zero;
+		dice_Rigidbody.angularVelocity = Vector3.zero;
+
+		fixedUpdateDelegate = ExtensionMethods.EmptyMethod;
+		collisionEnter      = ExtensionMethods.EmptyMethod;
+
+		gameObject.SetActive( false ); // Disable the dice
+		dicePool.Stack.Push( this ); // Return to stack after disable
+	}
 #endregion
 
 #region Implementation
@@ -115,8 +129,6 @@ public class Dice : MonoBehaviour
 
 		diceDisappearParticleEvent.Raise();
 
-		gameObject.SetActive( false ); // Disable the dice
-		dicePool.Stack.Push( this ); // Return to stack after disable
 
 		FFLogger.Log( $"{name}: {diceNumber}" );
 	}
@@ -146,20 +158,6 @@ public class Dice : MonoBehaviour
 		}
 
 		return diceNumbers[ selected ];
-	}
-
-	// Defaults the dice attributes.
-	private void ReturnDefault()
-	{
-		transform.SetParent( dicePool.mainParent ); // Return to main parent as a child.
-
-		dice_Rigidbody.useGravity = false;
-
-		dice_Rigidbody.velocity        = Vector3.zero;
-		dice_Rigidbody.angularVelocity = Vector3.zero;
-
-		fixedUpdateDelegate = ExtensionMethods.EmptyMethod;
-		collisionEnter      = ExtensionMethods.EmptyMethod;
 	}
 #endregion
 }

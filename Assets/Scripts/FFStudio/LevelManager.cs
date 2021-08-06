@@ -11,8 +11,9 @@ namespace FFStudio
         public EventListenerDelegateResponse levelLoadedListener;
         public EventListenerDelegateResponse levelRevealedListener;
         public EventListenerDelegateResponse levelStartedListener;
+		public EventListenerDelegateResponse diceTriggerdNetListener; // ReferenceGameEvent
 
-        [ Header("Fired Events" ) ]
+		[ Header("Fired Events" ) ]
         public GameEvent levelFailedEvent;
         public GameEvent levelCompleted;
 
@@ -23,16 +24,24 @@ namespace FFStudio
 #region UnityAPI
         private void OnEnable()
         {
+            // Level Releated
             levelLoadedListener  .OnEnable();
             levelRevealedListener.OnEnable();
             levelStartedListener .OnEnable();
-        }
+
+			// Game Releated
+			diceTriggerdNetListener.OnEnable();
+		}
 
         private void OnDisable()
         {
+            // Level Releated
             levelLoadedListener  .OnDisable();
             levelRevealedListener.OnDisable();
             levelStartedListener .OnDisable();
+
+			// Game Releated
+			diceTriggerdNetListener.OnDisable();
         }
 
         private void Awake()
@@ -40,7 +49,9 @@ namespace FFStudio
             levelLoadedListener.response   = LevelLoadedResponse;
             levelRevealedListener.response = LevelRevealedResponse;
             levelStartedListener.response  = LevelStartedResponse;
-        }
+
+			diceTriggerdNetListener.response = DiceTriggedNetResponse;
+		}
 #endregion
 
 #region Implementation
@@ -56,6 +67,13 @@ namespace FFStudio
         void LevelStartedResponse()
         {
         }
+
+        // Return the dice to Default when it triggered the Net
+        private void DiceTriggedNetResponse()
+        {
+			var dice = ( ( diceTriggerdNetListener.gameEvent as ReferenceGameEvent ).eventValue as Collider ).GetComponentInParent< Dice >();
+			dice.ReturnDefault();
+		}
 #endregion
     }
 }
