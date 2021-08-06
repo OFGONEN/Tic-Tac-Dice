@@ -20,10 +20,7 @@ public class Test_Dice : MonoBehaviour
 #region Unity API
 	private void Awake()
 	{
-		allyDicePool.mainParent = transform;
 		allyDicePool.InitPool( transform, false );
-
-		enemyDicePool.mainParent = transform;
 		enemyDicePool.InitPool( transform, false );
 	}
 #endregion

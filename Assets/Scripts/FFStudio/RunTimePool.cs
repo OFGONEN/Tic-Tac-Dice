@@ -9,7 +9,9 @@ namespace FFStudio
 	{
 #region Fields
         public T poolEntity; // GameObject.
-		public Transform mainParent; // Main parent
+		private Transform mainParent; // Main parent
+
+		public Transform MainParent => mainParent;
 #endregion
 
 #region Unity API
@@ -18,6 +20,8 @@ namespace FFStudio
 #region API
 		public void InitPool( Transform parent, bool active )
 		{
+			mainParent = parent;
+
 			stack = new Stack< T >( stackSize );
 
 			for( var i = 0; i < stackSize; i++ )
