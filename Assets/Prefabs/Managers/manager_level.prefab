@@ -51,6 +51,8 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: efef06bf257ee27438d6c2aab4936226, type: 2}
   diceTriggerdNetListener:
     gameEvent: {fileID: 11400000, guid: 67de392ea8c12034d836d44c42818fcd, type: 2}
+  tileCaptureListener:
+    gameEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   levelFailedEvent: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   levelCompleted: {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
   levelProgress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}

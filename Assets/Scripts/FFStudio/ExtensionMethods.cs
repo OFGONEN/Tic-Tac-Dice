@@ -1,6 +1,7 @@
 /* Created by and for usage of FF Studios (2021). */
 
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 namespace FFStudio
@@ -221,6 +222,25 @@ namespace FFStudio
 			transform.position    = data.position;
 			transform.eulerAngles = data.position;
 			transform.localScale  = data.scale;
+		}
+
+		public static string Log2DArray( Parties[,] array, int length )
+		{
+			StringBuilder builder = new StringBuilder( 100 );
+
+			for( var x = 0; x < length ; x++ )
+			{
+				builder.Append( "[ " );
+				for( var y = 0; y < length; y++ )
+				{
+					builder.Append( array[ x, y ] );
+					builder.Append( " " );
+				}
+				builder.Append( "]" );
+				builder.Append( "\n" );
+			}
+
+			return builder.ToString();
 		}
 	}
 }
