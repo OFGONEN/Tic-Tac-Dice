@@ -48,7 +48,7 @@ MonoBehaviour:
   diceEvent: {fileID: 11400000, guid: 214e335c80740c34789e7d222cee72f2, type: 2}
   diceDisappearParticleEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   dicePool: {fileID: 11400000, guid: 4f24a05d4a4373f43b366957b8da2c02, type: 2}
-  party: 0
+  party: 1
 --- !u!54 &293131036830607369
 Rigidbody:
   m_ObjectHideFlags: 0
