@@ -12,6 +12,8 @@ namespace FFStudio
         public EventListenerDelegateResponse levelRevealedListener;
         public EventListenerDelegateResponse levelStartedListener;
 		public EventListenerDelegateResponse diceTriggerdNetListener; // ReferenceGameEvent
+		public EventListenerDelegateResponse allyDiceEventListener;
+		public EventListenerDelegateResponse enemyDiceEventListener;
 		public EventListenerDelegateResponse tileCaptureListener;
 
 		[ Header("Fired Events" ) ]
@@ -20,6 +22,7 @@ namespace FFStudio
 
         [ Header("Level Releated" ) ]
         public SharedFloatProperty levelProgress;
+		public TileSet tileSet;
 
 		// Private Fields
 		private Parties[,] scoreBoard = new Parties[ 3, 3 ];
@@ -34,6 +37,8 @@ namespace FFStudio
             levelStartedListener .OnEnable();
 
 			// Game Releated
+			allyDiceEventListener  .OnEnable();
+			enemyDiceEventListener .OnEnable();
 			diceTriggerdNetListener.OnEnable();
 			tileCaptureListener    .OnEnable();
 		}
@@ -46,8 +51,11 @@ namespace FFStudio
             levelStartedListener .OnDisable();
 
 			// Game Releated
+			allyDiceEventListener  .OnDisable();
+			enemyDiceEventListener .OnDisable();
 			diceTriggerdNetListener.OnDisable();
 			tileCaptureListener    .OnDisable();
+
         }
 
         private void Awake()
@@ -56,6 +64,8 @@ namespace FFStudio
             levelRevealedListener.response = LevelRevealedResponse;
             levelStartedListener.response  = LevelStartedResponse;
 
+			allyDiceEventListener.response   = ExtensionMethods.EmptyMethod;
+			enemyDiceEventListener.response  = ExtensionMethods.EmptyMethod;
 			diceTriggerdNetListener.response = DiceTriggedNetResponse;
 			tileCaptureListener.response     = ExtensionMethods.EmptyMethod;
 		}
@@ -75,7 +85,9 @@ namespace FFStudio
         {
 			DefaultScoreBoard();
 
-			tileCaptureListener.response = TileCaptureResponse;
+			tileCaptureListener.response    = TileCaptureResponse;
+			allyDiceEventListener.response  = AllyDiceEventResponse;
+			enemyDiceEventListener.response = EnemyDiceEventResponse;
 		}
 
         // Return the dice to Default when it triggered the Net
@@ -83,6 +95,44 @@ namespace FFStudio
         {
 			var dice = ( ( diceTriggerdNetListener.gameEvent as ReferenceGameEvent ).eventValue as Collider ).GetComponentInParent< Dice >();
 			dice.ReturnDefault();
+		}
+
+        private void AllyDiceEventResponse()
+        {
+		    var diceEvent = allyDiceEventListener.gameEvent as DiceEvent;
+
+			var closestTileIndex = FindClosestTile( diceEvent ); // Find index of the closest tile
+
+			tileSet.itemList[ closestTileIndex ].AllyDiceEventResponse( diceEvent ); // Call dice event response method for that tile
+		}
+
+        private void EnemyDiceEventResponse()
+        {
+		    var diceEvent = enemyDiceEventListener.gameEvent as DiceEvent;
+
+			var closestTileIndex = FindClosestTile( diceEvent ); // Find index of the closest tile
+
+			tileSet.itemList[ closestTileIndex ].EnemyDiceEventResponse( diceEvent ); // Call dice event response method for that tile
+        }
+
+        // Find the closest tile to the position of the dice event
+        private int FindClosestTile( DiceEvent diceEvent )
+        {
+
+			int closestTileIndex = 0;
+			float closestDistance = Vector3.Distance( diceEvent.position, tileSet.itemList[ 0 ].transform.position );
+
+			for( int i = 1; i < tileSet.itemList.Count; i++ )
+			{
+				var distance = Vector3.Distance( diceEvent.position, tileSet.itemList[ i ].transform.position );
+				if( distance <= closestDistance )
+				{
+					closestDistance = distance;
+					closestTileIndex = i;
+				}
+			}
+
+			return closestTileIndex;
 		}
 
         // Dice if any parties have won the game
@@ -115,7 +165,10 @@ namespace FFStudio
                 }
 
                 FFLogger.Log( "Has Winner!" );
-				tileCaptureListener.response = ExtensionMethods.EmptyMethod;
+                // Set empty of events responses after a winner is selected.
+				tileCaptureListener.response    = ExtensionMethods.EmptyMethod;
+				allyDiceEventListener.response  = ExtensionMethods.EmptyMethod;
+				enemyDiceEventListener.response = ExtensionMethods.EmptyMethod;
 			}
 		}
 
