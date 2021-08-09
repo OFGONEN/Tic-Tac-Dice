@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 1be2d39a9a9896c48bcde6a611f3791e
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _subfoam: {fileID: 2800000, guid: ceac5166b701fb04da2b0ffdbd5be0dc, type: 3}
+  - _distortionnormalmap: {fileID: 2800000, guid: 6205681387f1856498d9292fea307838, type: 3}
+  - _topfoam: {fileID: 2800000, guid: ceac5166b701fb04da2b0ffdbd5be0dc, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
