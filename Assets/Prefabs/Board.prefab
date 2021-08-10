@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   tileID: 7
 --- !u!114 &8503814974683965765
 MonoBehaviour:
@@ -29,6 +31,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   tileID: 8
 --- !u!114 &3869050497513064913
 MonoBehaviour:
@@ -44,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   tileID: 6
 --- !u!65 &1041159124654010000
 BoxCollider:
@@ -111,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   tileID: 5
 --- !u!114 &2785521014267430761
 MonoBehaviour:
@@ -126,6 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   tileID: 2
 --- !u!114 &3614210995263947260
 MonoBehaviour:
@@ -141,6 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   tileID: 3
 --- !u!114 &2999702283896299441
 MonoBehaviour:
@@ -156,6 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   tileID: 0
 --- !u!1 &7833831627879401460
 GameObject:
@@ -217,6 +231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   tileID: 1
 --- !u!114 &5632154763384567125
 MonoBehaviour:
@@ -232,6 +248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   tileID: 4
 --- !u!1001 &3291134616289802258
 PrefabInstance:
