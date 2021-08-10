@@ -22,3 +22,4 @@ MonoBehaviour:
   dice_TrajectoryPointCount: 50
   dice_MinMaxTravelTime: {x: 1, y: 2}
   dice_waitTimeAfterSleep: 0.35
+  dice_SoldierSpawnRadius: 1.5

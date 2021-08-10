@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using UnityEditor;
 
 public class Tile : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class Tile : MonoBehaviour
 
 	// Components 
 	private MeshRenderer meshRenderer;
+	private Bounds bounds;
 #endregion
 
 #region Unity API
@@ -44,6 +46,7 @@ public class Tile : MonoBehaviour
 	private void Awake()
 	{
 		meshRenderer = GetComponentInChildren< MeshRenderer >();
+		bounds       = meshRenderer.bounds;
 	}
 #endregion
 
@@ -51,14 +54,45 @@ public class Tile : MonoBehaviour
 	public void AllyDiceEventResponse( DiceEvent diceEvent )
 	{
 		FFLogger.Log( "Ally Dice Response: " + name, gameObject );
+		var spawnPosition = GiveClampedDiceEventPosition( diceEvent.position );
+
+		FFLogger.DrawLine( transform.position, spawnPosition, Color.green, 2f );
 	}
 
 	public void EnemyDiceEventResponse( DiceEvent diceEvent )
 	{
 		FFLogger.Log( "Enemy Dice Response: " + name, gameObject );
+
+		var spawnPosition = GiveClampedDiceEventPosition( diceEvent.position );
+
+		FFLogger.DrawLine( transform.position, spawnPosition, Color.red, 2f );
 	}
 #endregion
 
 #region Implementation
+	// Clamp dice event position for spawning every soldier inside the bounds
+	private Vector3 GiveClampedDiceEventPosition( Vector3 diceEventPosition )
+	{
+		var eventPosition = diceEventPosition;
+
+		var min = bounds.min + Vector3.one * GameSettings.Instance.dice_SoldierSpawnRadius;
+		var max = bounds.max - Vector3.one * GameSettings.Instance.dice_SoldierSpawnRadius;
+
+		eventPosition = new Vector3 (
+			Mathf.Clamp( eventPosition.x, min.x, max.x ),
+			0,
+			Mathf.Clamp( eventPosition.z, min.z, max.z )
+		);
+
+		return eventPosition;
+	}
+#endregion
+
+#region EditorOnly
+#if UNITY_EDITOR
+	private void OnDrawGizmos()
+	{
+	}
+#endif
 #endregion
 }

@@ -19,6 +19,7 @@ namespace FFStudio
         [ BoxGroup( "Dice" ), Tooltip( "Dice's trajectory point count" ) ] public int dice_TrajectoryPointCount = 50; 
         [ BoxGroup( "Dice" ), Tooltip( "Dice's trajectory point count" ), MinMaxSlider( 0.5f, 3f ) ] public Vector2 dice_MinMaxTravelTime;
         [ BoxGroup( "Dice" ), Tooltip( "Dice wait time to disappear it after rigidbody sleep" ) ] public float dice_waitTimeAfterSleep = 0.35f; 
+        [ BoxGroup( "Dice" ), Tooltip( "Dice's soldier spawn radius" ) ] public float dice_SoldierSpawnRadius = 1.5f; 
 
         private static GameSettings instance;
 
