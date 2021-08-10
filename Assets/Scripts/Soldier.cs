@@ -13,6 +13,7 @@ public class Soldier : MonoBehaviour
 #endregion
 
 #region API
+	// Spawns the soldier with given world position and rotation.
 	public void Spawn( Vector3 position, Quaternion rotation )
 	{
 		gameObject.SetActive( true );

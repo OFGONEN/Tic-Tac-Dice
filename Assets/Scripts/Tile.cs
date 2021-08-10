@@ -17,6 +17,8 @@ public class Tile : MonoBehaviour
 
 	[ Header( "Shared Variables" ) ]
 	public TileSet tileSet;
+	public SoldierPool allySoldierPool;
+	public SoldierPool enemySoldierPool;
 
 	[Header( "Setup" )]
 	public int tileID;
@@ -54,7 +56,10 @@ public class Tile : MonoBehaviour
 	public void AllyDiceEventResponse( DiceEvent diceEvent )
 	{
 		FFLogger.Log( "Ally Dice Response: " + name, gameObject );
-		var spawnPosition = GiveClampedDiceEventPosition( diceEvent.position );
+		var spawnPosition = GiveClampedDiceEventPosition( diceEvent.position ); // Control spawn position. 
+
+		// Spawn soldiers.
+		SpawnSoldiers( allySoldierPool, diceEvent.diceNumber, spawnPosition );
 
 		FFLogger.DrawLine( transform.position, spawnPosition, Color.green, 2f );
 	}
@@ -63,7 +68,10 @@ public class Tile : MonoBehaviour
 	{
 		FFLogger.Log( "Enemy Dice Response: " + name, gameObject );
 
-		var spawnPosition = GiveClampedDiceEventPosition( diceEvent.position );
+		var spawnPosition = GiveClampedDiceEventPosition( diceEvent.position ); // Control spawn position.
+
+		// Spawn soldiers.
+		SpawnSoldiers( enemySoldierPool, diceEvent.diceNumber, spawnPosition );
 
 		FFLogger.DrawLine( transform.position, spawnPosition, Color.red, 2f );
 	}
@@ -85,6 +93,24 @@ public class Tile : MonoBehaviour
 		);
 
 		return eventPosition;
+	}
+
+	// Spawns soliders in random positions inside a circle with given radius variable.
+	private void SpawnSoldiers( SoldierPool soldierPool, int soldierCount, Vector3 spawnPosition )
+	{
+		for( var i = 0; i < soldierCount; i++ )
+		{
+			var soldier = allySoldierPool.GiveEntity( transform, false );
+
+			// Select a random point inside a sphere.
+			var randomSpawnPosition   = Random.insideUnitSphere * GameSettings.Instance.dice_SoldierSpawnRadius;
+			    randomSpawnPosition.y = 0; // Zero out its Y position.
+			    randomSpawnPosition   = spawnPosition + randomSpawnPosition; // Random spawn point.
+
+			var randomSpawnRotation = Quaternion.Euler( new Vector3( 0, Random.Range( 0f, 360f ), 0 ) ); // Random rotation in +Y axis.
+
+			soldier.Spawn( randomSpawnPosition, randomSpawnRotation );
+		}
 	}
 #endregion
 

@@ -40,6 +40,7 @@ public class Test_TileCapture : MonoBehaviour
 	[ Button( "#Test 2: Ally Dice Event Tile Response" ) ]
 	public void AllyDiceEventTileResponse()
 	{
+		allyDiceEvent.diceNumber = 3;
 		allyDiceEvent.position = diceTransform.position;
 		allyDiceEvent.party = Parties.Ally;
 
@@ -49,6 +50,7 @@ public class Test_TileCapture : MonoBehaviour
 	[ Button( "#Test 2: Enemy Dice Event Tile Response" ) ]
 	public void EnemyDiceEventTileResponse()
 	{
+		enemyDiceEvent.diceNumber = 3;
 		enemyDiceEvent.position = diceTransform.position;
 		enemyDiceEvent.party    = Parties.Enemy;
 
