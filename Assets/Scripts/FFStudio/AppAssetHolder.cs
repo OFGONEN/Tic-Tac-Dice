@@ -14,11 +14,15 @@ public class AppAssetHolder : MonoBehaviour
 
 	[ BoxGroup( "Pools" ) ] public DicePool pool_dice_ally;
 	[ BoxGroup( "Pools" ) ] public DicePool pool_dice_enemy;
+	[ BoxGroup( "Pools" ) ] public SoldierPool pool_soldier_ally;
+	[ BoxGroup( "Pools" ) ] public SoldierPool pool_soldier_enemy;
 
 	private void Awake()
 	{
 		pool_dice_ally.InitPool( transform, false );
 		pool_dice_enemy.InitPool( transform, false );
+		pool_soldier_ally.InitPool( transform, false );
+		pool_soldier_enemy.InitPool( transform, false );
 	}
 #endregion
 }

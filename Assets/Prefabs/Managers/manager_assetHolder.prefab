@@ -47,3 +47,5 @@ MonoBehaviour:
   currentLevelData: {fileID: 11400000, guid: d35c98ef4c868d94f85bf38a98066033, type: 2}
   pool_dice_ally: {fileID: 11400000, guid: 4f24a05d4a4373f43b366957b8da2c02, type: 2}
   pool_dice_enemy: {fileID: 11400000, guid: d7765cca52f5f78478a8798bf1065244, type: 2}
+  pool_soldier_ally: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  pool_soldier_enemy: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
