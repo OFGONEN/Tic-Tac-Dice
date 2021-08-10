@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ba344aba025e7478b50663d3c250ae, type: 3}
   m_Name: ally_soldier_pool
   m_EditorClassIdentifier: 
-  stackSize: 0
-  poolEntity: {fileID: 0}
+  stackSize: 30
+  poolEntity: {fileID: 7758824145843983738, guid: e64e0083d4a8f0e4bb4411892dc4ffbe, type: 3}

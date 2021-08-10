@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ba344aba025e7478b50663d3c250ae, type: 3}
   m_Name: enemy_soldier_pool
   m_EditorClassIdentifier: 
-  stackSize: 0
-  poolEntity: {fileID: 0}
+  stackSize: 30
+  poolEntity: {fileID: 7622601534600843680, guid: e89349152b8de99478302861873cb6ba, type: 3}

@@ -693,6 +693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6360265359817659918}
   - component: {fileID: 6360265359826729410}
+  - component: {fileID: 7758824145843983738}
   m_Layer: 0
   m_Name: soldier_blue
   m_TagString: Untagged
@@ -735,6 +736,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7758824145843983738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360265359817230956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f201b1e9edc71498f51cf2d6eec183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6360265359817230958
 GameObject:
   m_ObjectHideFlags: 0
