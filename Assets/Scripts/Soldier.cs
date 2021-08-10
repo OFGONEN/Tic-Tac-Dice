@@ -13,12 +13,12 @@ public class Soldier : MonoBehaviour
 #endregion
 
 #region API
-	public void Spawn( Vector3 localPosition, Quaternion localRotation )
+	public void Spawn( Vector3 position, Quaternion rotation )
 	{
 		gameObject.SetActive( true );
 
-		transform.localPosition = localPosition;
-		transform.localRotation = localRotation;
+		transform.position = position;
+		transform.rotation = rotation;
 	}
 #endregion
 
