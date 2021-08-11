@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9328d63a9df6894ea058a21915d8b1f, type: 3}
   m_Name: soldier_super_data
   m_EditorClassIdentifier: 
-  health: 0
-  radius: 0
-  speed_Running: 0
-  speed_Rotation: 0
+  health: 3
+  radius: 0.4
+  speed_Running: 3
+  speed_Rotation: 360

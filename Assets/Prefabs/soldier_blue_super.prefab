@@ -813,6 +813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5569104153099333398}
   - component: {fileID: 5569104153092128986}
+  - component: {fileID: 6510940559052503769}
   m_Layer: 0
   m_Name: soldier_blue_super
   m_TagString: Untagged
@@ -846,7 +847,7 @@ Animator:
   m_GameObject: {fileID: 5569104153099432820}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fa7f36c71b9e8fa4798df3a931c2fd92, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 02c9b6954d66b7744ba88d6469b4e0c8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -855,6 +856,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6510940559052503769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569104153099432820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f201b1e9edc71498f51cf2d6eec183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  soldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
 --- !u!1 &5569104153099432822
 GameObject:
   m_ObjectHideFlags: 0

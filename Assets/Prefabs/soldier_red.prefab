@@ -623,6 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
 --- !u!1 &326623957129332070
 GameObject:
   m_ObjectHideFlags: 0
