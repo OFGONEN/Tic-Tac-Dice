@@ -601,7 +601,7 @@ Animator:
   m_GameObject: {fileID: 326623957129332068}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fa7f36c71b9e8fa4798df3a931c2fd92, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 02c9b6954d66b7744ba88d6469b4e0c8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -622,6 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f201b1e9edc71498f51cf2d6eec183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
 --- !u!1 &326623957129332070
 GameObject:
   m_ObjectHideFlags: 0
