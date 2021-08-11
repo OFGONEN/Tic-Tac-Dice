@@ -100,7 +100,7 @@ public class Tile : MonoBehaviour
 	{
 		for( var i = 0; i < soldierCount; i++ )
 		{
-			var soldier = allySoldierPool.GiveEntity( transform, false );
+			var soldier = soldierPool.GiveEntity( transform, false );
 
 			// Select a random point inside a sphere.
 			var randomSpawnPosition   = Random.insideUnitSphere * GameSettings.Instance.dice_SoldierSpawnRadius;
