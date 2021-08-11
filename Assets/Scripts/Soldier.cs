@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using NaughtyAttributes;
+using UnityEditor;
 
 public class Soldier : MonoBehaviour
 {
@@ -12,8 +14,17 @@ public class Soldier : MonoBehaviour
 	public SoldierPool soldierPool;
 
 
+	[ HorizontalLine, Header( "Setup" ) ]
+	[ SerializeField ] private SoldierData soldierData;
+
+
 	// Private Fields \\
 	private Animator animator;
+
+	// Attack Releated
+	private Soldier attackTarget;
+	private Vector3 attackPoint;
+	private int currentHealth;
 
 	// Delegate
 	private UnityMessage updateMethod;
@@ -26,6 +37,8 @@ public class Soldier : MonoBehaviour
 		animator = GetComponent< Animator >();
 
 		updateMethod = ExtensionMethods.EmptyMethod;
+
+		currentHealth = soldierData.health;
 	}
 
 	private void Update()
@@ -46,15 +59,50 @@ public class Soldier : MonoBehaviour
 
 	public void Attack( Soldier target )
 	{
-		
+		attackTarget = target;
+		attackPoint  = ( target.transform.position + transform.position ) / 2f;
+
+		animator.SetBool( "running", true );
+
+		updateMethod = AttackUpdate;
 	}
 #endregion
 
 #region Implementation
+	private void AttackUpdate()
+	{
+		// Move towards attack point
+		transform.position = Vector3.MoveTowards( transform.position, attackPoint, Time.deltaTime * soldierData.speed_Running );
+
+		// Look at towards attack point 
+		transform.LookAtOverTimeAxis( attackPoint, Vector3.up, Time.deltaTime * soldierData.speed_Rotation );
+
+		if( Vector3.Distance( transform.position, attackPoint ) <= soldierData.radius)
+		{
+			updateMethod = ExtensionMethods.EmptyMethod;
+
+			animator.SetTrigger( "punch" );
+			animator.SetBool( "running", false );
+
+			// Attack
+		}
+	}
+
 	private void ReturnToDefault()
 	{
+		currentHealth = soldierData.health;
+
 		gameObject.SetActive( false );
 		soldierPool.Stack.Push( this );
 	}
+#endregion
+
+#region EditorOnly
+#if UNITY_EDITOR	
+	private void OnDrawGizmos()
+	{
+		Handles.DrawWireDisc( transform.position, transform.up, soldierData.radius );
+	}
+#endif
 #endregion
 }
