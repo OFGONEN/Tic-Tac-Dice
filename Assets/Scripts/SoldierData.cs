@@ -9,6 +9,7 @@ public class SoldierData : ScriptableObject
 {
 	public int health;
 	public float radius;
+	public float attackCooldown;
 	public float speed_Running;
 	public float speed_Rotation;
 
