@@ -18,6 +18,12 @@ public class Test_TileCapture : MonoBehaviour
 	[ BoxGroup( "Dice Event Tile Response Test" ) ] public DiceEvent allyDiceEvent;
 	[ BoxGroup( "Dice Event Tile Response Test" ) ] public DiceEvent enemyDiceEvent;
 	[ BoxGroup( "Dice Event Tile Response Test" ) ] public Transform diceTransform;
+
+
+	[ BoxGroup( "Soldier Attack Test" ) ] public Soldier allySoldier;
+	[ BoxGroup( "Soldier Attack Test" ) ] public Soldier allySuperSoldier;
+	[ BoxGroup( "Soldier Attack Test" ) ] public Soldier enemySoldier;
+	[ BoxGroup( "Soldier Attack Test" ) ] public Soldier enemySuperSoldier;
 #endregion
 
 #region Unity API
@@ -57,6 +63,53 @@ public class Test_TileCapture : MonoBehaviour
 		enemyDiceEvent.Raise();
 	}
 
+
+	[ Button( "#Test 3: Soldiers Attack 1-1" ) ]
+	public void SoldierAttackOneOnOne()
+	{
+		// Call spawn methods for setting variables to default values such as, alive variable to true.
+		allySoldier.Spawn( allySoldier.transform.position, allySoldier.transform.rotation );
+		enemySoldier.Spawn( enemySoldier.transform.position, enemySoldier.transform.rotation );
+
+		allySoldier.Attack( enemySoldier );
+		enemySoldier.Attack( allySoldier );
+	}
+
+	[Button( "#Test 3: Soldiers Attack Super-Normal" )]
+	public void SoldierAttackSuperOnNormal()
+	{
+		// Call spawn methods for setting variables to default values such as, alive variable to true.
+		allySuperSoldier.Spawn( allySuperSoldier.transform.position, allySuperSoldier.transform.rotation );
+		enemySoldier.Spawn( enemySoldier.transform.position, enemySoldier.transform.rotation );
+
+		allySuperSoldier.Attack( enemySoldier );
+		enemySoldier.Attack( allySuperSoldier );
+	}
+
+	[Button( "#Test 3: Soldiers Attack Super-Super" )]
+	public void SoldierAttackSuperOnSuper()
+	{
+		// Call spawn methods for setting variables to default values such as, alive variable to true.
+		allySuperSoldier.Spawn( allySuperSoldier.transform.position, allySuperSoldier.transform.rotation );
+		enemySuperSoldier.Spawn( enemySuperSoldier.transform.position, enemySuperSoldier.transform.rotation );
+
+		allySuperSoldier.Attack( enemySuperSoldier );
+		enemySuperSoldier.Attack( allySuperSoldier );
+	}
+
+	[Button( "#Test 3: Soldiers Attack 2-Normal" )]
+	public void SoldierAttackTwoOnOne()
+	{
+		// Call spawn methods for setting variables to default values such as, alive variable to true.
+		allySoldier.Spawn( allySoldier.transform.position, allySoldier.transform.rotation );
+		allySuperSoldier.Spawn( allySuperSoldier.transform.position, allySuperSoldier.transform.rotation );
+		enemySoldier.Spawn( enemySoldier.transform.position, enemySoldier.transform.rotation );
+
+		allySoldier.Attack( enemySoldier );
+		allySuperSoldier.Attack( enemySoldier );
+		enemySoldier.Attack( allySoldier );
+	}
+
 #endregion
 
 #region Implementation
@@ -66,7 +119,7 @@ public class Test_TileCapture : MonoBehaviour
 #if UNITY_EDITOR
 	private void OnDrawGizmos()
 	{
-		Handles.DrawWireCube( diceTransform.position, Vector3.one );
+		Handles.DrawWireCube( diceTransform.position, Vector3.one / 2 );
 	}
 #endif
 #endregion
