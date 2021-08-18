@@ -36,6 +36,7 @@ public class Tile : MonoBehaviour
 	[ SerializeField, ReadOnly ] private List< Soldier > enemy_Normal_SoldierList = new List< Soldier >( 16 );
 	[ SerializeField, ReadOnly ] private List< Soldier > enemy_Super_SoldierList = new List< Soldier >( 16 );
 
+	private List< Soldier > mergingSoldiers = new List< Soldier >( 16 );
 
 	private Tween soldiersMergeTween;
 
@@ -77,10 +78,20 @@ public class Tile : MonoBehaviour
 		SpawnSoldiers( allySoldierPool, ally_SoldierList, ally_Normal_SoldierList, enemy_SoldierList, diceEvent.diceNumber, spawnPosition );
 
 		if( enemy_SoldierList.Count > 0 )
+		{
+			// Kill delayed Merge before attacking.
+			if( soldiersMergeTween != null)
+			{
+				soldiersMergeTween.Kill();
+				soldiersMergeTween = null;
+			}
+
 			DOVirtual.DelayedCall( GameSettings.Instance.tile_AttackWaitTime, SoldiersAttack );
+		}
 		else 
 		{
 			// Merge soldiers
+			soldiersMergeTween = DOVirtual.DelayedCall( GameSettings.Instance.tile_MergeWaitTime, MergeAllySoldiers );
 		}
 
 		FFLogger.DrawLine( transform.position, spawnPosition, Color.green, 2f );
@@ -96,10 +107,20 @@ public class Tile : MonoBehaviour
 		SpawnSoldiers( enemySoldierPool, enemy_SoldierList, enemy_Normal_SoldierList, ally_SoldierList, diceEvent.diceNumber, spawnPosition );
 
 		if( ally_SoldierList.Count > 0 )
+		{
+			// Kill delayed Merge before attacking.
+			if( soldiersMergeTween != null)
+			{
+				soldiersMergeTween.Kill();
+				soldiersMergeTween = null;
+			}
+
 			DOVirtual.DelayedCall( GameSettings.Instance.tile_AttackWaitTime, SoldiersAttack );
+		}
 		else 
 		{
 			// Merge soldiers
+			soldiersMergeTween = DOVirtual.DelayedCall( GameSettings.Instance.tile_MergeWaitTime, MergeEnemySoldiers );
 		}
 
 		FFLogger.DrawLine( transform.position, spawnPosition, Color.red, 2f );
@@ -167,6 +188,52 @@ public class Tile : MonoBehaviour
 		{
 			enemy_SoldierList[ i ].AttackClosest();
 		}
+	}
+
+	private void MergeAllySoldiers()
+	{
+		MergeSoldiers( allySuperSoldierPool, ally_Normal_SoldierList, ally_SoldierList, ally_Super_SoldierList, enemy_SoldierList );
+	}
+
+	private void MergeEnemySoldiers()
+	{
+		MergeSoldiers( enemySuperSoldierPool, enemy_Normal_SoldierList, enemy_SoldierList, enemy_Super_SoldierList, ally_SoldierList );
+	}
+
+	private void MergeSoldiers( SoldierPool superSoldierPool, List< Soldier > normalSoldiersList, List< Soldier > allyList, List< Soldier > allySuperSoldierTypeList, List< Soldier > enemyList )
+	{
+		soldiersMergeTween = null;
+
+		// If normal soldiers count is equal or less then 3, return.
+		if( normalSoldiersList.Count <= 3 )
+			return;
+
+		mergingSoldiers.Clear(); // Clear temp list.
+		mergingSoldiers.AddRange( normalSoldiersList ); // Cache the soldier reference since when they die they remove themselfes from the actual list.
+
+		int superSoldierCount = ( int )( normalSoldiersList.Count / 2.5f ); // Number of super soldiers to spawn.
+
+		// Kill normal soldiers.
+		foreach( var soldier in mergingSoldiers )
+		{
+			soldier.Die();
+		}
+
+		// Spawn super soldiers.
+		for( var i = 0; i < superSoldierCount; i++ )
+		{
+			var spawnPosition = GiveRandomSpawnPoint();
+
+            var superSoldier = superSoldierPool.GiveEntity( transform, false );
+
+			var randomSpawnRotation = Quaternion.Euler( new Vector3( 0, Random.Range( 0f, 360f ), 0 ) ); // Random rotation in +Y axis.
+
+			superSoldier.Spawn( spawnPosition, randomSpawnRotation, allyList, allySuperSoldierTypeList, enemyList );
+
+			// Add spawned soldier to appropriate soldier lists
+			allyList.Add( superSoldier );
+			allySuperSoldierTypeList.Add( superSoldier );
+        }
 	}
 #endregion
 
