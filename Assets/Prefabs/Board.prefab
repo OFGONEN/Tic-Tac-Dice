@@ -15,8 +15,18 @@ MonoBehaviour:
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
   allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
   enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
   tileID: 7
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
 --- !u!114 &8503814974683965765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,8 +42,18 @@ MonoBehaviour:
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
   allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
   enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
   tileID: 8
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
 --- !u!114 &3869050497513064913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,8 +69,18 @@ MonoBehaviour:
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
   allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
   enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
   tileID: 6
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
 --- !u!65 &1041159124654010000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -118,8 +148,18 @@ MonoBehaviour:
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
   allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
   enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
   tileID: 5
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
 --- !u!114 &2785521014267430761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,8 +175,18 @@ MonoBehaviour:
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
   allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
   enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
   tileID: 2
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
 --- !u!114 &3614210995263947260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,8 +202,18 @@ MonoBehaviour:
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
   allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
   enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
   tileID: 3
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
 --- !u!114 &2999702283896299441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +229,18 @@ MonoBehaviour:
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
   allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
   enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
   tileID: 0
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
 --- !u!1 &7833831627879401460
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,8 +302,18 @@ MonoBehaviour:
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
   allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
   enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
   tileID: 1
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
 --- !u!114 &5632154763384567125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,8 +329,18 @@ MonoBehaviour:
   tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
   allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
   enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
   tileID: 4
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
 --- !u!1001 &3291134616289802258
 PrefabInstance:
   m_ObjectHideFlags: 0

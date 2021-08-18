@@ -23,8 +23,10 @@ public class Tile : MonoBehaviour
 	public SoldierPool allySuperSoldierPool;
 	public SoldierPool enemySoldierPool;
 	public SoldierPool enemySuperSoldierPool;
+	public SoldierData soldierData;
+	public SoldierData superSoldierData;
 
-	[Header( "Setup" )]
+	[ HorizontalLine, Header( "Setup" ) ]
 	public int tileID;
 
 	// Private Fields \\
@@ -170,8 +172,9 @@ public class Tile : MonoBehaviour
 	// Give a random point inside the bounds to spawn a soldier
 	private Vector3 GiveRandomSpawnPoint()
 	{
-		var min = bounds.min + Vector3.one * GameSettings.Instance.dice_SoldierSpawnRadius;
-		var max = bounds.max - Vector3.one * GameSettings.Instance.dice_SoldierSpawnRadius;
+		var min = bounds.min + Vector3.one * superSoldierData.radius;
+		var max = bounds.max - Vector3.one * superSoldierData.radius;
+
 
 		return new Vector3( Random.Range( min.x, max.x ), 0, Random.Range( min.z, max.z ) );
 	}
