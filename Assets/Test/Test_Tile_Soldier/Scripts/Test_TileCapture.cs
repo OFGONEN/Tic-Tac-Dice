@@ -68,8 +68,8 @@ public class Test_TileCapture : MonoBehaviour
 	public void SoldierAttackOneOnOne()
 	{
 		// Call spawn methods for setting variables to default values such as, alive variable to true.
-		allySoldier.Spawn( allySoldier.transform.position, allySoldier.transform.rotation );
-		enemySoldier.Spawn( enemySoldier.transform.position, enemySoldier.transform.rotation );
+		// allySoldier.Spawn( allySoldier.transform.position, allySoldier.transform.rotation );
+		// enemySoldier.Spawn( enemySoldier.transform.position, enemySoldier.transform.rotation );
 
 		allySoldier.Attack( enemySoldier );
 		enemySoldier.Attack( allySoldier );
@@ -79,8 +79,8 @@ public class Test_TileCapture : MonoBehaviour
 	public void SoldierAttackSuperOnNormal()
 	{
 		// Call spawn methods for setting variables to default values such as, alive variable to true.
-		allySuperSoldier.Spawn( allySuperSoldier.transform.position, allySuperSoldier.transform.rotation );
-		enemySoldier.Spawn( enemySoldier.transform.position, enemySoldier.transform.rotation );
+		// allySuperSoldier.Spawn( allySuperSoldier.transform.position, allySuperSoldier.transform.rotation );
+		// enemySoldier.Spawn( enemySoldier.transform.position, enemySoldier.transform.rotation );
 
 		allySuperSoldier.Attack( enemySoldier );
 		enemySoldier.Attack( allySuperSoldier );
@@ -90,8 +90,8 @@ public class Test_TileCapture : MonoBehaviour
 	public void SoldierAttackSuperOnSuper()
 	{
 		// Call spawn methods for setting variables to default values such as, alive variable to true.
-		allySuperSoldier.Spawn( allySuperSoldier.transform.position, allySuperSoldier.transform.rotation );
-		enemySuperSoldier.Spawn( enemySuperSoldier.transform.position, enemySuperSoldier.transform.rotation );
+		// allySuperSoldier.Spawn( allySuperSoldier.transform.position, allySuperSoldier.transform.rotation );
+		// enemySuperSoldier.Spawn( enemySuperSoldier.transform.position, enemySuperSoldier.transform.rotation );
 
 		allySuperSoldier.Attack( enemySuperSoldier );
 		enemySuperSoldier.Attack( allySuperSoldier );
@@ -101,9 +101,9 @@ public class Test_TileCapture : MonoBehaviour
 	public void SoldierAttackTwoOnOne()
 	{
 		// Call spawn methods for setting variables to default values such as, alive variable to true.
-		allySoldier.Spawn( allySoldier.transform.position, allySoldier.transform.rotation );
-		allySuperSoldier.Spawn( allySuperSoldier.transform.position, allySuperSoldier.transform.rotation );
-		enemySoldier.Spawn( enemySoldier.transform.position, enemySoldier.transform.rotation );
+		// allySoldier.Spawn( allySoldier.transform.position, allySoldier.transform.rotation );
+		// allySuperSoldier.Spawn( allySuperSoldier.transform.position, allySuperSoldier.transform.rotation );
+		// enemySoldier.Spawn( enemySoldier.transform.position, enemySoldier.transform.rotation );
 
 		allySoldier.Attack( enemySoldier );
 		allySuperSoldier.Attack( enemySoldier );
