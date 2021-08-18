@@ -3,8 +3,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FFStudio;
 using UnityEditor;
+using FFStudio;
+using DG.Tweening;
+using NaughtyAttributes;
 
 public class Tile : MonoBehaviour
 {
@@ -18,12 +20,24 @@ public class Tile : MonoBehaviour
 	[ Header( "Shared Variables" ) ]
 	public TileSet tileSet;
 	public SoldierPool allySoldierPool;
+	public SoldierPool allySuperSoldierPool;
 	public SoldierPool enemySoldierPool;
+	public SoldierPool enemySuperSoldierPool;
 
 	[Header( "Setup" )]
 	public int tileID;
 
 	// Private Fields \\
+
+	[ SerializeField, ReadOnly ] private List< Soldier > ally_SoldierList = new List< Soldier >( 16 );
+	[ SerializeField, ReadOnly ] private List< Soldier > ally_Normal_SoldierList = new List< Soldier >( 16 );
+	[ SerializeField, ReadOnly ] private List< Soldier > ally_Super_SoldierList = new List< Soldier >( 16 );
+	[ SerializeField, ReadOnly ] private List< Soldier > enemy_SoldierList = new List< Soldier >( 16 );
+	[ SerializeField, ReadOnly ] private List< Soldier > enemy_Normal_SoldierList = new List< Soldier >( 16 );
+	[ SerializeField, ReadOnly ] private List< Soldier > enemy_Super_SoldierList = new List< Soldier >( 16 );
+
+
+	private Tween soldiersMergeTween;
 
 	// Components 
 	private MeshRenderer meshRenderer;
@@ -56,10 +70,18 @@ public class Tile : MonoBehaviour
 	public void AllyDiceEventResponse( DiceEvent diceEvent )
 	{
 		FFLogger.Log( "Ally Dice Response: " + name, gameObject );
-		var spawnPosition = GiveClampedDiceEventPosition( diceEvent.position ); // Control spawn position. 
+
+		var spawnPosition = ClampDiceEventPosition( diceEvent.position ); // Control spawn position. 
 
 		// Spawn soldiers.
-		SpawnSoldiers( allySoldierPool, diceEvent.diceNumber, spawnPosition );
+		SpawnSoldiers( allySoldierPool, ally_SoldierList, ally_Normal_SoldierList, enemy_SoldierList, diceEvent.diceNumber, spawnPosition );
+
+		if( enemy_SoldierList.Count > 0 )
+			DOVirtual.DelayedCall( GameSettings.Instance.tile_AttackWaitTime, SoldiersAttack );
+		else 
+		{
+			// Merge soldiers
+		}
 
 		FFLogger.DrawLine( transform.position, spawnPosition, Color.green, 2f );
 	}
@@ -68,10 +90,17 @@ public class Tile : MonoBehaviour
 	{
 		FFLogger.Log( "Enemy Dice Response: " + name, gameObject );
 
-		var spawnPosition = GiveClampedDiceEventPosition( diceEvent.position ); // Control spawn position.
+		var spawnPosition = ClampDiceEventPosition( diceEvent.position ); // Control spawn position.
 
 		// Spawn soldiers.
-		SpawnSoldiers( enemySoldierPool, diceEvent.diceNumber, spawnPosition );
+		SpawnSoldiers( enemySoldierPool, enemy_SoldierList, enemy_Normal_SoldierList, ally_SoldierList, diceEvent.diceNumber, spawnPosition );
+
+		if( ally_SoldierList.Count > 0 )
+			DOVirtual.DelayedCall( GameSettings.Instance.tile_AttackWaitTime, SoldiersAttack );
+		else 
+		{
+			// Merge soldiers
+		}
 
 		FFLogger.DrawLine( transform.position, spawnPosition, Color.red, 2f );
 	}
@@ -79,7 +108,7 @@ public class Tile : MonoBehaviour
 
 #region Implementation
 	// Clamp dice event position for spawning every soldier inside the bounds
-	private Vector3 GiveClampedDiceEventPosition( Vector3 diceEventPosition )
+	private Vector3 ClampDiceEventPosition( Vector3 diceEventPosition )
 	{
 		var eventPosition = diceEventPosition;
 
@@ -96,7 +125,7 @@ public class Tile : MonoBehaviour
 	}
 
 	// Spawns soliders in random positions inside a circle with given radius variable.
-	private void SpawnSoldiers( SoldierPool soldierPool, int soldierCount, Vector3 spawnPosition )
+	private void SpawnSoldiers( SoldierPool soldierPool, List< Soldier > alliedSoldierList, List< Soldier > alliedSoldierTypeList, List< Soldier > enemySoldierList, int soldierCount, Vector3 spawnPosition )
 	{
 		for( var i = 0; i < soldierCount; i++ )
 		{
@@ -109,7 +138,34 @@ public class Tile : MonoBehaviour
 
 			var randomSpawnRotation = Quaternion.Euler( new Vector3( 0, Random.Range( 0f, 360f ), 0 ) ); // Random rotation in +Y axis.
 
-			soldier.Spawn( randomSpawnPosition, randomSpawnRotation );
+			soldier.Spawn( randomSpawnPosition, randomSpawnRotation, alliedSoldierList, alliedSoldierTypeList, enemySoldierList );
+
+			// Add spawned soldier to appropriate soldier lists
+			alliedSoldierList.Add( soldier );
+			alliedSoldierTypeList.Add( soldier );
+		}
+	}
+
+	// Give a random point inside the bounds to spawn a soldier
+	private Vector3 GiveRandomSpawnPoint()
+	{
+		var min = bounds.min + Vector3.one * GameSettings.Instance.dice_SoldierSpawnRadius;
+		var max = bounds.max - Vector3.one * GameSettings.Instance.dice_SoldierSpawnRadius;
+
+		return new Vector3( Random.Range( min.x, max.x ), 0, Random.Range( min.z, max.z ) );
+	}
+
+	// Give attack order to soldiers
+	private void SoldiersAttack()
+	{
+		for( var i = 0; i < ally_SoldierList.Count; i++ )
+		{
+			ally_SoldierList[ i ].AttackClosest();
+		}
+
+		for( var i = 0; i < enemy_SoldierList.Count; i++ )
+		{
+			enemy_SoldierList[ i ].AttackClosest();
 		}
 	}
 #endregion

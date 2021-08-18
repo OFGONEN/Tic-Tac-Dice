@@ -21,6 +21,7 @@ public class Soldier : MonoBehaviour
 	// Public Properties \\
 	public SoldierData SoldierData => soldierData;
 	public bool IsSoldierDead => !alive;
+	public Soldier AttackTarget => attackTarget;
 
 	// Private Fields \\
 	private Animator animator;
@@ -31,6 +32,11 @@ public class Soldier : MonoBehaviour
 	private bool alive = false;
 	private bool canAttack = true;
 	private Tween attackCooldownTween;
+
+	// Attack Lists
+	[ SerializeField, ReadOnly ] private List< Soldier > allySoldiersList;
+	[ SerializeField, ReadOnly ] private List< Soldier > allyTypeSoldiersList;
+	[ SerializeField, ReadOnly ] private List< Soldier > enemySoldiersList;
 
 	// Delegate
 	private UnityMessage updateMethod;
@@ -60,12 +66,16 @@ public class Soldier : MonoBehaviour
 
 #region API
 	// Spawns the soldier with given world position and rotation.
-	public void Spawn( Vector3 position, Quaternion rotation )
+	public void Spawn( Vector3 position, Quaternion rotation, List< Soldier > allySoldiers, List< Soldier > allyTypeSoldiers, List< Soldier > enemySoldiers )
 	{
 		// Set default values
 		currentHealth = soldierData.health;
 		alive         = true;
 		canAttack     = true;
+
+		allySoldiersList     = allySoldiers;
+		allyTypeSoldiersList = allyTypeSoldiers;
+		enemySoldiersList    = enemySoldiers;
 
 		gameObject.SetActive( true );
 
@@ -83,6 +93,33 @@ public class Soldier : MonoBehaviour
 		updateMethod = OnAttackUpdate; // Move towards attack target every frame, attack it if possible.
 	}
 
+	// Attack the closest enemy soldier
+	public void AttackClosest()
+	{
+		// If there is no soldier to attack, return.
+		if( enemySoldiersList == null || enemySoldiersList.Count <= 0 )
+			return;
+
+		// Find the closest Enemy.
+		Soldier closestEnemy = enemySoldiersList[ 0 ];
+		float closestDistance = Vector3.Distance( transform.position, enemySoldiersList[ 0 ].transform.position );
+
+		for( var i = 1; i < enemySoldiersList.Count; i++ )
+		{
+			var enemy = enemySoldiersList[ i ];
+			var distance = Vector3.Distance( transform.position, enemy.transform.position );
+
+			if( distance <= closestDistance && !enemy.IsSoldierDead )
+			{
+				closestDistance = distance;
+				closestEnemy = enemy;
+			}
+		}
+
+		// Attack the closest enemy.
+		Attack( closestEnemy );
+	}
+
 	// Take damage from attacking soldier. If our attack is same soldier as the attacker , attack as counter attack
 	public void TakeDamage( Soldier attacker, bool counterAttack ) // Counter attack bool is there for preventing this method called indefinitly as recursive
 	{
@@ -91,11 +128,30 @@ public class Soldier : MonoBehaviour
 		if( currentHealth <= 0 )
 		{
 			// If attacker is the same soldier we want to attack, we should attack at the same frame as counter attack.
-			if( attackTarget != null && attackTarget == attacker && !counterAttack ) 
+			if( canAttack && attackTarget != null && attackTarget == attacker && !counterAttack ) 
 				attackTarget.TakeDamage( this, true ); // Attack as counter attack
 
 			Die();
 		}
+	}
+
+	public void Die()
+	{
+		alive     = false;
+		canAttack = false;
+
+		attackTarget = null;
+
+		updateMethod = ExtensionMethods.EmptyMethod;
+
+		allySoldiersList    .Remove( this );
+		allyTypeSoldiersList.Remove( this );
+
+		allySoldiersList     = null;
+		allyTypeSoldiersList = null;
+		enemySoldiersList    = null;
+
+		ReturnToDefault();
 	}
 #endregion
 
@@ -110,6 +166,8 @@ public class Soldier : MonoBehaviour
 			updateMethod = ExtensionMethods.EmptyMethod;
 
 			animator.SetBool( "running", false );
+
+			AttackClosest();
 		}
 		// Target is in attack range, attack it.
 		else if( canAttack && Vector3.Distance( transform.position, targetPosition ) <= ( soldierData.radius + attackTarget.SoldierData.radius ) )
@@ -124,10 +182,13 @@ public class Soldier : MonoBehaviour
 
 			canAttack = false;
 
-			if( attackTarget.IsSoldierDead )
-				attackCooldownTween = DOVirtual.DelayedCall( soldierData.attackCooldown, OnAttackCoooldownFinish );
-			else
-				attackCooldownTween = DOVirtual.DelayedCall( soldierData.attackCooldown, OnAttackRepeat );
+			if( alive )
+			{
+				if( attackTarget.IsSoldierDead )
+					attackCooldownTween = DOVirtual.DelayedCall( soldierData.attackCooldown, OnAttackCoooldownFinish );
+				else
+					attackCooldownTween = DOVirtual.DelayedCall( soldierData.attackCooldown, OnAttackRepeat );
+			}
 		}
 		else // Move and rotates towards attack target.
 		{
@@ -143,20 +204,14 @@ public class Soldier : MonoBehaviour
 	{
 		attackCooldownTween = null;
 		canAttack = true;
+
+		AttackClosest();
 	}
 	
 	private void OnAttackRepeat()
 	{
 		canAttack = true;
 		OnAttackUpdate();
-	}
-
-	private void Die()
-	{
-		alive     = false;
-		canAttack = false;
-
-		ReturnToDefault();
 	}
 
 	private void ReturnToDefault()
