@@ -25,3 +25,5 @@ MonoBehaviour:
   dice_SoldierSpawnRadius: 1.5
   tile_MergeWaitTime: 2
   tile_AttackWaitTime: 0.25
+  tile_allyColor: {r: 0, g: 0, b: 1, a: 0.49019608}
+  tile_enemyColor: {r: 1, g: 0, b: 0, a: 0.49019608}

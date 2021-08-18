@@ -40,11 +40,15 @@ public class Tile : MonoBehaviour
 
 	private List< Soldier > mergingSoldiers = new List< Soldier >( 16 );
 
+	private UnityMessage updateMethod;
 	private Tween soldiersMergeTween;
 
 	// Components 
 	private MeshRenderer meshRenderer;
 	private Bounds bounds;
+
+	private MaterialPropertyBlock materialPropertyBlock;
+	public Color neutralColor = Color.red; 
 #endregion
 
 #region Unity API
@@ -64,8 +68,21 @@ public class Tile : MonoBehaviour
 
 	private void Awake()
 	{
-		meshRenderer = GetComponentInChildren< MeshRenderer >();
+		meshRenderer = GetComponent< MeshRenderer >();
 		bounds       = meshRenderer.bounds;
+
+		materialPropertyBlock = new MaterialPropertyBlock();
+		meshRenderer.GetPropertyBlock( materialPropertyBlock, 1);
+
+		neutralColor = meshRenderer.materials[ 1 ].color;
+
+
+		updateMethod = ExtensionMethods.EmptyMethod;
+	}
+
+	private void Update()
+	{
+		updateMethod();
 	}
 #endregion
 
@@ -88,6 +105,7 @@ public class Tile : MonoBehaviour
 				soldiersMergeTween = null;
 			}
 
+			updateMethod = CheckIfConflictEnded;
 			DOVirtual.DelayedCall( GameSettings.Instance.tile_AttackWaitTime, SoldiersAttack );
 		}
 		else 
@@ -117,6 +135,7 @@ public class Tile : MonoBehaviour
 				soldiersMergeTween = null;
 			}
 
+			updateMethod = CheckIfConflictEnded;
 			DOVirtual.DelayedCall( GameSettings.Instance.tile_AttackWaitTime, SoldiersAttack );
 		}
 		else 
@@ -196,11 +215,13 @@ public class Tile : MonoBehaviour
 	private void MergeAllySoldiers()
 	{
 		MergeSoldiers( allySuperSoldierPool, ally_Normal_SoldierList, ally_SoldierList, ally_Super_SoldierList, enemy_SoldierList );
+		CheckIfConflictEnded();
 	}
 
 	private void MergeEnemySoldiers()
 	{
 		MergeSoldiers( enemySuperSoldierPool, enemy_Normal_SoldierList, enemy_SoldierList, enemy_Super_SoldierList, ally_SoldierList );
+		CheckIfConflictEnded();
 	}
 
 	private void MergeSoldiers( SoldierPool superSoldierPool, List< Soldier > normalSoldiersList, List< Soldier > allyList, List< Soldier > allySuperSoldierTypeList, List< Soldier > enemyList )
@@ -237,6 +258,53 @@ public class Tile : MonoBehaviour
 			allyList.Add( superSoldier );
 			allySuperSoldierTypeList.Add( superSoldier );
         }
+	}
+
+	private void CheckIfConflictEnded()
+	{
+		// Tile return to neutral state
+		if( ally_SoldierList.Count == 0 && enemy_SoldierList.Count == 0)
+		{
+			// Raise tile capture event.
+			tileCaptureEvent.tileID = tileID;
+			tileCaptureEvent.party  = Parties.Neutral;
+
+			tileCaptureEvent.Raise();
+
+			// Set color of the tile
+			materialPropertyBlock.SetColor( "_Color", neutralColor );
+			meshRenderer.SetPropertyBlock( materialPropertyBlock );
+
+			updateMethod = ExtensionMethods.EmptyMethod;
+		}
+		else if( ally_SoldierList.Count > 0 && enemy_SoldierList.Count == 0 ) // Tile captured by Ally
+		{
+			// Raise tile capture event.
+			tileCaptureEvent.tileID = tileID;
+			tileCaptureEvent.party  = Parties.Ally;
+
+			tileCaptureEvent.Raise();
+
+			// Set color of the tile
+			materialPropertyBlock.SetColor( "_Color", GameSettings.Instance.tile_allyColor );
+			meshRenderer.SetPropertyBlock( materialPropertyBlock );
+
+			updateMethod = ExtensionMethods.EmptyMethod;
+		}
+		else if( ally_SoldierList.Count == 0 && enemy_SoldierList.Count > 0 ) // Tile captured by Enemy
+		{
+			// Raise tile capture event.
+			tileCaptureEvent.tileID = tileID;
+			tileCaptureEvent.party  = Parties.Enemy;
+
+			tileCaptureEvent.Raise();
+
+			// Set color of the tile
+			materialPropertyBlock.SetColor( "_Color", GameSettings.Instance.tile_enemyColor );
+			meshRenderer.SetPropertyBlock( materialPropertyBlock );
+
+			updateMethod = ExtensionMethods.EmptyMethod;
+		}
 	}
 #endregion
 

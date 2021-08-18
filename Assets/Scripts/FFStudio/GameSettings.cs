@@ -27,6 +27,8 @@ namespace FFStudio
         // Tile
         [ BoxGroup( "Tile" ), Tooltip( "Tile's wait time for merging soldiers" ) ] public float tile_MergeWaitTime = 1.5f; 
         [ BoxGroup( "Tile" ), Tooltip( "Tile's wait time for giving attacking order to soldiers" ) ] public float tile_AttackWaitTime = 0.75f; 
+        [ BoxGroup( "Tile" ), Tooltip( "Tile's color when captured by Ally" ) ] public Color tile_allyColor = Color.blue; 
+        [ BoxGroup( "Tile" ), Tooltip( "Tile's color when captured by Enemy" ) ] public Color tile_enemyColor = Color.red; 
 
         private static GameSettings instance;
 
