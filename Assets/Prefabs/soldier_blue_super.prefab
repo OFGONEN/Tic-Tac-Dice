@@ -868,8 +868,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f201b1e9edc71498f51cf2d6eec183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  soldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
   soldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
+  currentHealth: 0
+  allySoldiersList: []
+  allyTypeSoldiersList: []
+  enemySoldiersList: []
 --- !u!1 &5569104153099432822
 GameObject:
   m_ObjectHideFlags: 0
