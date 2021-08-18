@@ -16,6 +16,9 @@ public class AppAssetHolder : MonoBehaviour
 	[ BoxGroup( "Pools" ) ] public DicePool pool_dice_enemy;
 	[ BoxGroup( "Pools" ) ] public SoldierPool pool_soldier_ally;
 	[ BoxGroup( "Pools" ) ] public SoldierPool pool_soldier_enemy;
+	[ BoxGroup( "Pools" ) ] public SoldierPool pool_superSoldier_ally;
+	[ BoxGroup( "Pools" ) ] public SoldierPool pool_superSoldier_enemy;
+
 
 	private void Awake()
 	{
@@ -23,6 +26,8 @@ public class AppAssetHolder : MonoBehaviour
 		pool_dice_enemy.InitPool( transform, false );
 		pool_soldier_ally.InitPool( transform, false );
 		pool_soldier_enemy.InitPool( transform, false );
+		pool_superSoldier_ally.InitPool( transform, false );
+		pool_superSoldier_enemy.InitPool( transform, false );
 	}
 #endregion
 }

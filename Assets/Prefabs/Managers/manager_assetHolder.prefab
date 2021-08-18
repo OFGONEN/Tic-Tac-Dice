@@ -49,3 +49,5 @@ MonoBehaviour:
   pool_dice_enemy: {fileID: 11400000, guid: d7765cca52f5f78478a8798bf1065244, type: 2}
   pool_soldier_ally: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
   pool_soldier_enemy: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  pool_superSoldier_ally: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
+  pool_superSoldier_enemy: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
