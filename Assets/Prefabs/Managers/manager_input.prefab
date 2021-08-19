@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 961601380926824723}
   - component: {fileID: 961601380926824722}
   - component: {fileID: 961601380926824720}
+  - component: {fileID: 7110675141704261020}
+  - component: {fileID: 4603173647790842023}
   m_Layer: 0
   m_Name: manager_input
   m_TagString: Untagged
@@ -48,6 +50,8 @@ MonoBehaviour:
   swipeInputEvent: {fileID: 11400000, guid: 098e32fbac85f404ba69e3d0dffc1fb1, type: 2}
   tapInputEvent: {fileID: 11400000, guid: 182cfa2632cfdba49bfaf3471d114d23, type: 2}
   mainCamera_ReferenceProperty: {fileID: 11400000, guid: 488e798dd6f140e4a84fa7485b885dd3, type: 2}
+  inputDirectionProperty: {fileID: 11400000, guid: dea91c81ad45a324cbb757ac260b5f36, type: 2}
+  inputActiveProperty: {fileID: 11400000, guid: 737e57182c838f748bc7eff4217120a8, type: 2}
 --- !u!114 &961601380926824722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,5 +122,107 @@ MonoBehaviour:
       m_Bits: 4294967291
     Distance: 0
   onWorld:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7110675141704261020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961601380926824724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca05b4057f181e4db28ff62498d46b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IgnoreStartedOverGui: 1
+  IgnoreIsOverGui: 0
+  IgnoreIfStatic: 0
+  IgnoreIfDown: 0
+  IgnoreIfUp: 0
+  RequiredSelectable: {fileID: 0}
+  onFinger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 961601380926824723}
+        m_TargetAssemblyTypeName: FFStudio.InputManager, Assembly-CSharp
+        m_MethodName: LeanFingerUpdate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Coordinate: 0
+  Multiplier: 1
+  onDelta:
+    m_PersistentCalls:
+      m_Calls: []
+  onDistance:
+    m_PersistentCalls:
+      m_Calls: []
+  ScreenDepth:
+    Conversion: 1
+    Camera: {fileID: 0}
+    Object: {fileID: 0}
+    Layers:
+      serializedVersion: 2
+      m_Bits: 4294967291
+    Distance: 0
+  onWorldFrom:
+    m_PersistentCalls:
+      m_Calls: []
+  onWorldTo:
+    m_PersistentCalls:
+      m_Calls: []
+  onWorldDelta:
+    m_PersistentCalls:
+      m_Calls: []
+  onWorldFromTo:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4603173647790842023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961601380926824724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571b065edc65a4f41b4ea02b27b6113a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IgnoreStartedOverGui: 1
+  IgnoreIsOverGui: 0
+  RequiredSelectable: {fileID: 0}
+  onFinger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 961601380926824723}
+        m_TargetAssemblyTypeName: FFStudio.InputManager, Assembly-CSharp
+        m_MethodName: LeanFingerUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ScreenDepth:
+    Conversion: 1
+    Camera: {fileID: 0}
+    Object: {fileID: 0}
+    Layers:
+      serializedVersion: 2
+      m_Bits: 4294967291
+    Distance: 0
+  onPosition:
     m_PersistentCalls:
       m_Calls: []

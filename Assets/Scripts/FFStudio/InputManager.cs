@@ -14,9 +14,13 @@ namespace FFStudio
 
 		[ Header( "Shared Variables" ) ]
 		public SharedReferenceProperty mainCamera_ReferenceProperty;
+		public SharedVector2Property inputDirectionProperty;
+		public SharedBoolProperty inputActiveProperty;
 
 		// Privat fields
+		private LeanFingerDelegate fingerDownMethod;
 		private int swipeThreshold;
+		private Vector2 inputOrigin;
 
 		// Components
 		private Transform mainCamera_Transform;
@@ -41,6 +45,8 @@ namespace FFStudio
 
 			leanTouch         = GetComponent<LeanTouch>();
 			leanTouch.enabled = false;
+
+			fingerDownMethod = FingerDown;
 		}
 #endregion
 		
@@ -56,9 +62,35 @@ namespace FFStudio
 
 			tapInputEvent.Raise();
 		}
+
+		public void LeanFingerUpdate( LeanFinger finger )
+		{
+			fingerDownMethod( finger );
+		}
+
+		public void LeanFingerUp( LeanFinger finger )
+		{
+			inputActiveProperty.SetValue( false );
+
+			fingerDownMethod = FingerDown;
+		}
 #endregion
 
 #region Implementation
+		private void FingerDown( LeanFinger finger )
+		{
+			inputActiveProperty.SetValue( true );
+
+			fingerDownMethod = FingerUpdate;
+			inputOrigin      = finger.ScreenPosition;
+		}
+
+		private void FingerUpdate( LeanFinger finger )
+		{
+			var input = finger.ScreenPosition - inputOrigin;
+			inputDirectionProperty.SetValue( input.normalized );
+		}
+
 		private void OnCameraReferenceChange()
 		{
 			var value = mainCamera_ReferenceProperty.sharedValue;
