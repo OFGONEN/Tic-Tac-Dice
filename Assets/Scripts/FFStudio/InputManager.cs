@@ -20,7 +20,7 @@ namespace FFStudio
 		// Privat fields
 		private LeanFingerDelegate fingerDownMethod;
 		private int swipeThreshold;
-		private Vector2 inputOrigin;
+		private Vector2 lastInput;
 
 		// Components
 		private Transform mainCamera_Transform;
@@ -82,13 +82,15 @@ namespace FFStudio
 			inputActiveProperty.SetValue( true );
 
 			fingerDownMethod = FingerUpdate;
-			inputOrigin      = finger.ScreenPosition;
+			lastInput        = finger.ScreenPosition;
 		}
 
 		private void FingerUpdate( LeanFinger finger )
 		{
-			var input = finger.ScreenPosition - inputOrigin;
+			var input = finger.ScreenPosition - lastInput;
 			inputDirectionProperty.SetValue( input.normalized );
+
+			lastInput = finger.ScreenPosition;
 		}
 
 		private void OnCameraReferenceChange()
