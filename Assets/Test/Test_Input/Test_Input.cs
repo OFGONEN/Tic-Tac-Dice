@@ -6,10 +6,17 @@ using NaughtyAttributes;
 
 public class Test_Input : MonoBehaviour
 {
+#region Fields
     [ BoxGroup( "Setup" ) ] public SharedBoolProperty inputActiveProperty;
     [ BoxGroup( "Setup" ) ] public SharedVector2Property inputDirection;
 
+    [ BoxGroup( "Input Direction Apply Test" ) ] public Transform target;
+    [ BoxGroup( "Input Direction Apply Test" ) ] public float target_MoveSpeed;
+
+    // Private Fields
 	private UnityMessage inputChangedMethod;
+    private Vector3 target_OriginPosition;
+#endregion
 
     private void OnEnable()
     {
@@ -26,6 +33,8 @@ public class Test_Input : MonoBehaviour
 	private void Awake()
     {
 		inputChangedMethod = ExtensionMethods.EmptyMethod;
+
+		target_OriginPosition = target.position;
 	}
 
     private void InputActiveResponse()
@@ -33,7 +42,10 @@ public class Test_Input : MonoBehaviour
         FFLogger.Log( "Input Changed: " + inputActiveProperty.sharedValue );
 
         if( inputActiveProperty.sharedValue )
+        {
 			inputChangedMethod = ApplyInputDirectionChange;
+			target.position = target_OriginPosition;
+		}
         else
 			inputChangedMethod = ExtensionMethods.EmptyMethod;
 	}
@@ -46,6 +58,8 @@ public class Test_Input : MonoBehaviour
 
     private void ApplyInputDirectionChange()
     {
+		var direction = new Vector3( inputDirection.sharedValue.x, 0, inputDirection.sharedValue.y );
 
-    }
+		target.position = target.position + direction * Time.deltaTime * target_MoveSpeed;
+	}
 }
