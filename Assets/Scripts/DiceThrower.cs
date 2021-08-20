@@ -17,22 +17,31 @@ public class DiceThrower : MonoBehaviour
 	[ Header( "Setup" ) ]
 	[ SerializeField ] private Image cooldownIndicator;
 	[ SerializeField ] private Animator animator;
-	[ SerializeField ] private Transform closest_TargetPosition;
-	[ SerializeField ] private Transform farest_TargetPosition;
+	[ SerializeField ] private Transform downLeft_TargetPosition;
+	[ SerializeField ] private Transform upRight_TargetPosition;
 
 	// Properties \\
-	public Vector3 ClosestTargetPosition => closest_TargetPosition.position;
+	public Vector3 ClosestTargetPosition => closest_TargetPosition;
+	public Vector3 FarestTargetPosition => farthest_TargetPosition;
+	public Vector3 DownLeftPosition => downLeft_TargetPosition.position;
+	public Vector3 UpRightPosition => upRight_TargetPosition.position;
 	public bool CanThrowDice => canThrowDice;
 
 
 	// Private Fields \\
 	private Dice currentDice;
+
 	private float nextDiceThrow = 0; // Cooldown for next dice throw
 	private bool canThrowDice = false;
+
 	private float dice_TravelTime;
 	private Vector3 dice_LaunchVector;
 	private Vector3[] dice_TrajectoryPoints;
+
+	private Vector3 closest_TargetPosition;
+	private Vector3 farthest_TargetPosition;
 	private float distanceBetweenTargetPoints;
+
 
 	// Components
 	private LineRenderer dice_TrajectoryLine;
@@ -66,8 +75,12 @@ public class DiceThrower : MonoBehaviour
 		dice_TrajectoryLine.positionCount = GameSettings.Instance.dice_TrajectoryPointCount;
 		dice_TrajectoryLine.enabled       = false;
 
+		var middlePoint             = ( downLeft_TargetPosition.position.x + upRight_TargetPosition.position.x ) / 2f;
+		    closest_TargetPosition  = new Vector3( middlePoint , downLeft_TargetPosition.position.y, downLeft_TargetPosition.position.z );
+		    farthest_TargetPosition = new Vector3( middlePoint , upRight_TargetPosition.position.y, upRight_TargetPosition.position.z );
+
 		// Cache the distance between the nearest and farest point in the board.
-		distanceBetweenTargetPoints = Vector3.Distance( farest_TargetPosition.position, closest_TargetPosition.position );
+		distanceBetweenTargetPoints = Vector3.Distance( closest_TargetPosition, farthest_TargetPosition );
 
 		cooldownIndicator.fillAmount = 0; // Since there is no dice when level is loaded.
 	}
@@ -125,7 +138,7 @@ public class DiceThrower : MonoBehaviour
 		// Travel time is max when target position at the farest point of the board.
 		// Travel time is min when target position at the closest point of the board.
 
-		var distance      = Vector3.Distance( position, closest_TargetPosition.position ); // Find the distance between target point and the farest point.
+		var distance      = Vector3.Distance( position, closest_TargetPosition ); // Find the distance between target point and the farest point.
 		var distanceRatio = distance / distanceBetweenTargetPoints; // Calculate a ratio between the max distance and the current distance.
 
 		var minMax_TravelTime = GameSettings.Instance.dice_MinMaxTravelTime;
