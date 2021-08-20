@@ -30,6 +30,8 @@ namespace FFStudio
         [ BoxGroup( "Tile" ), Tooltip( "Tile's color when captured by Ally" ) ] public Color tile_allyColor = Color.blue; 
         [ BoxGroup( "Tile" ), Tooltip( "Tile's color when captured by Enemy" ) ] public Color tile_enemyColor = Color.red; 
 
+        [ BoxGroup( "Player" ), Tooltip( "Player dice throw target move speed." ) ] public float player_TargetMoveSpeed = 5f; 
+
         private static GameSettings instance;
 
         private delegate GameSettings ReturnGameSettings();
