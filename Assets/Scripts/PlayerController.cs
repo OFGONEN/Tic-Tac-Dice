@@ -95,6 +95,9 @@ public class PlayerController : MonoBehaviour
 		var direction = new Vector3( inputDirectionProperty.sharedValue.x, 0, inputDirectionProperty.sharedValue.y );
 		var position = target.position + direction * Time.deltaTime * GameSettings.Instance.player_TargetMoveSpeed;
 
+		position.x = Mathf.Clamp( position.x, diceThrower.DownLeftPosition.x, diceThrower.UpRightPosition.x );
+		position.z = Mathf.Clamp( position.z, diceThrower.DownLeftPosition.z, diceThrower.UpRightPosition.z );
+
 		target.position = position;
 		diceThrower.UpdateTargetPoint( position );
 	}
