@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     {
 		levelStartListener.response  = LevelStartResponse;
 		levelFinishListener.response = LevelFinishResponse;
+
+		target.gameObject.SetActive( false );
 	}
 
 #endregion
@@ -55,12 +57,12 @@ public class PlayerController : MonoBehaviour
 #region Implementation
     private void LevelStartResponse()
     {
-		inputActiveProperty.changeEvet     += InputActiveResponse;
+		inputActiveProperty.changeEvet += InputActiveResponse;
 	}
 
     private void LevelFinishResponse()
     {
-		inputActiveProperty.changeEvet     -= InputActiveResponse;
+		inputActiveProperty.changeEvet -= InputActiveResponse;
 
 		targeting = false;
 	}
@@ -75,13 +77,15 @@ public class PlayerController : MonoBehaviour
 			diceThrower.UpdateTargetPoint( diceThrower.ClosestTargetPosition );
 
 			targeting = true;
-            inputDirectionProperty.changeEvent += InputDirectionChangeResponse;
+			target.gameObject.SetActive( true );
+			inputDirectionProperty.changeEvent += InputDirectionChangeResponse;
 		}
         else if ( targeting && !inputActiveProperty.sharedValue )
         {
 			diceThrower.Launch();
 
 			targeting = false;
+			target.gameObject.SetActive( false );
             inputDirectionProperty.changeEvent -= InputDirectionChangeResponse;
 		}
     }
@@ -90,6 +94,9 @@ public class PlayerController : MonoBehaviour
     {
 		var direction = new Vector3( inputDirectionProperty.sharedValue.x, 0, inputDirectionProperty.sharedValue.y );
 		var position = target.position + direction * Time.deltaTime * GameSettings.Instance.player_TargetMoveSpeed;
+
+		position.x = Mathf.Clamp( position.x, diceThrower.DownLeftPosition.x, diceThrower.UpRightPosition.x );
+		position.z = Mathf.Clamp( position.z, diceThrower.DownLeftPosition.z, diceThrower.UpRightPosition.z );
 
 		target.position = position;
 		diceThrower.UpdateTargetPoint( position );

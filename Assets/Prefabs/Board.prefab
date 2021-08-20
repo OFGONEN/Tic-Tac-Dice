@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &834305495910127389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2716494779457871716}
+  m_Layer: 0
+  m_Name: target_point_downLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2716494779457871716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834305495910127389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.25, y: 7.2499995, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7988633980681812889}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7739133852058110605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +57,7 @@ MonoBehaviour:
   enemy_SoldierList: []
   enemy_Normal_SoldierList: []
   enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &8503814974683965765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,6 +85,7 @@ MonoBehaviour:
   enemy_SoldierList: []
   enemy_Normal_SoldierList: []
   enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &3869050497513064913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +113,7 @@ MonoBehaviour:
   enemy_SoldierList: []
   enemy_Normal_SoldierList: []
   enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &1041159124654010000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,6 +193,7 @@ MonoBehaviour:
   enemy_SoldierList: []
   enemy_Normal_SoldierList: []
   enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &2785521014267430761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +221,37 @@ MonoBehaviour:
   enemy_SoldierList: []
   enemy_Normal_SoldierList: []
   enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!1 &5930325530862535413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1031603887925454645}
+  m_Layer: 0
+  m_Name: target_point_upRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1031603887925454645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930325530862535413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.25, y: -7.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7988633980681812889}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3614210995263947260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +279,7 @@ MonoBehaviour:
   enemy_SoldierList: []
   enemy_Normal_SoldierList: []
   enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &2999702283896299441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +307,7 @@ MonoBehaviour:
   enemy_SoldierList: []
   enemy_Normal_SoldierList: []
   enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7833831627879401460
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +338,8 @@ Transform:
   m_Children:
   - {fileID: 3037339309570826233}
   - {fileID: 3037339308030038925}
+  - {fileID: 2716494779457871716}
+  - {fileID: 1031603887925454645}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -314,6 +383,7 @@ MonoBehaviour:
   enemy_SoldierList: []
   enemy_Normal_SoldierList: []
   enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &5632154763384567125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +411,7 @@ MonoBehaviour:
   enemy_SoldierList: []
   enemy_Normal_SoldierList: []
   enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &3291134616289802258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -446,46 +517,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 524d445b0c24d76479d889de89b18eb7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
---- !u!4 &3037339309570826233 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
-  m_PrefabInstance: {fileID: 3291134616289802258}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &9141106368144681043 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6014503084441653313, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
-  m_PrefabInstance: {fileID: 3291134616289802258}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7298419959829806090 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5252682845850649624, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
-  m_PrefabInstance: {fileID: 3291134616289802258}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5482172559003802831 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -2181743766629440291, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
-  m_PrefabInstance: {fileID: 3291134616289802258}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1286560761561182786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4356877828898064976, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
-  m_PrefabInstance: {fileID: 3291134616289802258}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1606410101716400667 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -4906838889796845047, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
-  m_PrefabInstance: {fileID: 3291134616289802258}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1382206758350998477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4504409719310791647, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
-  m_PrefabInstance: {fileID: 3291134616289802258}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7360001578380720742 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -3778644264426962316, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
-  m_PrefabInstance: {fileID: 3291134616289802258}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8362638145269045886 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2764512629625626004, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
@@ -494,6 +525,46 @@ GameObject:
 --- !u!1 &5621612458836950678 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2040254050740271484, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7360001578380720742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3778644264426962316, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1382206758350998477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4504409719310791647, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1606410101716400667 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4906838889796845047, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1286560761561182786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4356877828898064976, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5482172559003802831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2181743766629440291, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7298419959829806090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5252682845850649624, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9141106368144681043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6014503084441653313, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3037339309570826233 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
   m_PrefabInstance: {fileID: 3291134616289802258}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3291134617830782054

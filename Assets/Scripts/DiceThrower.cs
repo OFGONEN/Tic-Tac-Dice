@@ -83,6 +83,8 @@ public class DiceThrower : MonoBehaviour
 		distanceBetweenTargetPoints = Vector3.Distance( closest_TargetPosition, farthest_TargetPosition );
 
 		cooldownIndicator.fillAmount = 0; // Since there is no dice when level is loaded.
+
+		transform.LookAtAxis( closest_TargetPosition, Vector3.up );
 	}
 
 	private void Update()

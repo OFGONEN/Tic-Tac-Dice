@@ -48,11 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStartListener:
     gameEvent: {fileID: 11400000, guid: efef06bf257ee27438d6c2aab4936226, type: 2}
-  dicePool: {fileID: 11400000, guid: 4f24a05d4a4373f43b366957b8da2c02, type: 2}
+  dicePool: {fileID: 11400000, guid: d7765cca52f5f78478a8798bf1065244, type: 2}
   cooldownIndicator: {fileID: 8728382246202634327}
   animator: {fileID: 6383901213564885636}
-  closest_TargetPosition: {fileID: 0}
-  farest_TargetPosition: {fileID: 0}
+  downLeft_TargetPosition: {fileID: 0}
+  upRight_TargetPosition: {fileID: 0}
 --- !u!120 &8728382246084803911
 LineRenderer:
   m_ObjectHideFlags: 0
