@@ -28,3 +28,6 @@ MonoBehaviour:
   tile_allyColor: {r: 0, g: 0, b: 1, a: 0.49019608}
   tile_enemyColor: {r: 1, g: 0, b: 0, a: 0.49019608}
   player_TargetMoveSpeed: 50
+  ai_randomPointRadius: 1.5
+  ai_target_AimTime: {x: 1, y: 2}
+  ai_target_WaitTime: {x: 0.5, y: 1.5}

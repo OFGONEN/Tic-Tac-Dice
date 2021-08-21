@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2173392880471877059}
+  - component: {fileID: 499918018017556068}
   m_Layer: 0
   m_Name: controller_enemy
   m_TagString: Untagged
@@ -115,6 +116,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &499918018017556068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2173392880471877057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c29f5a2633f2e459f8a4e167097364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStartListener:
+    gameEvent: {fileID: 11400000, guid: efef06bf257ee27438d6c2aab4936226, type: 2}
+  levelFinishListener:
+    gameEvent: {fileID: 0}
+    gameEvents:
+    - {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
+    - {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  diceThrower: {fileID: 7149836188541036917}
+  target: {fileID: 2173392879577565070}
 --- !u!1001 &1880291643644269619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,3 +244,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8728382246084803909, guid: 77ff48e2a6ea8ff4b83f0c0761b1c70e, type: 3}
   m_PrefabInstance: {fileID: 1880291643644269619}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7149836188541036917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8728382246084803910, guid: 77ff48e2a6ea8ff4b83f0c0761b1c70e, type: 3}
+  m_PrefabInstance: {fileID: 1880291643644269619}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e3e15288aa7fd42b8bb8639b0b81e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

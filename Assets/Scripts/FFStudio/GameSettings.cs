@@ -30,7 +30,14 @@ namespace FFStudio
         [ BoxGroup( "Tile" ), Tooltip( "Tile's color when captured by Ally" ) ] public Color tile_allyColor = Color.blue; 
         [ BoxGroup( "Tile" ), Tooltip( "Tile's color when captured by Enemy" ) ] public Color tile_enemyColor = Color.red; 
 
+        // Player
         [ BoxGroup( "Player" ), Tooltip( "Player dice throw target move speed." ) ] public float player_TargetMoveSpeed = 5f; 
+
+        // AI
+        [ BoxGroup( "AI" ), Tooltip( "Random point radius" ) ] public float ai_randomPointRadius = 2f; 
+        [ BoxGroup( "AI" ), Tooltip( "Random point radius" ), MinMaxSlider( 1f, 3f) ] public Vector2 ai_target_AimTime; 
+        [ BoxGroup( "AI" ), Tooltip( "Random point radius" ), MinMaxSlider( 0.5f, 2f) ] public Vector2 ai_target_WaitTime; 
+
 
         private static GameSettings instance;
 
