@@ -242,6 +242,12 @@ namespace FFStudio
 
 			return builder.ToString();
 		}
+
+		public static float ReturnRandomValue( this Vector2 vector)
+		{
+			return Random.Range( vector.x, vector.y );
+		}
+
 	}
 }
 
