@@ -224,7 +224,7 @@ public class DiceThrower : MonoBehaviour
 
 	private void CooldownResponse()
 	{
-		var cooldownEvent = cooldownListener.gameEvent as IntGameEvent;
+		var cooldownEvent = cooldownListener.gameEvent as FloatGameEvent;
 		nextDiceThrow += cooldownEvent.eventValue;
 	}
 #endregion
