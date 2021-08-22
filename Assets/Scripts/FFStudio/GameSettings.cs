@@ -38,6 +38,9 @@ namespace FFStudio
         [ BoxGroup( "AI" ), Tooltip( "Random point radius" ), MinMaxSlider( 1f, 3f) ] public Vector2 ai_target_AimTime; 
         [ BoxGroup( "AI" ), Tooltip( "Random point radius" ), MinMaxSlider( 0.5f, 2f) ] public Vector2 ai_target_WaitTime; 
 
+        // Stored Variables
+        [ HideInInspector ] public static float board_DistanceBetweenTargetPoints;
+
 
         private static GameSettings instance;
 

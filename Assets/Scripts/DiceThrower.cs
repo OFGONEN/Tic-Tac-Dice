@@ -82,6 +82,10 @@ public class DiceThrower : MonoBehaviour
 		// Cache the distance between the nearest and farest point in the board.
 		distanceBetweenTargetPoints = Vector3.Distance( closest_TargetPosition, farthest_TargetPosition );
 
+		// Store variable in game settings
+		GameSettings.board_DistanceBetweenTargetPoints = distanceBetweenTargetPoints;
+
+
 		cooldownIndicator.fillAmount = 0; // Since there is no dice when level is loaded.
 
 		transform.LookAtAxis( closest_TargetPosition, Vector3.up );
