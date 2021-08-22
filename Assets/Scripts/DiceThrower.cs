@@ -226,6 +226,8 @@ public class DiceThrower : MonoBehaviour
 	{
 		var cooldownEvent = cooldownListener.gameEvent as FloatGameEvent;
 		nextDiceThrow += cooldownEvent.eventValue;
+
+		nextDiceThrow = Mathf.Clamp( nextDiceThrow, 0, GameSettings.Instance.dice_coolDown );
 	}
 #endregion
 }
