@@ -17,3 +17,4 @@ MonoBehaviour:
   attackCooldown: 1
   speed_Running: 3
   speed_Rotation: 360
+  canDiceKill: 1

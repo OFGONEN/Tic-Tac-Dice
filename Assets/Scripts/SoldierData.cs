@@ -12,5 +12,6 @@ public class SoldierData : ScriptableObject
 	public float attackCooldown;
 	public float speed_Running;
 	public float speed_Rotation;
+	public bool canDiceKill;
 
 }

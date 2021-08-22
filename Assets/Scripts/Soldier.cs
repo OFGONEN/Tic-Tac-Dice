@@ -62,6 +62,12 @@ public class Soldier : MonoBehaviour
 	{
 		updateMethod();
 	}
+
+	private void OnTriggerEnter( Collider other )
+	{
+		if( soldierData.canDiceKill )
+			Die();
+	}
 #endregion
 
 #region API
