@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 6360265359817659918}
   - component: {fileID: 6360265359826729410}
   - component: {fileID: 7758824145843983738}
+  - component: {fileID: 1182323014704316307}
   m_Layer: 0
   m_Name: soldier_blue
   m_TagString: Untagged
@@ -750,6 +751,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
   soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  currentHealth: 0
+  allySoldiersList: []
+  allyTypeSoldiersList: []
+  enemySoldiersList: []
+--- !u!136 &1182323014704316307
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360265359817230956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.3134411
+  m_Height: 1.8431492
+  m_Direction: 1
+  m_Center: {x: 0.007268548, y: 0.9255259, z: 0}
 --- !u!1 &6360265359817230958
 GameObject:
   m_ObjectHideFlags: 0

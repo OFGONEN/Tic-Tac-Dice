@@ -568,6 +568,7 @@ GameObject:
   - component: {fileID: 326623957129369862}
   - component: {fileID: 326623957119858378}
   - component: {fileID: 7622601534600843680}
+  - component: {fileID: 3471161973935425197}
   m_Layer: 0
   m_Name: soldier_red
   m_TagString: Untagged
@@ -624,6 +625,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  currentHealth: 0
+  allySoldiersList: []
+  allyTypeSoldiersList: []
+  enemySoldiersList: []
+--- !u!136 &3471161973935425197
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326623957129332068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.3134411
+  m_Height: 1.8431492
+  m_Direction: 1
+  m_Center: {x: 0.007268548, y: 0.9255259, z: 0}
 --- !u!1 &326623957129332070
 GameObject:
   m_ObjectHideFlags: 0

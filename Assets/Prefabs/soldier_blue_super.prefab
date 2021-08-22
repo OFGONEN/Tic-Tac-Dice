@@ -814,6 +814,7 @@ GameObject:
   - component: {fileID: 5569104153099333398}
   - component: {fileID: 5569104153092128986}
   - component: {fileID: 6510940559052503769}
+  - component: {fileID: 7287494358601224375}
   m_Layer: 0
   m_Name: soldier_blue_super
   m_TagString: Untagged
@@ -874,6 +875,20 @@ MonoBehaviour:
   allySoldiersList: []
   allyTypeSoldiersList: []
   enemySoldiersList: []
+--- !u!136 &7287494358601224375
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569104153099432820}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.3134411
+  m_Height: 1.8431492
+  m_Direction: 1
+  m_Center: {x: 0.007268548, y: 0.9255259, z: 0}
 --- !u!1 &5569104153099432822
 GameObject:
   m_ObjectHideFlags: 0
