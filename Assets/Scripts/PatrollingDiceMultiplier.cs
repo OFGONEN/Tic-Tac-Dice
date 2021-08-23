@@ -32,7 +32,7 @@ public class PatrollingDiceMultiplier : MonoBehaviour
 		var tilePosition   = tile.transform.position;
 		    tilePosition.y = 0;
 
-		var position   = transform.position;
+		var position   = dice.transform.position;
 		    position.y = 0;
 
 		var distanceRatio = Vector3.Distance( tilePosition, position ) / GameSettings.board_DistanceBetweenTargetPoints; // Calculate a ratio between the max distance and the current distance.
@@ -41,8 +41,8 @@ public class PatrollingDiceMultiplier : MonoBehaviour
 		var travelTime   = Mathf.Lerp( minMax_TravelTime.x, minMax_TravelTime.y, distanceRatio );  // Find the travel time according the distance ratio.
 
 		Vector3 launchVector;
-		launchVector.x = ( position.x - newDice.transform.position.x ) / travelTime;
-		launchVector.z = ( position.z - newDice.transform.position.z ) / travelTime;
+		launchVector.x = ( tilePosition.x - dice.transform.position.x ) / travelTime;
+		launchVector.z = ( tilePosition.z - dice.transform.position.z ) / travelTime;
 		launchVector.y = -Physics.gravity.y * travelTime / 2;
 
 		newDice.Launch( launchVector );
