@@ -10,6 +10,7 @@ public class DiceThrower : MonoBehaviour
 #region Fields
 	[ Header( "Shared Variables" ) ]
 	public EventListenerDelegateResponse levelStartListener;
+	public EventListenerDelegateResponse cooldownListener;
 
 	[ Header( "Shared Variables" ) ]
 	public DicePool dicePool;
@@ -54,18 +55,21 @@ public class DiceThrower : MonoBehaviour
 	private void OnEnable()
 	{
 		levelStartListener.OnEnable();
+		cooldownListener.OnEnable();
 	}
 
 	private void OnDisable()
 	{
 		levelStartListener.OnDisable();
+		cooldownListener.OnDisable();
 	}
 
 	private void Awake()	
 	{
 		// Set delegates.
-		updateMethod                   = ExtensionMethods.EmptyMethod;
+		updateMethod                = ExtensionMethods.EmptyMethod;
 		levelStartListener.response = LevelStartResponse;
+		cooldownListener.response   = CooldownResponse;
 
 		// Create trajectory points array.
 		dice_TrajectoryPoints  = new Vector3[ GameSettings.Instance.dice_TrajectoryPointCount ];
@@ -81,6 +85,10 @@ public class DiceThrower : MonoBehaviour
 
 		// Cache the distance between the nearest and farest point in the board.
 		distanceBetweenTargetPoints = Vector3.Distance( closest_TargetPosition, farthest_TargetPosition );
+
+		// Store variable in game settings
+		GameSettings.board_DistanceBetweenTargetPoints = distanceBetweenTargetPoints;
+
 
 		cooldownIndicator.fillAmount = 0; // Since there is no dice when level is loaded.
 
@@ -212,6 +220,14 @@ public class DiceThrower : MonoBehaviour
 	private void LevelStartResponse()
 	{
 		SpawnDice(); // Spawn a dice when level is started.
+	}
+
+	private void CooldownResponse()
+	{
+		var cooldownEvent = cooldownListener.gameEvent as FloatGameEvent;
+		nextDiceThrow += cooldownEvent.eventValue;
+
+		nextDiceThrow = Mathf.Clamp( nextDiceThrow, 0, GameSettings.Instance.dice_coolDown );
 	}
 #endregion
 }

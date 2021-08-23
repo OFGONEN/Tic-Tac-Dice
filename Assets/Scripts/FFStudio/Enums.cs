@@ -21,4 +21,10 @@ namespace FFStudio
         Ally,
         Enemy
     }
+
+    public enum SoldierType
+    {
+        Normal,
+        Super
+    }
 }

@@ -20,6 +20,8 @@ public class Dice : MonoBehaviour
 	[ HorizontalLine ]
 	public Parties party;
 
+	public SoldierType soldierType;
+	public float cofactor;
 	public UnityMessage collisionEnter;
 
 	// Private Fields
@@ -69,6 +71,9 @@ public class Dice : MonoBehaviour
 		transform.localPosition = localPosition;
 		transform.localRotation = localRotation;
 
+		soldierType = SoldierType.Normal;
+		cofactor    = 1f;
+
 		// Don't use gravity after spawn
 		dice_Rigidbody.useGravity = false; 
 	}
@@ -99,6 +104,12 @@ public class Dice : MonoBehaviour
 		gameObject.SetActive( false ); // Disable the dice
 		dicePool.Stack.Push( this ); // Return to stack after disable
 	}
+
+	public void DefaultModifiers()
+	{
+		cofactor    = 1f;
+		soldierType = SoldierType.Normal;
+	}
 #endregion
 
 #region Implementation
@@ -113,12 +124,14 @@ public class Dice : MonoBehaviour
 
 	private void OnRigidbodySleep()
 	{
-		int diceNumber = CheckWhichSideIsUp();
+		float diceNumber = CheckWhichSideIsUp();
 
 		// Dice Event: Position, Ally or Enemy, Dice number
-		diceEvent.position   = transform.position;
-		diceEvent.diceNumber = diceNumber;
-		diceEvent.party      = party;
+		diceEvent.position    = transform.position;
+		diceEvent.diceNumber  = ( int )Mathf.Max( diceNumber * cofactor, 1);
+		diceEvent.party       = party;
+		diceEvent.soldierType = soldierType;
+		diceEvent.diceID      = GetInstanceID();
 
 		diceEvent.Raise();
 

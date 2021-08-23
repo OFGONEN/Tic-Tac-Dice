@@ -248,6 +248,21 @@ namespace FFStudio
 			return Random.Range( vector.x, vector.y );
 		}
 
+		public static Collider[] CapsuleCast( this CapsuleCollider capsuleCollider, int layerMask )
+		{
+			var transform = capsuleCollider.transform;
+
+			var center = transform.TransformPoint( capsuleCollider.center );
+			var size = transform.TransformVector( capsuleCollider.radius, capsuleCollider.height, capsuleCollider.radius );
+			var radius = size.x;
+			var height = size.y;
+                
+            var bottom = new Vector3( center.x, center.y - height / 2 + radius, center.z );
+			var top = new Vector3( center.x, center.y + height / 2 - radius, center.z );
+
+			return Physics.OverlapCapsule( top, bottom, radius, layerMask );
+		}
+
 	}
 }
 

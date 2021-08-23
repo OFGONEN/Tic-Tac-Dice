@@ -94,7 +94,11 @@ public class Tile : MonoBehaviour
 		var spawnPosition = ClampDiceEventPosition( diceEvent.position ); // Control spawn position. 
 
 		// Spawn soldiers.
-		SpawnSoldiers( allySoldierPool, ally_SoldierList, ally_Normal_SoldierList, enemy_SoldierList, diceEvent.diceNumber, spawnPosition );
+		if( diceEvent.soldierType == SoldierType.Normal )
+			SpawnSoldiers( allySoldierPool, ally_SoldierList, ally_Normal_SoldierList, enemy_SoldierList, diceEvent.diceNumber, spawnPosition );
+		else if( diceEvent.soldierType == SoldierType.Super )
+			SpawnSoldiers( allySuperSoldierPool, ally_SoldierList, ally_Super_SoldierList, enemy_SoldierList, diceEvent.diceNumber, spawnPosition );
+
 
 		if( enemy_SoldierList.Count > 0 )
 		{
@@ -124,7 +128,10 @@ public class Tile : MonoBehaviour
 		var spawnPosition = ClampDiceEventPosition( diceEvent.position ); // Control spawn position.
 
 		// Spawn soldiers.
-		SpawnSoldiers( enemySoldierPool, enemy_SoldierList, enemy_Normal_SoldierList, ally_SoldierList, diceEvent.diceNumber, spawnPosition );
+		if( diceEvent.soldierType == SoldierType.Normal )
+			SpawnSoldiers( enemySoldierPool, enemy_SoldierList, enemy_Normal_SoldierList, ally_SoldierList, diceEvent.diceNumber, spawnPosition );
+		else if ( diceEvent.soldierType == SoldierType.Super )
+			SpawnSoldiers( enemySuperSoldierPool, enemy_SoldierList, enemy_Super_SoldierList, ally_SoldierList, diceEvent.diceNumber, spawnPosition );
 
 		if( ally_SoldierList.Count > 0 )
 		{

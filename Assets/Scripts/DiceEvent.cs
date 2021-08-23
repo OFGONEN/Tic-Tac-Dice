@@ -11,4 +11,6 @@ public class DiceEvent : GameEvent
 	[ HideInInspector ] public Vector3 position;
 	[ HideInInspector ] public int diceNumber;
 	[ HideInInspector ] public Parties party;
+	[ HideInInspector ] public SoldierType soldierType;
+	[ HideInInspector ] public int diceID;
 }
