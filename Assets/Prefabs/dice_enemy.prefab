@@ -45,10 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090dbcfd6d031ee41880c730b5e94985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newLevelLoadListener:
+    gameEvent: {fileID: 11400000, guid: f21048912f45f4f4ba5088a96779eb2f, type: 2}
+  levelCompleteListeners:
+    gameEvent: {fileID: 0}
+    gameEvents:
+    - {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
+    - {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
   diceEvent: {fileID: 11400000, guid: efb860cf42147d14192a3979db14c016, type: 2}
   diceDisappearParticleEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   dicePool: {fileID: 11400000, guid: d7765cca52f5f78478a8798bf1065244, type: 2}
   party: 2
+  soldierType: 0
+  cofactor: 0
 --- !u!54 &293131036830607369
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -10,6 +10,10 @@ using DG.Tweening;
 public class Dice : MonoBehaviour
 {
 #region Fields
+	[ Header( "Event Listeners" ) ]
+	public EventListenerDelegateResponse newLevelLoadListener;
+	public MultipleEventListenerDelegateResponse levelCompleteListeners;
+
 	[ Header( "Fired Events" ) ]
 	public DiceEvent diceEvent;
 	public ParticleSpawnEvent diceDisappearParticleEvent;
@@ -32,6 +36,7 @@ public class Dice : MonoBehaviour
 
 	// Delegates
 	private UnityMessage fixedUpdateDelegate;
+	private Tween diceEventTween;
 #endregion
 
 #region Unity API
@@ -44,6 +49,12 @@ public class Dice : MonoBehaviour
 		// Delegates
 		fixedUpdateDelegate = ExtensionMethods.EmptyMethod;
 		collisionEnter      = ExtensionMethods.EmptyMethod;
+
+		levelCompleteListeners.response = LevelCompleteResponse;
+		levelCompleteListeners.OnEnable();
+
+		newLevelLoadListener.response = ReturnDefault;
+		newLevelLoadListener.OnEnable();
 	}
 
 	private void FixedUpdate() 
@@ -54,6 +65,12 @@ public class Dice : MonoBehaviour
 	private void OnCollisionEnter(Collision other) 
 	{
 		collisionEnter();
+	}
+
+	private void OnDestroy() 
+	{
+		levelCompleteListeners.OnDisable();
+		newLevelLoadListener.OnDisable();
 	}
 #endregion
 
@@ -80,7 +97,7 @@ public class Dice : MonoBehaviour
 
 	public void Launch( Vector3 launchForce )
 	{
-		transform.SetParent( null ); // Null parent
+		transform.SetParent( dicePool.MainParent ); // Null parent
 
 		dice_Rigidbody.useGravity = true; // Use gravity
 
@@ -118,7 +135,7 @@ public class Dice : MonoBehaviour
 		if( dice_Rigidbody.IsSleeping() ) // If rigidbody is stopped and changed its status to SLEEP
 		{
 			ReturnDefault();
-			DOVirtual.DelayedCall( GameSettings.Instance.dice_waitTimeAfterSleep, OnRigidbodySleep ); // Delayed call 
+			diceEventTween = DOVirtual.DelayedCall( GameSettings.Instance.dice_waitTimeAfterSleep, OnRigidbodySleep ); // Delayed call 
 		}
 	}
 
@@ -142,8 +159,7 @@ public class Dice : MonoBehaviour
 
 		diceDisappearParticleEvent.Raise();
 
-
-		FFLogger.Log( $"{name}: {diceNumber}" );
+		diceEventTween = null;
 	}
 
 	// Up: 1, Right: 3, Forward: 5
@@ -171,6 +187,21 @@ public class Dice : MonoBehaviour
 		}
 
 		return diceNumbers[ selected ];
+	}
+
+	private void LevelCompleteResponse()
+	{
+		transform.SetParent( dicePool.MainParent );
+
+		fixedUpdateDelegate = ExtensionMethods.EmptyMethod;
+
+		Halt();
+
+		if( diceEventTween != null )
+		{
+			diceEventTween.Kill();
+			diceEventTween = null;
+		}
 	}
 #endregion
 }

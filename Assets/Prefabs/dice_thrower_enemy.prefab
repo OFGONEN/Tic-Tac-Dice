@@ -46,6 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e3e15288aa7fd42b8bb8639b0b81e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelCompleteListeners:
+    gameEvent: {fileID: 0}
+    gameEvents:
+    - {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
+    - {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   levelLoadedListener:
     gameEvent: {fileID: 11400000, guid: 08b9079fb856230459ba418b28981185, type: 2}
   cooldownListener:

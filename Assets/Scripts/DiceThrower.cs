@@ -9,6 +9,7 @@ public class DiceThrower : MonoBehaviour
 {
 #region Fields
 	[ Header( "Shared Variables" ) ]
+	public MultipleEventListenerDelegateResponse levelCompleteListeners;
 	public EventListenerDelegateResponse levelLoadedListener;
 	public EventListenerDelegateResponse cooldownListener;
 
@@ -56,20 +57,23 @@ public class DiceThrower : MonoBehaviour
 	{
 		levelLoadedListener.OnEnable();
 		cooldownListener.OnEnable();
+		levelCompleteListeners.OnEnable();
 	}
 
 	private void OnDisable()
 	{
 		levelLoadedListener.OnDisable();
 		cooldownListener.OnDisable();
+		levelCompleteListeners.OnDisable();
 	}
 
 	private void Awake()	
 	{
 		// Set delegates.
-		updateMethod                 = ExtensionMethods.EmptyMethod;
-		levelLoadedListener.response = LevelLoadedResponse;
-		cooldownListener.response    = CooldownResponse;
+		updateMethod                    = ExtensionMethods.EmptyMethod;
+		levelLoadedListener.response    = LevelLoadedResponse;
+		cooldownListener.response       = CooldownResponse;
+		levelCompleteListeners.response = LevelCompleteResponse;
 
 		// Create trajectory points array.
 		dice_TrajectoryPoints  = new Vector3[ GameSettings.Instance.dice_TrajectoryPointCount ];
@@ -220,6 +224,14 @@ public class DiceThrower : MonoBehaviour
 	private void LevelLoadedResponse()
 	{
 		SpawnDice(); // Spawn a dice when level is started.
+	}
+
+	private void LevelCompleteResponse()
+	{
+		updateMethod = ExtensionMethods.EmptyMethod;
+
+		if( currentDice != null )
+			currentDice.transform.SetParent( currentDice.dicePool.MainParent );
 	}
 
 	private void CooldownResponse()
