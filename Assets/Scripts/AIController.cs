@@ -24,7 +24,8 @@ public class AIController : MonoBehaviour
 
     // Delegates
     private Tween aimTween;
-    private UnityMessage updateMethod;
+	private Tween aimWaitTween;
+	private UnityMessage updateMethod;
 
 #endregion
 
@@ -43,11 +44,7 @@ public class AIController : MonoBehaviour
 		levelStartListener.OnDisable();
 		levelFinishListener.OnDisable();
 
-        if( aimTween != null)
-        {
-			aimTween.Kill();
-			aimTween = null;
-		}
+		KillTweens();
 	}
 
     private void Awake()
@@ -77,14 +74,10 @@ public class AIController : MonoBehaviour
 
     private void LevelFinishResponse()
     {
-        if( targeting && aimTween != null)
-        {
-			aimTween.Kill();
-			aimTween = null;
-		}
-
 		updateMethod = ExtensionMethods.EmptyMethod;
 		targeting = false;
+
+		KillTweens();
 	}
 
     private void AimDiceThrower()
@@ -136,10 +129,30 @@ public class AIController : MonoBehaviour
     {
         if( diceThrower.CanThrowDice )
         {
-		    DOVirtual.DelayedCall( GameSettings.Instance.ai_target_WaitTime.ReturnRandomValue(), AimDiceThrower );
+		    aimWaitTween = DOVirtual.DelayedCall( GameSettings.Instance.ai_target_WaitTime.ReturnRandomValue(), AimDiceThrower ).OnComplete( OnAimWaitComplete );
 			updateMethod = ExtensionMethods.EmptyMethod;
 		}
     }
+
+	private void OnAimWaitComplete()
+	{
+		aimWaitTween = null;
+	}
+
+	private void KillTweens()
+	{
+        if( aimTween != null)
+        {
+			aimTween.Kill();
+			aimTween = null;
+		}
+
+		if( aimWaitTween != null )
+		{
+			aimWaitTween.Kill();
+			aimWaitTween = null;
+		}
+	}
 #endregion
 
 #region Editor Only
