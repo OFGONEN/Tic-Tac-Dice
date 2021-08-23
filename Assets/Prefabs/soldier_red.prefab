@@ -623,6 +623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f201b1e9edc71498f51cf2d6eec183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newLevelLoadListener:
+    gameEvent: {fileID: 11400000, guid: f21048912f45f4f4ba5088a96779eb2f, type: 2}
   soldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
   soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
   currentHealth: 0

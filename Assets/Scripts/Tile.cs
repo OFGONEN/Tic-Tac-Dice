@@ -178,7 +178,7 @@ public class Tile : MonoBehaviour
 	{
 		for( var i = 0; i < soldierCount; i++ )
 		{
-			var soldier = soldierPool.GiveEntity( transform, false );
+			var soldier = soldierPool.GiveEntity( null, false );
 
 			// Select a random point inside a sphere.
 			var randomSpawnPosition   = Random.insideUnitSphere * GameSettings.Instance.dice_SoldierSpawnRadius;
@@ -255,7 +255,7 @@ public class Tile : MonoBehaviour
 		{
 			var spawnPosition = GiveRandomSpawnPoint();
 
-            var superSoldier = superSoldierPool.GiveEntity( transform, false );
+            var superSoldier = superSoldierPool.GiveEntity( null, false );
 
 			var randomSpawnRotation = Quaternion.Euler( new Vector3( 0, Random.Range( 0f, 360f ), 0 ) ); // Random rotation in +Y axis.
 

@@ -11,6 +11,9 @@ using UnityEditor;
 public class Soldier : MonoBehaviour
 {
 #region Fields
+	[ Header( "Event Listeners" ) ]
+	public EventListenerDelegateResponse newLevelLoadListener;
+
 	[ Header( "Shared Variables" ) ]
 	public SoldierPool soldierPool;
 
@@ -54,11 +57,19 @@ public class Soldier : MonoBehaviour
 		updateMethod = ExtensionMethods.EmptyMethod;
 
 		currentHealth = soldierData.health;
+
+		newLevelLoadListener.response = ReturnToDefault;
+		newLevelLoadListener.OnEnable();
 	}
 
 	private void OnDisable()
 	{
 		KillTweens();
+	}
+
+	private void OnDestroy() 
+	{
+		newLevelLoadListener.OnDisable();
 	}
 
 	private void Update()
@@ -85,6 +96,8 @@ public class Soldier : MonoBehaviour
 		allySoldiersList     = allySoldiers;
 		allyTypeSoldiersList = allyTypeSoldiers;
 		enemySoldiersList    = enemySoldiers;
+
+		updateMethod = ExtensionMethods.EmptyMethod;
 
 		gameObject.SetActive( true );
 
