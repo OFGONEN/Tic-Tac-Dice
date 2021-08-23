@@ -143,10 +143,10 @@ public class Soldier : MonoBehaviour
 
 	public void Die()
 	{
+		if( !alive ) return;
+
 		alive     = false;
 		canAttack = false;
-
-		attackTarget = null;
 
 		updateMethod = ExtensionMethods.EmptyMethod;
 
@@ -183,18 +183,12 @@ public class Soldier : MonoBehaviour
 			animator.SetTrigger( "punch" );
 			animator.SetBool( "running", false );
 
+			// Look at the target before attacking
+			transform.LookAtAxis( targetPosition, Vector3.up );
+
 			// Attack
-			attackTarget.TakeDamage( this, false );
+			DOVirtual.DelayedCall( GameSettings.Instance.soldier_AttackDelay, Attack );
 
-			canAttack = false;
-
-			if( alive )
-			{
-				if( attackTarget.IsSoldierDead )
-					attackCooldownTween = DOVirtual.DelayedCall( soldierData.attackCooldown, OnAttackCoooldownFinish );
-				else
-					attackCooldownTween = DOVirtual.DelayedCall( soldierData.attackCooldown, OnAttackRepeat );
-			}
 		}
 		else // Move and rotates towards attack target.
 		{
@@ -203,6 +197,21 @@ public class Soldier : MonoBehaviour
 
 			// Look at towards attack target. 
 			transform.LookAtOverTimeAxis( targetPosition, Vector3.up, Time.deltaTime * soldierData.speed_Rotation );
+		}
+	}
+
+	private void Attack()
+	{
+		attackTarget.TakeDamage( this, false );
+
+		canAttack = false;
+
+		if( alive )
+		{
+			if( attackTarget.IsSoldierDead )
+				attackCooldownTween = DOVirtual.DelayedCall( soldierData.attackCooldown, OnAttackCoooldownFinish );
+			else
+				attackCooldownTween = DOVirtual.DelayedCall( soldierData.attackCooldown, OnAttackRepeat );
 		}
 	}
 
@@ -241,6 +250,8 @@ public class Soldier : MonoBehaviour
 	private void OnDrawGizmos()
 	{
 		Handles.DrawWireDisc( transform.position, transform.up, soldierData.radius );
+
+		Handles.Label( transform.position + Vector3.up * 3, "Health: " + currentHealth );
 	}
 #endif
 #endregion
