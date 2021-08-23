@@ -297,6 +297,8 @@ public class Tile : MonoBehaviour
 			meshRenderer.SetPropertyBlock( materialPropertyBlock );
 
 			updateMethod = ExtensionMethods.EmptyMethod;
+
+			ScatterSoldiers( ally_SoldierList );
 		}
 		else if( ally_SoldierList.Count == 0 && enemy_SoldierList.Count > 0 ) // Tile captured by Enemy
 		{
@@ -311,6 +313,16 @@ public class Tile : MonoBehaviour
 			meshRenderer.SetPropertyBlock( materialPropertyBlock );
 
 			updateMethod = ExtensionMethods.EmptyMethod;
+			
+			ScatterSoldiers( enemy_SoldierList );
+		}
+	}
+
+	private void ScatterSoldiers( List< Soldier > soldiers )
+	{
+		for( var i = 0; i < soldiers.Count; i++ )
+		{
+			soldiers[ i ].Move( GiveRandomSpawnPoint() );
 		}
 	}
 #endregion

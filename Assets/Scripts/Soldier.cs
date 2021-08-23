@@ -38,6 +38,9 @@ public class Soldier : MonoBehaviour
 	[ SerializeField, ReadOnly ] private List< Soldier > allyTypeSoldiersList;
 	[ SerializeField, ReadOnly ] private List< Soldier > enemySoldiersList;
 
+	// Move Related
+	private Vector3 movePosition;
+
 	// Delegate
 	private UnityMessage updateMethod;
 #endregion
@@ -159,9 +162,34 @@ public class Soldier : MonoBehaviour
 
 		ReturnToDefault();
 	}
+
+	public void Move( Vector3 position )
+	{
+		movePosition = position;
+
+		animator.SetBool( "running", true );
+
+		updateMethod = OnMoveUpdate;
+	}
 #endregion
 
 #region Implementation
+	private void OnMoveUpdate()
+	{
+		// Move towards attack target.
+		transform.position = Vector3.MoveTowards( transform.position, movePosition, Time.deltaTime * soldierData.speed_Running );
+
+		// Look at towards attack target. 
+		transform.LookAtOverTimeAxis( movePosition, Vector3.up, Time.deltaTime * soldierData.speed_Rotation );
+
+		if( Vector3.Distance( transform.position, movePosition ) <= 0.1f )
+		{
+			updateMethod = ExtensionMethods.EmptyMethod;
+			animator.SetBool( "running", false );
+		}
+
+	}
+
 	private void OnAttackUpdate()
 	{
 		var targetPosition = attackTarget.transform.position;
