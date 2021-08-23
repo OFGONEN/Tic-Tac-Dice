@@ -9,7 +9,7 @@ public class DiceThrower : MonoBehaviour
 {
 #region Fields
 	[ Header( "Shared Variables" ) ]
-	public EventListenerDelegateResponse levelStartListener;
+	public EventListenerDelegateResponse levelLoadedListener;
 	public EventListenerDelegateResponse cooldownListener;
 
 	[ Header( "Shared Variables" ) ]
@@ -54,22 +54,22 @@ public class DiceThrower : MonoBehaviour
 #region Unity API
 	private void OnEnable()
 	{
-		levelStartListener.OnEnable();
+		levelLoadedListener.OnEnable();
 		cooldownListener.OnEnable();
 	}
 
 	private void OnDisable()
 	{
-		levelStartListener.OnDisable();
+		levelLoadedListener.OnDisable();
 		cooldownListener.OnDisable();
 	}
 
 	private void Awake()	
 	{
 		// Set delegates.
-		updateMethod                = ExtensionMethods.EmptyMethod;
-		levelStartListener.response = LevelStartResponse;
-		cooldownListener.response   = CooldownResponse;
+		updateMethod                 = ExtensionMethods.EmptyMethod;
+		levelLoadedListener.response = LevelLoadedResponse;
+		cooldownListener.response    = CooldownResponse;
 
 		// Create trajectory points array.
 		dice_TrajectoryPoints  = new Vector3[ GameSettings.Instance.dice_TrajectoryPointCount ];
@@ -217,7 +217,7 @@ public class DiceThrower : MonoBehaviour
 	}
 
 	// Response given when the Level is revealed.
-	private void LevelStartResponse()
+	private void LevelLoadedResponse()
 	{
 		SpawnDice(); // Spawn a dice when level is started.
 	}
