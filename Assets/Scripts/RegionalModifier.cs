@@ -58,21 +58,29 @@ public abstract class RegionalModifier : MonoBehaviour
         if( targetDice != null )
         {
 			var dice = other.GetComponentInParent< Dice >();
-            
-            if( dice.GetInstanceID() == targetDice_ID )
+			var dice_ID = dice.GetInstanceID();
+
+			if( dice_ID == targetDice_ID )
             {
 				targetDice.DefaultModifiers();
+
 				targetDice = null;
 				targetDice_ID = -1;
 
 				var diceLayerMask = LayerMask.GetMask( "AllyDice", "EnemyDice" );
 				var colliders     = capsuleCollider.CapsuleCast( diceLayerMask );
 
-				if( colliders.Length > 0 && colliders[ 0 ] != null )
+                for( var i = 0; i < colliders.Length; i++ )
                 {
-					targetDice    = colliders[ 0 ].GetComponentInParent< Dice >();
-					targetDice_ID = targetDice.GetInstanceID();
-				}
+					var otherDice = colliders[ i ].GetComponentInParent< Dice >();
+					var otherDice_ID = otherDice.GetInstanceID();
+
+					if( dice_ID != otherDice_ID )
+                    {
+						targetDice    = otherDice;
+						targetDice_ID = otherDice_ID;
+					}
+                }
 			}
 		}
     }
