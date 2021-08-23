@@ -104,6 +104,12 @@ public class Dice : MonoBehaviour
 		gameObject.SetActive( false ); // Disable the dice
 		dicePool.Stack.Push( this ); // Return to stack after disable
 	}
+
+	public void DefaultModifiers()
+	{
+		cofactor    = 1f;
+		soldierType = SoldierType.Normal;
+	}
 #endregion
 
 #region Implementation
