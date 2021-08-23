@@ -30,6 +30,7 @@ public class Dice : MonoBehaviour
 
 	// Private Fields
 	private Rigidbody dice_Rigidbody;
+	private Collider dice_Collider;
 
 	private int[] diceNumbers = new int[] { 1, 6, 3, 4, 5, 2};
 	private float[] dotProducts = new float[ 6 ];
@@ -45,6 +46,9 @@ public class Dice : MonoBehaviour
 		/* Initialization */
 		// Components
 		dice_Rigidbody = GetComponent< Rigidbody >();
+		dice_Collider  = GetComponentInChildren< Collider >();
+
+		dice_Collider.enabled = false;
 
 		// Delegates
 		fixedUpdateDelegate = ExtensionMethods.EmptyMethod;
@@ -92,7 +96,9 @@ public class Dice : MonoBehaviour
 		cofactor    = 1f;
 
 		// Don't use gravity after spawn
-		dice_Rigidbody.useGravity = false; 
+		dice_Rigidbody.useGravity = false;
+
+		dice_Collider.enabled = false;
 	}
 
 	public void Launch( Vector3 launchForce )
@@ -100,6 +106,7 @@ public class Dice : MonoBehaviour
 		transform.SetParent( dicePool.MainParent ); // Null parent
 
 		dice_Rigidbody.useGravity = true; // Use gravity
+		dice_Collider.enabled = true;
 
 		dice_Rigidbody.AddForce( launchForce, ForceMode.Impulse ); // Give IMPULSE FORCE
 		dice_Rigidbody.AddTorque( Random.insideUnitSphere, ForceMode.Impulse ); // Give RANDOM IMPULSE TORQUE
@@ -111,6 +118,7 @@ public class Dice : MonoBehaviour
 	public void ReturnDefault()
 	{
 		dice_Rigidbody.useGravity = false;
+		dice_Collider.enabled = false;
 
 		dice_Rigidbody.velocity        = Vector3.zero;
 		dice_Rigidbody.angularVelocity = Vector3.zero;
