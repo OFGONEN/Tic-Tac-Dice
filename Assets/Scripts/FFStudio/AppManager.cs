@@ -63,9 +63,8 @@ namespace FFStudio
 #region Implementation
 		private void ResetLevel()
 		{
-			ResetScene();
-
-			levelLoaded.Raise();
+			var _operation = SceneManager.UnloadSceneAsync( CurrentLevelData.Instance.levelData.sceneIndex );
+			_operation.completed += ( AsyncOperation operation ) => StartCoroutine( LoadLevel() );
 		}
 		private IEnumerator LoadLevel()
 		{
