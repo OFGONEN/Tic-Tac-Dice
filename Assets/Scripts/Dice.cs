@@ -11,7 +11,7 @@ public class Dice : MonoBehaviour
 {
 #region Fields
 	[ Header( "Event Listeners" ) ]
-	public EventListenerDelegateResponse newLevelLoadListener;
+	public MultipleEventListenerDelegateResponse newLevelLoadListeners;
 	public MultipleEventListenerDelegateResponse levelCompleteListeners;
 
 	[ Header( "Fired Events" ) ]
@@ -57,8 +57,8 @@ public class Dice : MonoBehaviour
 		levelCompleteListeners.response = LevelCompleteResponse;
 		levelCompleteListeners.OnEnable();
 
-		newLevelLoadListener.response = ReturnDefault;
-		newLevelLoadListener.OnEnable();
+		newLevelLoadListeners.response = ReturnDefault;
+		newLevelLoadListeners.OnEnable();
 	}
 
 	private void FixedUpdate() 
@@ -74,7 +74,7 @@ public class Dice : MonoBehaviour
 	private void OnDestroy() 
 	{
 		levelCompleteListeners.OnDisable();
-		newLevelLoadListener.OnDisable();
+		newLevelLoadListeners.OnDisable();
 	}
 #endregion
 

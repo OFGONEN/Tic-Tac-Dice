@@ -12,7 +12,7 @@ public class Soldier : MonoBehaviour
 {
 #region Fields
 	[ Header( "Event Listeners" ) ]
-	public EventListenerDelegateResponse newLevelLoadListener;
+	public MultipleEventListenerDelegateResponse newLevelLoadListeners;
 
 	[ Header( "Shared Variables" ) ]
 	public SoldierPool soldierPool;
@@ -58,8 +58,8 @@ public class Soldier : MonoBehaviour
 
 		currentHealth = soldierData.health;
 
-		newLevelLoadListener.response = ReturnToDefault;
-		newLevelLoadListener.OnEnable();
+		newLevelLoadListeners.response = ReturnToDefault;
+		newLevelLoadListeners.OnEnable();
 	}
 
 	private void OnDisable()
@@ -69,7 +69,7 @@ public class Soldier : MonoBehaviour
 
 	private void OnDestroy() 
 	{
-		newLevelLoadListener.OnDisable();
+		newLevelLoadListeners.OnDisable();
 	}
 
 	private void Update()

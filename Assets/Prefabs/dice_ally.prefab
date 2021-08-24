@@ -45,8 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090dbcfd6d031ee41880c730b5e94985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newLevelLoadListener:
-    gameEvent: {fileID: 11400000, guid: f21048912f45f4f4ba5088a96779eb2f, type: 2}
+  newLevelLoadListeners:
+    gameEvent: {fileID: 0}
+    gameEvents:
+    - {fileID: 11400000, guid: f21048912f45f4f4ba5088a96779eb2f, type: 2}
+    - {fileID: 11400000, guid: 0a3e52cd505ecfc4ba9ef153d4f3ba93, type: 2}
   levelCompleteListeners:
     gameEvent: {fileID: 0}
     gameEvents:
