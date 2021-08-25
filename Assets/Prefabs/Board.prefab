@@ -1,5 +1,313 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &834305495910127389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2716494779457871716}
+  m_Layer: 0
+  m_Name: target_point_downLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2716494779457871716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834305495910127389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.25, y: 7.2499995, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7988633980681812889}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7739133852058110605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286560761561182786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72cb3049197efb43be6e95aacc814d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
+  tileID: 7
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &8503814974683965765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382206758350998477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72cb3049197efb43be6e95aacc814d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
+  tileID: 8
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &3869050497513064913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606410101716400667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72cb3049197efb43be6e95aacc814d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
+  tileID: 6
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!65 &1041159124654010000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408612911775107383}
+  m_Material: {fileID: 13400000, guid: d6f12dd23007f104bb15f0a92f9af01f, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47598696, y: 15.556171, z: 4.503357}
+  m_Center: {x: -7.5400934, y: -1.1266885e-15, z: 3.2399824}
+--- !u!65 &3299015266837178479
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408612911775107383}
+  m_Material: {fileID: 13400000, guid: d6f12dd23007f104bb15f0a92f9af01f, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.556173, y: 0.39532715, z: 4.503357}
+  m_Center: {x: 0, y: -7.547375, z: 3.2399933}
+--- !u!65 &5650345527006941355
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408612911775107383}
+  m_Material: {fileID: 13400000, guid: d6f12dd23007f104bb15f0a92f9af01f, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.556173, y: 0.39532715, z: 4.503357}
+  m_Center: {x: 0, y: 7.547375, z: 3.2399933}
+--- !u!65 &6885173297273086399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408612911775107383}
+  m_Material: {fileID: 13400000, guid: d6f12dd23007f104bb15f0a92f9af01f, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47598696, y: 15.556171, z: 4.503357}
+  m_Center: {x: 7.540093, y: -1.1266885e-15, z: 3.2399824}
+--- !u!114 &5899622775377660379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482172559003802831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72cb3049197efb43be6e95aacc814d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
+  tileID: 5
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &2785521014267430761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5621612458836950678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72cb3049197efb43be6e95aacc814d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
+  tileID: 2
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!1 &5930325530862535413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1031603887925454645}
+  m_Layer: 0
+  m_Name: target_point_upRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1031603887925454645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930325530862535413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.25, y: -7.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7988633980681812889}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3614210995263947260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298419959829806090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72cb3049197efb43be6e95aacc814d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
+  tileID: 3
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &2999702283896299441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360001578380720742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72cb3049197efb43be6e95aacc814d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
+  tileID: 0
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7833831627879401460
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,6 +317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7988633980681812889}
+  - component: {fileID: 1322370373722545436}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -29,9 +338,80 @@ Transform:
   m_Children:
   - {fileID: 3037339309570826233}
   - {fileID: 3037339308030038925}
+  - {fileID: 2716494779457871716}
+  - {fileID: 1031603887925454645}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1322370373722545436
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833831627879401460}
+  m_Material: {fileID: 13400000, guid: 509be1f0945176c409ccbd5dabbee68c, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.646244, y: 14.67395, z: 0.27868184}
+  m_Center: {x: 0, y: 0.0210166, z: -0.15000431}
+--- !u!114 &7894026362611211922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8362638145269045886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72cb3049197efb43be6e95aacc814d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
+  tileID: 1
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &5632154763384567125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141106368144681043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72cb3049197efb43be6e95aacc814d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCaptureEvent: {fileID: 11400000, guid: d4284cb755081d148bb7d6c7210b0be5, type: 2}
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  allySoldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  allySuperSoldierPool: {fileID: 11400000, guid: 02aea238c0be86944aab708a61566c50, type: 2}
+  enemySoldierPool: {fileID: 11400000, guid: ba2bf5d4a65a7074c9e5d758dde325e9, type: 2}
+  enemySuperSoldierPool: {fileID: 11400000, guid: f2c042ca70746294a9069c053546ea0d, type: 2}
+  soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
+  superSoldierData: {fileID: 11400000, guid: 60fc5749916a6074ab0ded708aa31841, type: 2}
+  tileID: 4
+  ally_SoldierList: []
+  ally_Normal_SoldierList: []
+  ally_Super_SoldierList: []
+  enemy_SoldierList: []
+  enemy_Normal_SoldierList: []
+  enemy_Super_SoldierList: []
+  neutralColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &3291134616289802258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -137,6 +517,51 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 524d445b0c24d76479d889de89b18eb7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+--- !u!1 &8362638145269045886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2764512629625626004, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5621612458836950678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2040254050740271484, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7360001578380720742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3778644264426962316, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1382206758350998477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4504409719310791647, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1606410101716400667 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4906838889796845047, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1286560761561182786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4356877828898064976, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5482172559003802831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2181743766629440291, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7298419959829806090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5252682845850649624, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9141106368144681043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6014503084441653313, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
+  m_PrefabInstance: {fileID: 3291134616289802258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3037339309570826233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3341bff5e91c54f4485f6137cf49e9e3, type: 3}
@@ -215,6 +640,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 786c6afc0a50de9499cec12e332f90ab, type: 3}
+--- !u!1 &2408612911775107383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 786c6afc0a50de9499cec12e332f90ab, type: 3}
+  m_PrefabInstance: {fileID: 3291134617830782054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3037339308030038925 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 786c6afc0a50de9499cec12e332f90ab, type: 3}

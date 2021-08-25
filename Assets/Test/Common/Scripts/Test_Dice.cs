@@ -2,123 +2,88 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
 using FFStudio;
 using NaughtyAttributes;
-using DG.Tweening;
+using UnityEngine;
 
 public class Test_Dice : MonoBehaviour
 {
 #region Fields
-	public Vector3 throwVector;
-	
-	// Private Fields 
-	private Rigidbody cube_Rigidbody;
-	private BoxCollider cube_BoxCollider;
-	[ SerializeField ] private List< Vector3 > collisionPoints = new List< Vector3 >(10);
-	[ SerializeField ] private List< Vector3 > cubePositions = new List< Vector3 >(10);
+	public DicePool allyDicePool;
+	public DicePool enemyDicePool;
 
-	private Vector3 cube_StartPosition;
-	private Quaternion cube_StartRotation;
+	public Vector3 launchVector;
 
-	private int sequenceCount;
-
-	// Delegates
-	private CollisionEnter onCollisionEnterMethod = ExtensionMethods.EmptyMethod;
+	[ ReadOnly ] public Dice currentDice;
 #endregion
 
 #region Unity API
 	private void Awake()
 	{
-		cube_Rigidbody   = GetComponent< Rigidbody >();
-		cube_BoxCollider = GetComponent< BoxCollider >();
-
-		cube_Rigidbody.isKinematic = false;
-		cube_Rigidbody.useGravity  = false;
-		cube_BoxCollider.enabled   = false;
-
-		cube_StartPosition = transform.position;
-		cube_StartRotation = transform.rotation;
-	}
-
-	private void OnCollisionEnter(Collision other) 
-	{
-		onCollisionEnterMethod( other );
+		allyDicePool.InitPool( transform, false );
+		enemyDicePool.InitPool( transform, false );
 	}
 #endregion
 
 #region API
+
+	[ Button() ]
+	public void SpawnADice()
+	{
+		currentDice = allyDicePool.GiveEntity( transform, true );
+		currentDice.Spawn( Vector3.forward * 20, Quaternion.identity );
+	}
+
+	[ Button() ]
+	public void Launch()
+	{
+		currentDice.Launch( launchVector );
+	}
+
+	[Button()]
+	public void Halt()
+	{
+		currentDice.Halt();
+	}
+
+	[ Button() ]
+	public void HaltAndLaunch()
+	{
+		Halt();
+		Launch();
+	}
+
+	[ Button() ]
+	public void SpawnAndHaltAndLaunch()
+	{
+		HaltAndLaunch();
+
+		var newDice = allyDicePool.GiveEntity( transform, true );
+
+		newDice.Spawn( currentDice.transform.position, currentDice.transform.rotation );
+		newDice.Launch( new Vector3( -10, 5, -5 ) );
+	}
+
+	[ Button() ]
+	public void SpawnEnemyDice()
+	{
+		var allyDice = allyDicePool.GiveEntity( transform, true );
+		allyDice.Spawn( Vector3.forward * 10, Quaternion.identity );
+
+		var enemyDice = enemyDicePool.GiveEntity( transform, true );
+		enemyDice.Spawn( Vector3.forward * -10, Quaternion.identity );
+
+		var allyLaunch = launchVector;
+		var enemyLaunch = launchVector;
+
+		enemyLaunch.z *= -1f;
+
+		allyDice.Launch( allyLaunch );
+		enemyDice.Launch( enemyLaunch );
+	}
+
 #endregion
 
 #region Implementation
-	[ Button() ]
-	private void LaunchSequence()
-	{
-		cube_Rigidbody.useGravity = true;
-		cube_BoxCollider.enabled  = true;
-
-		cube_Rigidbody.AddForce( throwVector, ForceMode.Impulse );
-		cube_Rigidbody.AddTorque( Random.insideUnitSphere, ForceMode.Impulse );
-
-		onCollisionEnterMethod = ExtensionMethods.EmptyMethod;
-
-		var sequence = DOTween.Sequence();
-
-		sequence.AppendInterval( 0.5f );
-
-		sequence.AppendCallback( () => 
-		{
-			onCollisionEnterMethod = OnCollisionEnterAfterLaunch;
-		} );
-
-	}
-
-	private void OnCollisionEnterAfterLaunch( Collision other )
-	{
-		FFLogger.Log( "Collision: " + other.contacts[ 0 ].point );
-		collisionPoints.Add( other.contacts[ 0 ].point );
-		cubePositions.Add( transform.position );
-
-		cube_Rigidbody.velocity        = Vector3.zero;
-		cube_Rigidbody.angularVelocity = Vector3.zero;
-
-		cube_Rigidbody.position = cube_StartPosition;
-		cube_Rigidbody.rotation = cube_StartRotation;
-
-		sequenceCount++;
-
-		if( sequenceCount < 10  )
-		{
-			DOVirtual.DelayedCall( 0.5f, LaunchSequence );
-		}
-		else 
-		{
-			Vector3 point_Collision    = Vector3.zero;
-			Vector3 point_CubePosition = Vector3.zero;
-
-			for( var i = 0; i < collisionPoints.Count; i++ )
-			{
-				point_Collision    += collisionPoints[ i ];
-				point_CubePosition += cubePositions[ i ];
-			}
-
-			point_Collision    /= collisionPoints.Count;
-			point_CubePosition /= cubePositions.Count;
-
-			FFLogger.Log( $"Test Result \nAverage Collision Point:{point_Collision}\nAverage Cube Point:{point_CubePosition}" );
-		}
-	}
-#endregion
-
-#region EditorOnly
-#if UNITY_EDITOR
-	private void OnDrawGizmos()
-	{
-		Handles.color = Color.red;
-		var targetPosition = ( transform.position + throwVector.normalized * 3) ;
-		Handles.DrawLine( transform.position, targetPosition );
-	}
-#endif
 #endregion
 }
