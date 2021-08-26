@@ -214,6 +214,7 @@ MonoBehaviour:
   cooldownListener:
     gameEvent: {fileID: 11400000, guid: b3b75437dc26fdc4bab7d7a4a2d9a51b, type: 2}
   dicePool: {fileID: 11400000, guid: 4f24a05d4a4373f43b366957b8da2c02, type: 2}
+  party: 1
   cooldownIndicator: {fileID: 129090849259064412}
   animator: {fileID: 6598950032698433558}
   downLeft_TargetPosition: {fileID: 0}

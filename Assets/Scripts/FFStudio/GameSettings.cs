@@ -18,7 +18,6 @@ namespace FFStudio
         [ Foldout( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
 
         // Dice
-        [ BoxGroup( "Dice" ), Tooltip( "Dice wait time to be launched again" ) ] public float dice_coolDown = 2f; 
         [ BoxGroup( "Dice" ), Tooltip( "Dice's trajectory point count" ) ] public int dice_TrajectoryPointCount = 50; 
         [ BoxGroup( "Dice" ), Tooltip( "Dice's trajectory point count" ), MinMaxSlider( 0.5f, 3f ) ] public Vector2 dice_MinMaxTravelTime;
         [ BoxGroup( "Dice" ), Tooltip( "Dice wait time to disappear it after rigidbody sleep" ) ] public float dice_waitTimeAfterSleep = 0.35f; 
@@ -35,11 +34,13 @@ namespace FFStudio
 
         // Player
         [ BoxGroup( "Player" ), Tooltip( "Player dice throw target move speed." ) ] public float player_TargetMoveSpeed = 5f; 
+        [ BoxGroup( "Player" ), Tooltip( "Player's dice wait time to be launched again" ) ] public float player_Dice_Cooldown = 4f; 
 
         // AI
         [ BoxGroup( "AI" ), Tooltip( "Random point radius" ) ] public float ai_randomPointRadius = 2f; 
         [ BoxGroup( "AI" ), Tooltip( "Random point radius" ), MinMaxSlider( 1f, 3f) ] public Vector2 ai_target_AimTime; 
         [ BoxGroup( "AI" ), Tooltip( "Random point radius" ), MinMaxSlider( 0.5f, 2f) ] public Vector2 ai_target_WaitTime; 
+        [ BoxGroup( "AI" ), Tooltip( "AI's dice wait time to be launched again" ) ] public float ai_Dice_Cooldown = 3f; 
 
         // Stored Variables
         [ HideInInspector ] public static float board_DistanceBetweenTargetPoints;

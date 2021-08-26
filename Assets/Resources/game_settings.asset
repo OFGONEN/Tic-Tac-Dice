@@ -18,7 +18,6 @@ MonoBehaviour:
   ui_Entity_Scale_TweenDuration: 0.5
   ui_Entity_FloatingMove_TweenDuration: 0.5
   swipeThreshold: 2
-  dice_coolDown: 2
   dice_TrajectoryPointCount: 50
   dice_MinMaxTravelTime: {x: 1, y: 2}
   dice_waitTimeAfterSleep: 0.35
@@ -28,7 +27,9 @@ MonoBehaviour:
   tile_allyColor: {r: 0, g: 0, b: 1, a: 0.49019608}
   tile_enemyColor: {r: 1, g: 0, b: 0, a: 0.49019608}
   soldier_AttackDelay: 0.75
-  player_TargetMoveSpeed: 50
+  player_TargetMoveSpeed: 25
+  player_Dice_Cooldown: 5
   ai_randomPointRadius: 1.5
   ai_target_AimTime: {x: 1, y: 2}
   ai_target_WaitTime: {x: 0.5, y: 1.5}
+  ai_Dice_Cooldown: 3

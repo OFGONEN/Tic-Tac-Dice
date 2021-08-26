@@ -17,6 +17,7 @@ public class DiceThrower : MonoBehaviour
 	public DicePool dicePool;
 
 	[ Header( "Setup" ) ]
+	[ SerializeField ] private Parties party;
 	[ SerializeField ] private Image cooldownIndicator;
 	[ SerializeField ] private Animator animator;
 	[ SerializeField ] private Transform downLeft_TargetPosition;
@@ -34,6 +35,7 @@ public class DiceThrower : MonoBehaviour
 	private Dice currentDice;
 
 	private float nextDiceThrow = 0; // Cooldown for next dice throw
+	private float diceCooldown = 2f; // Cooldown for next dice throw
 	private bool canThrowDice = false;
 
 	private float dice_TravelTime;
@@ -93,6 +95,11 @@ public class DiceThrower : MonoBehaviour
 		// Store variable in game settings
 		GameSettings.board_DistanceBetweenTargetPoints = distanceBetweenTargetPoints;
 
+		// Cache dice cooldown
+		if( party == Parties.Ally )
+			diceCooldown = GameSettings.Instance.player_Dice_Cooldown;
+		else if( party == Parties.Enemy )
+			diceCooldown = GameSettings.Instance.ai_Dice_Cooldown;
 
 		cooldownIndicator.fillAmount = 0; // Since there is no dice when level is loaded.
 
@@ -192,7 +199,7 @@ public class DiceThrower : MonoBehaviour
 	// Count down cooldown for next dice throw.
 	private void CountDownForNextThrow()
 	{
-		var cooldown = GameSettings.Instance.dice_coolDown; // Cache cooldown value.
+		var cooldown = diceCooldown; // Cache cooldown value.
 
 		nextDiceThrow += Time.deltaTime; // Add passed time.
 
@@ -239,7 +246,7 @@ public class DiceThrower : MonoBehaviour
 		var cooldownEvent = cooldownListener.gameEvent as FloatGameEvent;
 		nextDiceThrow += cooldownEvent.eventValue;
 
-		nextDiceThrow = Mathf.Clamp( nextDiceThrow, 0, GameSettings.Instance.dice_coolDown );
+		nextDiceThrow = Mathf.Clamp( nextDiceThrow, 0, diceCooldown );
 	}
 #endregion
 }

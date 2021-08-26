@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
 
 		target.gameObject.SetActive( false );
 	}
-
 #endregion
 
 #region API
