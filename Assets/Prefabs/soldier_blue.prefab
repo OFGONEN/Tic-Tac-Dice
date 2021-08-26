@@ -755,6 +755,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f21048912f45f4f4ba5088a96779eb2f, type: 2}
     - {fileID: 11400000, guid: 0a3e52cd505ecfc4ba9ef153d4f3ba93, type: 2}
   soldierPool: {fileID: 11400000, guid: c53b90a9ff8ee6846be0c51ac9e80bbd, type: 2}
+  soldierSpawnParticleEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   soldierData: {fileID: 11400000, guid: c6c42102eb3b6aa4cb9b66a198006c1d, type: 2}
   currentHealth: 0
   allySoldiersList: []

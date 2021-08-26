@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5618647451549376543}
   - component: {fileID: 5618647451549376541}
   - component: {fileID: 5618647451549376540}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: arrows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4896,7 +4896,7 @@ GameObject:
   - component: {fileID: 5618647452893242125}
   - component: {fileID: 5618647452893242115}
   - component: {fileID: 5618647452893242114}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: relocate_inner_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9781,7 +9781,9 @@ GameObject:
   - component: {fileID: 5614170424638779164}
   - component: {fileID: 5708314868142354254}
   - component: {fileID: 5709042152613290238}
-  m_Layer: 0
+  - component: {fileID: 2902377258452117176}
+  - component: {fileID: 3211759976212484703}
+  m_Layer: 30
   m_Name: multiplier_patrolling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14657,3 +14659,29 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2902377258452117176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5619906962595230582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d620808b674b5774892ee7a0de974cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+--- !u!65 &3211759976212484703
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5619906962595230582}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.2978837, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
