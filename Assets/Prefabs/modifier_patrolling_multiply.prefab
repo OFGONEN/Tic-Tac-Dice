@@ -9784,7 +9784,7 @@ GameObject:
   - component: {fileID: 2902377258452117176}
   - component: {fileID: 3211759976212484703}
   m_Layer: 30
-  m_Name: multiplier_patrolling
+  m_Name: modifier_patrolling_multiply
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14672,6 +14672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  particleSpawnEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
 --- !u!65 &3211759976212484703
 BoxCollider:
   m_ObjectHideFlags: 0

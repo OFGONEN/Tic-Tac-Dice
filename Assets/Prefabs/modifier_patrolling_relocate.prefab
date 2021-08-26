@@ -4901,6 +4901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+  particleSpawnEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
 --- !u!65 &7337757505497953471
 BoxCollider:
   m_ObjectHideFlags: 0

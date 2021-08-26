@@ -9784,7 +9784,7 @@ GameObject:
   - component: {fileID: 7699256801309328129}
   - component: {fileID: 903864576002355558}
   m_Layer: 30
-  m_Name: halt_patrolling
+  m_Name: modifier_patrolling_halt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14684,3 +14684,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb15c34564af91f42b963cb06996a774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleSpawnEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}

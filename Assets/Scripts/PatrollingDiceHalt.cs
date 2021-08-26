@@ -3,10 +3,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FFStudio;
 
 public class PatrollingDiceHalt : MonoBehaviour
 {
 #region Fields
+    public ParticleSpawnEvent particleSpawnEvent;
 #endregion
 
 #region Properties
@@ -18,7 +20,12 @@ public class PatrollingDiceHalt : MonoBehaviour
 		var dice = other.GetComponentInParent< Dice >();
 		dice.Halt();
 
-        //TODO(ofg): Spawn a particle effect
+		// Raise modifier particle event
+		particleSpawnEvent.changePosition = true;
+		particleSpawnEvent.spawnPoint     = transform.position;
+		particleSpawnEvent.particleAlias  = "modifier_debuff";
+		particleSpawnEvent.Raise();
+
 		gameObject.SetActive( false );
 	}
 #endregion

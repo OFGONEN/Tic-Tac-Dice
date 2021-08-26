@@ -10,6 +10,7 @@ public class PatrollingDiceMultiplier : MonoBehaviour
 #region Fields
     [ Header( "Setup" ) ]
     public TileSet tileSet;
+    public ParticleSpawnEvent particleSpawnEvent;
 #endregion
 
 #region Properties
@@ -47,7 +48,12 @@ public class PatrollingDiceMultiplier : MonoBehaviour
 
 		newDice.Launch( launchVector );
 
-        //TODO(ofg): Spawn a particle effect
+		// Raise modifier particle event
+		particleSpawnEvent.changePosition = true;
+		particleSpawnEvent.spawnPoint     = transform.position;
+		particleSpawnEvent.particleAlias  = "modifier_buff";
+		particleSpawnEvent.Raise();
+
 		gameObject.SetActive( false );
 	}
 #endregion

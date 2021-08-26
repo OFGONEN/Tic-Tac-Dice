@@ -10,6 +10,7 @@ public class PatrollingRelocate : MonoBehaviour
 #region Fields
     [ Header( "Setup" ) ]
     public TileSet tileSet;
+	public ParticleSpawnEvent particleSpawnEvent;
 
 #endregion
 
@@ -47,7 +48,12 @@ public class PatrollingRelocate : MonoBehaviour
 
 		dice.Launch( launchVector );
 
-        //TODO(ofg): Spawn a particle effect
+		// Raise modifier particle event
+		particleSpawnEvent.changePosition = true;
+		particleSpawnEvent.spawnPoint     = transform.position;
+		particleSpawnEvent.particleAlias  = "modifier_debuff";
+		particleSpawnEvent.Raise();
+
 		gameObject.SetActive( false );
 	}
 #endregion
