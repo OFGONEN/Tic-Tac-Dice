@@ -17,6 +17,8 @@ public class Soldier : MonoBehaviour
 	[ Header( "Shared Variables" ) ]
 	public SoldierPool soldierPool;
 
+	[ Header( "Fired Events" ) ]
+	public ParticleSpawnEvent soldierSpawnParticleEvent;
 
 	[ HorizontalLine, Header( "Setup" ) ]
 	[ SerializeField ] private SoldierData soldierData;
@@ -103,6 +105,13 @@ public class Soldier : MonoBehaviour
 
 		transform.position = position;
 		transform.rotation = rotation;
+
+		position.y -= 1f;
+		// Soldier spawn Particle Effect 
+		soldierSpawnParticleEvent.changePosition = true;
+		soldierSpawnParticleEvent.spawnPoint     = position;
+		soldierSpawnParticleEvent.particleAlias  = "soldier_spawn";
+		soldierSpawnParticleEvent.Raise();
 	}
 
 	// Attack a target soldier
