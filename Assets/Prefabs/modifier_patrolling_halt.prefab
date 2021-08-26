@@ -9781,8 +9781,8 @@ GameObject:
   - component: {fileID: 838441025941995074}
   - component: {fileID: 680947114067328528}
   - component: {fileID: 680501478435385760}
-  - component: {fileID: 7929826667374983142}
   - component: {fileID: 7699256801309328129}
+  - component: {fileID: 903864576002355558}
   m_Layer: 30
   m_Name: halt_patrolling
   m_TagString: Untagged
@@ -14659,19 +14659,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &7929826667374983142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844104359431135784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d620808b674b5774892ee7a0de974cd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
 --- !u!65 &7699256801309328129
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14685,3 +14672,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 0.2978837, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &903864576002355558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844104359431135784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb15c34564af91f42b963cb06996a774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
