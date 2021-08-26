@@ -47,3 +47,5 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   particleEffectPools:
   - {fileID: 11400000, guid: 1900fed4353ba324ea5cb0027dbb215c, type: 2}
+  - {fileID: 11400000, guid: f8ec1df97b35664439ad1de7db2cf927, type: 2}
+  - {fileID: 11400000, guid: 6890965272534c341b3e305eff8cb59b, type: 2}
