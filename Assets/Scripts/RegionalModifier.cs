@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using NaughtyAttributes;
 
 public abstract class RegionalModifier : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public abstract class RegionalModifier : MonoBehaviour
     [ Header( "EventListeners" ) ]
 	public EventListenerDelegateResponse allyDiceEventListener;
 	public EventListenerDelegateResponse enemyDiceEventListener;
+    
+    [ Header( "Fired Events" ) ]
+    public ParticleSpawnEvent particleSpawnEvent;
 
     // Private Fields \\
     private CapsuleCollider capsuleCollider;
@@ -108,6 +112,12 @@ public abstract class RegionalModifier : MonoBehaviour
     {
         if( targetDice != null && diceEvent.diceID == targetDice_ID )
         {
+			// Raise modifier particle event
+			particleSpawnEvent.changePosition = true;
+			particleSpawnEvent.spawnPoint = transform.position;
+			particleSpawnEvent.particleAlias = "modifier_buff";
+			particleSpawnEvent.Raise();
+
 			gameObject.SetActive( false );
 		}
     }

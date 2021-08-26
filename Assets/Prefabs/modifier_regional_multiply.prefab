@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2647147239142402610}
   - component: {fileID: 1525831545976936451}
   m_Layer: 30
-  m_Name: multiply_regional
+  m_Name: modifier_regional_multiply
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4904,6 +4904,7 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: 214e335c80740c34789e7d222cee72f2, type: 2}
   enemyDiceEventListener:
     gameEvent: {fileID: 11400000, guid: efb860cf42147d14192a3979db14c016, type: 2}
+  particleSpawnEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   multiplyCofactor: 2
 --- !u!136 &1525831545976936451
 CapsuleCollider:
