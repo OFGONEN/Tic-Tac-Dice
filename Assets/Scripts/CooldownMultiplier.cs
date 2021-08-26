@@ -12,9 +12,11 @@ public class CooldownMultiplier : MonoBehaviour
     [ Header( "Fired Events" ) ]
     public FloatGameEvent allyCooldownEvent;
     public FloatGameEvent enemyCooldownEvent;
+    public ParticleSpawnEvent particleSpawnEvent;
 
     [ HorizontalLine ]
     public float cooldown;
+    public string particleAlias;
 #endregion
 
 #region Properties
@@ -36,8 +38,12 @@ public class CooldownMultiplier : MonoBehaviour
 			enemyCooldownEvent.eventValue = cooldown;
 			enemyCooldownEvent.Raise();
 		}
+		// Raise modifier particle event
+		particleSpawnEvent.changePosition = true;
+		particleSpawnEvent.spawnPoint     = transform.position;
+		particleSpawnEvent.particleAlias  = particleAlias;
+		particleSpawnEvent.Raise();
 
-		//TODO(ofg): Call a particle effect
 		gameObject.SetActive( false );
 	}
 #endregion
