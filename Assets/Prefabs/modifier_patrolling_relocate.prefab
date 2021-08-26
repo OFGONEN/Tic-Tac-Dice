@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 3446361358226463925}
   - component: {fileID: 3243267949277289703}
   - component: {fileID: 3242858585735992151}
-  m_Layer: 0
+  - component: {fileID: 1577438329642433034}
+  - component: {fileID: 7337757505497953471}
+  m_Layer: 30
   m_Name: relocate_patrolling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4886,6 +4888,32 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1577438329642433034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3442877393849155807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d230696567da8c4ebc30eb29e21c826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileSet: {fileID: 11400000, guid: acc0311da82b967428843cd7a2e190e8, type: 2}
+--- !u!65 &7337757505497953471
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3442877393849155807}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.2978837, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3441620045750548344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4896,6 +4924,10 @@ PrefabInstance:
     - target: {fileID: 1294733841131794, guid: cd89c56a1fcd0534a946f51a4cf9e51b, type: 3}
       propertyPath: m_Name
       value: relocate_inner
+      objectReference: {fileID: 0}
+    - target: {fileID: 1294733841131794, guid: cd89c56a1fcd0534a946f51a4cf9e51b, type: 3}
+      propertyPath: m_Layer
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4776653709342072, guid: cd89c56a1fcd0534a946f51a4cf9e51b, type: 3}
       propertyPath: m_RootOrder
