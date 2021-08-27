@@ -13,5 +13,47 @@ MonoBehaviour:
   m_Name: user_info_library
   m_EditorClassIdentifier: 
   userInfos:
-  - userName: jack
-    userFlag: {fileID: 21300000, guid: 90fee35d34b58fe449bdd9bb475a517f, type: 3}
+  - userName: mrs.luck
+    userFlag: {fileID: 6356632054987546715, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: baboss
+    userFlag: {fileID: -7858788262442410435, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: fisty_453
+    userFlag: {fileID: 2474233907157199686, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: northshiel
+    userFlag: {fileID: -7531011346372572665, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: crazy_Sam
+    userFlag: {fileID: -4699548671627458655, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: qwseasdd
+    userFlag: {fileID: 6089401747053245849, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: guest_125
+    userFlag: {fileID: -4699548671627458655, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: bbatint_42
+    userFlag: {fileID: -8207172110540127640, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: daredevil
+    userFlag: {fileID: -6158020157603826145, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: babaffetm
+    userFlag: {fileID: -7449558140616503163, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: slackty
+    userFlag: {fileID: 5389815266756453789, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: yetiMadd
+    userFlag: {fileID: 3454863560612208700, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: FakeEaR4
+    userFlag: {fileID: -24397455177556957, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: '*-dante-*'
+    userFlag: {fileID: 4724920185416182895, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: steve
+    userFlag: {fileID: -4497219208250069360, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: hotNcool
+    userFlag: {fileID: -7874707236043112937, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: Killberty
+    userFlag: {fileID: 6655825503154312046, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: Pepper45
+    userFlag: {fileID: -7361853458126592370, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: yarali_mc
+    userFlag: {fileID: 6588899061115312804, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: Fauder
+    userFlag: {fileID: -2147595794686029052, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: 63sTYLA
+    userFlag: {fileID: -8922442547081164103, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
+  - userName: AlighieriDa
+    userFlag: {fileID: -4554576408038222455, guid: 2d4082f92d3d202408a79b8913d541d5, type: 3}
