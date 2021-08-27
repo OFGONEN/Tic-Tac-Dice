@@ -91,8 +91,9 @@ public class PlayerController : MonoBehaviour
 
     private void InputDirectionChangeResponse()
     {
-		var direction = new Vector3( inputDirectionProperty.sharedValue.x, 0, inputDirectionProperty.sharedValue.y );
-		var position = target.position + direction * Time.deltaTime * GameSettings.Instance.player_TargetMoveSpeed;
+		var direction  = new Vector3( inputDirectionProperty.sharedValue.x, 0, inputDirectionProperty.sharedValue.y );
+		var position   = target.position + direction * Time.deltaTime * GameSettings.Instance.player_TargetMoveSpeed;
+		    position.y = GameSettings.Instance.dice_TargetHeight;
 
 		position.x = Mathf.Clamp( position.x, diceThrower.DownLeftPosition.x, diceThrower.UpRightPosition.x );
 		position.z = Mathf.Clamp( position.z, diceThrower.DownLeftPosition.z, diceThrower.UpRightPosition.z );

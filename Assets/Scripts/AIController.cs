@@ -90,7 +90,7 @@ public class AIController : MonoBehaviour
 
         // Calculate a random inside the tile. 
 		var targetPosition   = randomTile.transform.position + Random.insideUnitSphere * GameSettings.Instance.ai_randomPointRadius;
-		    targetPosition.y = 0;
+		    targetPosition.y = GameSettings.Instance.dice_TargetHeight;
 
         // Enable and update trajectory line.
 		diceThrower.EnableTrajectoryLine();
