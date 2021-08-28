@@ -30,9 +30,9 @@ MonoBehaviour:
   tile_allyTexture: {fileID: 21300000, guid: 41130b6ee13acf349b4d7469b0f023b0, type: 3}
   tile_enemyTexture: {fileID: 21300000, guid: 74090dfd7230f1c4ba4c7003cf7a0549, type: 3}
   soldier_AttackDelay: 0.75
-  player_TargetMoveSpeed: 25
-  player_Dice_Cooldown: 6
+  player_TargetMoveSpeed: 15
+  player_Dice_Cooldown: 3
   ai_randomPointRadius: 1.5
   ai_target_AimTime: {x: 1, y: 2}
   ai_target_WaitTime: {x: 0.5, y: 1.5}
-  ai_Dice_Cooldown: 3
+  ai_Dice_Cooldown: 1
