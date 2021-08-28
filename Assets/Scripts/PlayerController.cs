@@ -63,6 +63,10 @@ public class PlayerController : MonoBehaviour
     {
 		inputActiveProperty.changeEvet -= InputActiveResponse;
 
+		// If already targeting remove input direction response
+		if (targeting)
+			inputDirectionProperty.changeEvent -= InputDirectionChangeResponse;
+
 		targeting = false;
 	}
 
