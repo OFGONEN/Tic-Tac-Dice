@@ -193,6 +193,7 @@ public class DiceThrower : MonoBehaviour
 			dice_TrajectoryPoints[ i ] = timePosition + currentDice.transform.position;
 		}
 
+		dice_TrajectoryLine.enabled = true;
 		dice_TrajectoryLine.SetPositions( dice_TrajectoryPoints ); // Set points into line renderer.
 	}
 
