@@ -27,6 +27,8 @@ MonoBehaviour:
   tile_AttackWaitTime: 0.25
   tile_allyColor: {r: 0.21960784, g: 0.33333334, b: 0.6784314, a: 1}
   tile_enemyColor: {r: 0.9254902, g: 0.3254902, b: 0.41960785, a: 1}
+  tile_allyTexture: {fileID: 21300000, guid: 41130b6ee13acf349b4d7469b0f023b0, type: 3}
+  tile_enemyTexture: {fileID: 21300000, guid: 74090dfd7230f1c4ba4c7003cf7a0549, type: 3}
   soldier_AttackDelay: 0.75
   player_TargetMoveSpeed: 25
   player_Dice_Cooldown: 6

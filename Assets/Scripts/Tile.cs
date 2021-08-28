@@ -45,6 +45,7 @@ public class Tile : MonoBehaviour
 
 	// Components 
 	private MeshRenderer meshRenderer;
+	private SpriteRenderer captureTileSprite;
 	private Bounds bounds;
 
 	private MaterialPropertyBlock materialPropertyBlock;
@@ -68,13 +69,15 @@ public class Tile : MonoBehaviour
 
 	private void Awake()
 	{
-		meshRenderer = GetComponent< MeshRenderer >();
-		bounds       = meshRenderer.bounds;
+		meshRenderer      = GetComponent< MeshRenderer >();
+		captureTileSprite = GetComponentInChildren< SpriteRenderer >();
+		bounds            = meshRenderer.bounds;
 
 		materialPropertyBlock = new MaterialPropertyBlock();
 		meshRenderer.GetPropertyBlock( materialPropertyBlock, 1);
 
-		neutralColor = meshRenderer.materials[ 1 ].color;
+		neutralColor              = meshRenderer.materials[ 1 ].color;
+		captureTileSprite.enabled = false;
 
 
 		updateMethod = ExtensionMethods.EmptyMethod;
@@ -282,6 +285,10 @@ public class Tile : MonoBehaviour
 			materialPropertyBlock.SetColor( "_Color", neutralColor );
 			meshRenderer.SetPropertyBlock( materialPropertyBlock );
 
+			// Set captured texture
+			captureTileSprite.enabled = false;
+			captureTileSprite.sprite  = null;
+
 			updateMethod = ExtensionMethods.EmptyMethod;
 		}
 		else if( ally_SoldierList.Count > 0 && enemy_SoldierList.Count == 0 ) // Tile captured by Ally
@@ -295,6 +302,10 @@ public class Tile : MonoBehaviour
 			// Set color of the tile
 			materialPropertyBlock.SetColor( "_Color", GameSettings.Instance.tile_allyColor );
 			meshRenderer.SetPropertyBlock( materialPropertyBlock );
+
+			// Set captured texture
+			captureTileSprite.enabled = true;
+			captureTileSprite.sprite  = GameSettings.Instance.tile_allyTexture;
 
 			updateMethod = ExtensionMethods.EmptyMethod;
 
@@ -311,6 +322,10 @@ public class Tile : MonoBehaviour
 			// Set color of the tile
 			materialPropertyBlock.SetColor( "_Color", GameSettings.Instance.tile_enemyColor );
 			meshRenderer.SetPropertyBlock( materialPropertyBlock );
+
+			// Set captured texture
+			captureTileSprite.enabled = true;
+			captureTileSprite.sprite  = GameSettings.Instance.tile_enemyTexture;
 
 			updateMethod = ExtensionMethods.EmptyMethod;
 			

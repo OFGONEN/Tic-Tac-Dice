@@ -29,6 +29,8 @@ namespace FFStudio
         [ BoxGroup( "Tile" ), Tooltip( "Tile's wait time for giving attacking order to soldiers" ) ] public float tile_AttackWaitTime = 0.75f; 
         [ BoxGroup( "Tile" ), Tooltip( "Tile's color when captured by Ally" ) ] public Color tile_allyColor = Color.blue; 
         [ BoxGroup( "Tile" ), Tooltip( "Tile's color when captured by Enemy" ) ] public Color tile_enemyColor = Color.red;
+        [ BoxGroup( "Tile" ), Tooltip( "Tile's texture when captured by Ally" ) ] public Sprite tile_allyTexture;
+        [ BoxGroup( "Tile" ), Tooltip( "Tile's texture when captured by Enemy" ) ] public Sprite tile_enemyTexture;
 
 		// Soldier
 		[BoxGroup( "Soldier" ), Tooltip( "Damage delay after animation is played" )] public float soldier_AttackDelay = 0.75f; 
