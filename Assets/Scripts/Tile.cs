@@ -76,8 +76,9 @@ public class Tile : MonoBehaviour
 		materialPropertyBlock = new MaterialPropertyBlock();
 		meshRenderer.GetPropertyBlock( materialPropertyBlock, 1);
 
-		neutralColor              = meshRenderer.materials[ 1 ].color;
-		captureTileSprite.enabled = false;
+		neutralColor                           = meshRenderer.materials[ 1 ].color;
+		captureTileSprite.enabled              = false;
+		captureTileSprite.transform.localScale = Vector3.one * 1.5f;
 
 
 		updateMethod = ExtensionMethods.EmptyMethod;
