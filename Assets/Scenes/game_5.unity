@@ -595,6 +595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f097abc13dac1ce40996ee8427a42a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelStartListener:
+    gameEvent: {fileID: 11400000, guid: efef06bf257ee27438d6c2aab4936226, type: 2}
   delayTime: 18
 --- !u!1 &1260958633
 GameObject:
