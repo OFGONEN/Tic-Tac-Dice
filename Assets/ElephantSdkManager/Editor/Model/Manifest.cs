@@ -17,5 +17,9 @@ namespace ElephantSdkManager.Model
         public string version;
         public string type;
         public string currentVersion;
+        public string depends_on;
+        public string depending_sdk_version;
+
+        public bool isUpdateAvailable;
     }
 }

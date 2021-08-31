@@ -528,6 +528,10 @@ static UIView* mainView = nil;
     [self hideConsentView];
 }
 
+- (void)dismissAlertButton {
+    [self hideConsentView];
+}
+
 
 - (void)requstPermissionForAppTracking {
     if (@available(iOS 14.0, *)) {

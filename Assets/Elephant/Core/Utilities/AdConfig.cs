@@ -16,6 +16,8 @@ namespace ElephantSDK
         public string backup_interstitial_ad_unit;
         public string backup_rewarded_ad_unit;
         public InterstitialAdLogic interstitial_ad_logic;
+        public NetworkIds networks;
+        public bool network_id_manipulation_enabled;
         public List<AdConfigParameter> parameters;
 
         private static AdConfig _instance;
@@ -31,6 +33,8 @@ namespace ElephantSDK
             backup_interstitial_ad_unit = "";
             backup_rewarded_ad_unit = "";
             interstitial_ad_logic = new InterstitialAdLogic();
+            networks = null;
+            network_id_manipulation_enabled = true;
             parameters = new List<AdConfigParameter>();
         }
 
@@ -52,6 +56,8 @@ namespace ElephantSDK
             backup_interstitial_ad_unit = config.backup_interstitial_ad_unit;
             backup_rewarded_ad_unit = config.backup_rewarded_ad_unit;
             interstitial_ad_logic = config.interstitial_ad_logic;
+            networks = config.networks;
+            network_id_manipulation_enabled = config.network_id_manipulation_enabled;
             parameters = config.parameters;
         }
 

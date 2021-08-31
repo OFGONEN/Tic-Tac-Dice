@@ -7,9 +7,7 @@ namespace ElephantSDK
     {
         public bool is_old_user;
         public bool gdpr_supported;
-        public string user_id;
-        public string idfv;
-        public string idfa;
+        public string hash;
 
         private OpenData()
         {

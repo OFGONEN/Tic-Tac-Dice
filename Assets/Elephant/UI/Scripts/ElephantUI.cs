@@ -101,6 +101,8 @@ namespace ElephantSDK
             var data = GDPRRequest.CreateGdprRequest(ElephantCore.Instance.idfa, ElephantCore.Instance.idfv);
             ElephantRequest req = new ElephantRequest(ElephantCore.GDPR_EP, data);
             ElephantCore.Instance.AddToQueue(req);
+            if (gdprUI != null)
+                gdprUI.SetActive(false);
         }
 
         private void SetupUI()

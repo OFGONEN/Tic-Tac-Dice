@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ElephantSDK
@@ -19,6 +20,7 @@ namespace ElephantSDK
         public string bundle;
         public string lang;
         public string app_version;
+        public string build_number;
         public string os_version;
         public string sdk_version;
         public string ad_sdk_version;
@@ -32,6 +34,7 @@ namespace ElephantSDK
         public string user_id;
         public string consent_status = "";
         public int order = 0;
+        public List<MirrorData> mirror_data;
 
         public void FillBaseData(long sessionID)
         {
@@ -39,6 +42,7 @@ namespace ElephantSDK
                 this.idfa = ElephantCore.Instance.idfa;
                 this.idfv = ElephantCore.Instance.idfv;
                 this.app_version = Application.version;
+                this.build_number = ElephantCore.Instance.buildNumber;
                 this.lang = Utils.GetISOCODE(Application.systemLanguage);
                 this.user_tag = RemoteConfig.GetInstance().GetTag();
                 this.os_version = SystemInfo.operatingSystem;
@@ -51,6 +55,7 @@ namespace ElephantSDK
                 this.real_time_since_start_up = Time.realtimeSinceStartup;
                 this.user_id = ElephantCore.Instance.userId;
                 this.consent_status = ElephantCore.Instance.consentStatus;
+                this.mirror_data = ElephantCore.Instance.mirrorData;
                 
                 this.order = ElephantCore.Instance.eventOrder;
                 ElephantCore.Instance.eventOrder++;

@@ -4,20 +4,14 @@ using UnityEngine;
 namespace ElephantSDK
 {
     [Serializable]
-    public class IapStatusRequest
+    public class IapStatusRequest : BaseData
     {
-        public string user_id;
-        public string bundle;
-
         private IapStatusRequest() { }
 
         public static IapStatusRequest Create()
         {
-            var iapStatusRequest = new IapStatusRequest
-            {
-                user_id = ElephantCore.Instance.userId, 
-                bundle = Application.identifier
-            };
+            var iapStatusRequest = new IapStatusRequest();
+            iapStatusRequest.FillBaseData(ElephantCore.Instance.GetCurrentSession().GetSessionID());
             
             return iapStatusRequest;
         }

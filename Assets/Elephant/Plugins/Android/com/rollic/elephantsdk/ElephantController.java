@@ -3,7 +3,10 @@ package com.rollic.elephantsdk;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -20,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.HashMap;
@@ -94,17 +98,56 @@ public class ElephantController {
         }
 
     }
-
+    
     public void showAlertDialog(String title, String message) {
-        new AlertDialog.Builder(ctx)
-                .setTitle(title)
-                .setMessage(message)
-                .setCancelable(true)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                }).show();
+        if (message.contains("{{tos}}")) {
+            message = message.replace("{{tos}}", "<a href=\"" + title +"\">Terms of Service</a>");
+
+            AlertDialog alertDialog = new AlertDialog.Builder(ctx)
+                    .setTitle(title)
+                    .setMessage(Html.fromHtml(message))
+                    .setCancelable(true)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).show();
+
+            ((TextView) alertDialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+        } else {
+            new AlertDialog.Builder(ctx)
+                    .setTitle(title)
+                    .setMessage(message)
+                    .setCancelable(true)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).show();
+        }
+    }
+
+    public String getBuildNumber() {
+        if (getBuildConfigValue() == null) {
+            return "";
+        }
+
+        return getBuildConfigValue() + "";
+    }
+    
+    private Object getBuildConfigValue() {
+        try {
+            Class<?> clazz = Class.forName(ctx.getPackageName() + ".BuildConfig");
+            Field field = clazz.getField("VERSION_CODE");
+            return field.get(null);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public String FetchAdId() {

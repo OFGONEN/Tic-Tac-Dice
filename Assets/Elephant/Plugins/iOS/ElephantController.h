@@ -12,6 +12,7 @@ extern "C" {
 
 const char* IDFA();
 const char* getConsentStatus();
+const char* getBuildNumber();
 void TestFunction(const char * string);
 void showAlertDialog(const char * title, const char * message);
 void showIdfaConsent(int type, int delay, int position, const char * titleText,

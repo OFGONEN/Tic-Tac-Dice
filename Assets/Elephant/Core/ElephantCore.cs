@@ -64,12 +64,16 @@ namespace ElephantSDK
         internal long realSessionId;
         internal string idfa = "";
         internal string idfv = "";
+        internal string buildNumber = "";
         internal string consentStatus = "NotDetermined";
         internal string userId = "";
+        internal List<MirrorData> mirrorData;
         internal int eventOrder = 0;
+        
         public bool isIapBanned;
         
         private OpenResponse openResponse;
+        private string cachedOpenResponse;
 
         private static int MAX_FAILED_COUNT = 100;
 
@@ -77,9 +81,11 @@ namespace ElephantSDK
 #if ELEPHANT_DEBUG
         private static string REMOTE_CONFIG_FILE = "ELEPHANT_REMOTE_CONFIG_DATA_6";
         private static string USER_DB_ID = "USER_DB_ID_6";
+        private static string CACHED_OPEN_RESPONSE = "CACHED_OPEN_RESPONSE_DEBUG";
 #else
         private static string REMOTE_CONFIG_FILE = "ELEPHANT_REMOTE_CONFIG_DATA";
         private static string USER_DB_ID = "USER_DB_ID";
+        private static string CACHED_OPEN_RESPONSE = "CACHED_OPEN_RESPONSE";
 #endif
 
 
@@ -166,6 +172,16 @@ namespace ElephantSDK
             }
 
             VersionCheckUtils.GetInstance();
+            
+#if UNITY_EDITOR
+            buildNumber = "";
+#elif UNITY_ANDROID
+            buildNumber = ElephantAndroid.getBuildNumber();
+#elif UNITY_IOS
+            buildNumber = ElephantIOS.getBuildNumber();
+#else 
+            buildNumber = "";
+#endif
 
             if (!FB.IsInitialized)
             {
@@ -208,6 +224,8 @@ namespace ElephantSDK
                 RemoteConfig.GetInstance().SetFirstOpen(true);
             }
 
+            openResponse.user_id = userId;
+            
             openRequestWaiting = true;
             openRequestSucceded = false;
 
@@ -239,31 +257,20 @@ namespace ElephantSDK
             AdConfig.GetInstance().Init(openResponse.ad_config);
             Utils.SaveToFile(REMOTE_CONFIG_FILE, openResponse.remote_config_json);
             Utils.SaveToFile(USER_DB_ID, openResponse.user_id);
+            Utils.SaveToFile(CACHED_OPEN_RESPONSE, JsonUtility.ToJson(openResponse));
             userId = openResponse.user_id;
+            mirrorData = openResponse.mirror_data ?? new List<MirrorData>();
             currentSession.user_tag = RemoteConfig.GetInstance().GetTag();
 
             if (onOpen != null)
             {
-#if UNITY_IOS && !UNITY_EDITOR
-                if (InternalConfig.GetInstance().idfa_consent_enabled)
-                {
-                    InternalConfig internalConfig = InternalConfig.GetInstance();
-                    
-                    Elephant.Event("ask_idfa_consent", -1);
-                    ElephantIOS.showIdfaConsent(internalConfig.idfa_consent_type, 
-                        internalConfig.idfa_consent_delay, internalConfig.idfa_consent_position,
-                        internalConfig.consent_text_body, internalConfig.consent_text_action_body,
-                        internalConfig.consent_text_action_button, internalConfig.terms_of_service_text,
-                        internalConfig.privacy_policy_text, internalConfig.terms_of_service_url,
-                        internalConfig.privacy_policy_url);    
-                }
-#endif
                 if (openResponse.consent_required)
                 {
                     onOpen(true);
                 }
                 else
                 {
+                    OpenIdfaConsent();
                     onOpen(false);
                 }
             }
@@ -275,6 +282,24 @@ namespace ElephantSDK
             sdkIsReady = true;
             if (onRemoteConfigLoaded != null)
                 onRemoteConfigLoaded();
+        }
+        
+        public void OpenIdfaConsent()
+        {
+#if UNITY_IOS && !UNITY_EDITOR
+            if (InternalConfig.GetInstance().idfa_consent_enabled)
+            {
+                InternalConfig internalConfig = InternalConfig.GetInstance();
+
+                Elephant.Event("ask_idfa_consent", -1);
+                ElephantIOS.showIdfaConsent(internalConfig.idfa_consent_type,
+                    internalConfig.idfa_consent_delay, internalConfig.idfa_consent_position,
+                    internalConfig.consent_text_body, internalConfig.consent_text_action_body,
+                    internalConfig.consent_text_action_button, internalConfig.terms_of_service_text,
+                    internalConfig.privacy_policy_text, internalConfig.terms_of_service_url,
+                    internalConfig.privacy_policy_url);
+            }
+#endif
         }
 
         private void SendVersionsEvent()
@@ -344,6 +369,16 @@ namespace ElephantSDK
             openData.idfv = idfv;
             openData.idfa = idfa;
             openData.user_id = userId;
+            cachedOpenResponse = Utils.ReadFromFile(CACHED_OPEN_RESPONSE);
+            if (!string.IsNullOrEmpty(cachedOpenResponse))
+            {
+                var tempOpenResponse = JsonUtility.FromJson<OpenResponse>(cachedOpenResponse);
+                if (tempOpenResponse != null)
+                {
+                    // Previous open response has successfully saved. Send Hash..
+                    openData.hash = tempOpenResponse.hash;
+                }
+            }
 
             var json = JsonUtility.ToJson(openData);
             var bodyJson = JsonUtility.ToJson(new ElephantData(json, GetCurrentSession().GetSessionID()));
@@ -372,9 +407,9 @@ namespace ElephantSDK
             }
             else
             {
-                if (request.responseCode == 200)
+                try
                 {
-                    try
+                    if (request.responseCode == 200)
                     {
                         var a = JsonUtility.FromJson<OpenResponse>(request.downloadHandler.text);
                         if (a != null)
@@ -383,10 +418,19 @@ namespace ElephantSDK
                             openResponse = a;
                         }
                     }
-                    catch (Exception e)
+                    else if (request.responseCode == 204)
                     {
-                        Debug.Log(e);
+                        var a = JsonUtility.FromJson<OpenResponse>(cachedOpenResponse);
+                        if (a != null)
+                        {
+                            openRequestSucceded = true;
+                            openResponse = a;
+                        }
                     }
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e);
                 }
             }
 

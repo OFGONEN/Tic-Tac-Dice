@@ -91,6 +91,13 @@ const char* IDFA(){
     }
 }
 
+const char* getBuildNumber() {
+    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString *buildNumber = [infoDict objectForKey:@"CFBundleVersion"];
+    
+    return ElephantCopyString(buildNumber.UTF8String);
+}
+
 const char* getConsentStatus(){
     NSString *statusText = @"NotDetermined";
     if (@available(iOS 14.0, *)) {

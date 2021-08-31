@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ElephantSDK
@@ -34,6 +35,8 @@ namespace ElephantSDK
         public string remote_config_json; // json
         public AdConfig ad_config;
         public InternalConfig internal_config;
+        public List<MirrorData> mirror_data;
+        public string hash;
 
         public OpenResponse()
         {
@@ -49,6 +52,8 @@ namespace ElephantSDK
             this.remote_config_json = JsonUtility.ToJson(new ConfigResponse());
             this.ad_config = AdConfig.GetInstance();
             this.internal_config = InternalConfig.GetInstance();
+            this.mirror_data = new List<MirrorData>();
+            this.hash = "";
         }
     }
 }

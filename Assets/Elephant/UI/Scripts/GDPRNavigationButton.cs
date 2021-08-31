@@ -32,6 +32,7 @@ public class GDPRNavigationButton : MonoBehaviour
             case GDPRButtonAction.PLAY:
                 ElephantUI.Instance.AcceptGDPR();
                 ElephantUI.Instance.PlayGame();
+                ElephantCore.Instance.OpenIdfaConsent();
                 break;
             case GDPRButtonAction.OPEN_PAGE:
                 DisableAllPages();
