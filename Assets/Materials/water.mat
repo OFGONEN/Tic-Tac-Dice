@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: water
+  m_Shader: {fileID: 4800000, guid: 1be2d39a9a9896c48bcde6a611f3791e, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Texture0:
+        m_Texture: {fileID: 2800000, guid: d8a8c33a5e9d66342a71ea59067a5c8b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture1:
+        m_Texture: {fileID: 2800000, guid: ceac5166b701fb04da2b0ffdbd5be0dc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _distortionnormalmap:
+        m_Texture: {fileID: 2800000, guid: 6205681387f1856498d9292fea307838, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _flowtexture1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _subfoam:
+        m_Texture: {fileID: 2800000, guid: ceac5166b701fb04da2b0ffdbd5be0dc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _topfoam:
+        m_Texture: {fileID: 2800000, guid: ceac5166b701fb04da2b0ffdbd5be0dc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Float0: 1
+    - _Float1: 2
+    - __dirty: 0
+    - _flowstrenght: 0.01
+    - _foamsize: 3
+    - _ripplepower: 0.65
+    - _ripplescale: -2.77
+    - _ripplespeed: -0.84
+    m_Colors:
+    - _Color0: {r: 0.3039783, g: 0.5129928, b: 0.6509434, a: 0}
+    - _foamspeed: {r: 0, g: 0.01, b: 0, a: 0}
+    - _maincolor: {r: 0.30647027, g: 0.38999698, b: 0.6698113, a: 0}
+    - _subfoamcolor: {r: 0.096787095, g: 0.34754688, b: 0.8207547, a: 1}
+    - _topfoamcolor: {r: 0.17568529, g: 0.38808203, b: 0.7924528, a: 1}
+    - _topfoamcolort: {r: 0.19241722, g: 0.42639187, b: 0.8679245, a: 1}
+    - _watercolor: {r: 0.12922749, g: 0.37233543, b: 0.8301887, a: 0}
+  m_BuildTextureStacks: []

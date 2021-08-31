@@ -1,6 +1,7 @@
 /* Created by and for usage of FF Studios (2021). */
 
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 namespace FFStudio
@@ -78,6 +79,23 @@ namespace FFStudio
 			return first + Random.Range( 0, 1f ) * ( second - first );
 		}
 
+		public static void LookAtAxis( this Transform baseTransform, Vector3 targetPosition, Vector3 axis )
+		{
+			var directionVector = targetPosition - baseTransform.position;
+
+			var eulerAngles = baseTransform.eulerAngles;
+
+			var newRotationEuler = Quaternion.LookRotation( directionVector ).eulerAngles;
+
+			newRotationEuler.x = eulerAngles.x + ( newRotationEuler.x - eulerAngles.x ) * axis.x;
+			newRotationEuler.y = eulerAngles.y + ( newRotationEuler.y - eulerAngles.y ) * axis.y;
+			newRotationEuler.z = eulerAngles.z + ( newRotationEuler.z - eulerAngles.z ) * axis.z;
+
+			// baseTransform.rotation = Quaternion.LookRotation( newDirection );
+			baseTransform.rotation = Quaternion.Euler( newRotationEuler );
+
+		}
+
 		public static void LookAtOverTime( this Transform baseTransform, Vector3 targetPosition, float speed )
 		{
 			var directionVector = targetPosition - baseTransform.position;
@@ -116,6 +134,16 @@ namespace FFStudio
 		}
 
 		public static void EmptyMethod()
+		{
+			/* Intentionally empty, by definition. */
+		}
+
+		public static void EmptyMethod( Vector3 v3 )
+		{
+			/* Intentionally empty, by definition. */
+		}
+
+		public static void EmptyMethod( Collision other )
 		{
 			/* Intentionally empty, by definition. */
 		}
@@ -195,6 +223,46 @@ namespace FFStudio
 			transform.eulerAngles = data.position;
 			transform.localScale  = data.scale;
 		}
+
+		public static string Log2DArray( Parties[,] array, int length )
+		{
+			StringBuilder builder = new StringBuilder( 100 );
+
+			for( var x = 0; x < length ; x++ )
+			{
+				builder.Append( "[ " );
+				for( var y = 0; y < length; y++ )
+				{
+					builder.Append( array[ x, y ] );
+					builder.Append( " " );
+				}
+				builder.Append( "]" );
+				builder.Append( "\n" );
+			}
+
+			return builder.ToString();
+		}
+
+		public static float ReturnRandomValue( this Vector2 vector)
+		{
+			return Random.Range( vector.x, vector.y );
+		}
+
+		public static Collider[] CapsuleCast( this CapsuleCollider capsuleCollider, int layerMask )
+		{
+			var transform = capsuleCollider.transform;
+
+			var center = transform.TransformPoint( capsuleCollider.center );
+			var size = transform.TransformVector( capsuleCollider.radius, capsuleCollider.height, capsuleCollider.radius );
+			var radius = size.x;
+			var height = size.y;
+                
+            var bottom = new Vector3( center.x, center.y - height / 2 + radius, center.z );
+			var top = new Vector3( center.x, center.y + height / 2 - radius, center.z );
+
+			return Physics.OverlapCapsule( top, bottom, radius, layerMask );
+		}
+
 	}
 }
 

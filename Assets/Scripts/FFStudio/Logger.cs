@@ -95,5 +95,11 @@ namespace FFStudio
 		{
 			Debug.LogException( exception, context );
 		}
+
+		[ System.Diagnostics.Conditional( LOGGER_SYMBOL ) ]
+		public static void DrawLine( Vector3 start, Vector3 end, Color color, float duration )
+		{
+			Debug.DrawLine( start, end, color, duration );
+		}
 	}
 }

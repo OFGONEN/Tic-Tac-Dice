@@ -7,6 +7,8 @@ namespace FFStudio
 {
 	public delegate void ChangeEvent();
     public delegate void TriggerEnter(Collider other);
+    public delegate void CollisionEnter(Collision other);
 	public delegate void UnityMessage();
 	public delegate void LeanFingerDelegate( LeanFinger finger );
+	public delegate void UpdateTargetPosition( Vector3 position );
 }

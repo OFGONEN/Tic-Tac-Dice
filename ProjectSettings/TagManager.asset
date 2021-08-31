@@ -32,12 +32,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - AllyDice
+  - AllySoldier
+  - EnemyDice
+  - EnemySoldier
+  - Buff
+  - Environment
   m_SortingLayers:
   - name: Default
     uniqueID: 0
