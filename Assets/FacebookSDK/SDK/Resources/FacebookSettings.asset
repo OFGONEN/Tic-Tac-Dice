@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 0
+  - 538204984063481
   appLabels:
-  - App Name
+  - Tic Tac Clash
   cookie: 1
   logging: 1
   status: 1
